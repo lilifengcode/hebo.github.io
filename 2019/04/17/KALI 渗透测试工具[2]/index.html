@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="KALI 渗透测试工具[2]端口扫描，服务识别，OS识别，漏洞扫描Nmap带服务识别和操作系统指纹识别的TCP/IP主机和端口扫描工具 端口扫描 扫描前1000号TCP端口  nmap 192.168.100.2  Ping批量扫描本地主机  nmap –sP 192.168.100.0-9  扫描80,443端口  nmap -p 80,443 192.168.100.2  扫描前1000号T">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KALI 渗透测试工具[2]">
+<meta property="og:url" content="http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[2]/index.html">
+<meta property="og:site_name" content="卦师的博客">
+<meta property="og:description" content="KALI 渗透测试工具[2]端口扫描，服务识别，OS识别，漏洞扫描Nmap带服务识别和操作系统指纹识别的TCP/IP主机和端口扫描工具 端口扫描 扫描前1000号TCP端口  nmap 192.168.100.2  Ping批量扫描本地主机  nmap –sP 192.168.100.0-9  扫描80,443端口  nmap -p 80,443 192.168.100.2  扫描前1000号T">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://imglf5.nosdn0.126.net/img/d0pJMFNGSnJ5LzZRbXpmcUFTQWlsME9YcUhINHBweWIza2t2Wm1MT1JEMjE3L0xWVkpZZHJnPT0.jpg">
+<meta property="og:image" content="http://imglf5.nosdn.127.net/img/d0pJMFNGSnJ5LzZUdU5IQVVpUlNoUEZDUzdkOVdiZXl1MmhNNzl4TUZURzE5RXFvMzhGYUZ3PT0.gif?imageView">
+<meta property="og:image" content="http://imglf6.nosdn.127.net/img/d0pJMFNGSnJ5Lzd5Qm9rUWt5V0tSaDFkS1pVQWpQZHVsQytkVkZuWFdQRnVsSmVIZ3RSMDVnPT0.gif?imageView">
+<meta property="og:image" content="http://imglf4.nosdn.127.net/img/d0pJMFNGSnJ5LzQxNnpHWlI3azB4VitmNi9DQ0pkRUNkUE9YSWEvMTE2SkFXT0FqYUkxTUl3PT0.gif?imageView">
+<meta property="og:image" content="http://imglf5.nosdn.127.net/img/d0pJMFNGSnJ5LzRKdGF2d0g1Q29VSVNEeFBKMk1NNHlMNUp0c2tYaDVoWU9LUkRuMkxUeXNBPT0.gif?imageView">
+<meta property="og:image" content="http://imglf6.nosdn.127.net/img/d0pJMFNGSnJ5LzdTT3ZuTy9XdUdRNmJDaGxSemVmQ3JhbGZsNTdhcVE2cENLcWltK0JvRU9nPT0.gif?imageView">
+<meta property="og:updated_time" content="2019-04-17T13:54:50.037Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="KALI 渗透测试工具[2]">
+<meta name="twitter:description" content="KALI 渗透测试工具[2]端口扫描，服务识别，OS识别，漏洞扫描Nmap带服务识别和操作系统指纹识别的TCP/IP主机和端口扫描工具 端口扫描 扫描前1000号TCP端口  nmap 192.168.100.2  Ping批量扫描本地主机  nmap –sP 192.168.100.0-9  扫描80,443端口  nmap -p 80,443 192.168.100.2  扫描前1000号T">
+<meta name="twitter:image" content="http://imglf5.nosdn0.126.net/img/d0pJMFNGSnJ5LzZRbXpmcUFTQWlsME9YcUhINHBweWIza2t2Wm1MT1JEMjE3L0xWVkpZZHJnPT0.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>KALI 渗透测试工具[2]</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/lilifengcode">项目</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/04/17/web安全漏洞-任意文件下载漏洞/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/04/17/KALI 渗透测试工具[1]/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[2]/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[2]/&text=KALI 渗透测试工具[2]"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[2]/&title=KALI 渗透测试工具[2]"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[2]/&is_video=false&description=KALI 渗透测试工具[2]"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=KALI 渗透测试工具[2]&body=Check out this article: http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[2]/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[2]/&title=KALI 渗透测试工具[2]"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[2]/&title=KALI 渗透测试工具[2]"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[2]/&title=KALI 渗透测试工具[2]"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[2]/&title=KALI 渗透测试工具[2]"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[2]/&name=KALI 渗透测试工具[2]&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#KALI-渗透测试工具-2"><span class="toc-number">1.</span> <span class="toc-text">KALI 渗透测试工具[2]</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#端口扫描，服务识别，OS识别，漏洞扫描"><span class="toc-number">1.1.</span> <span class="toc-text">端口扫描，服务识别，OS识别，漏洞扫描</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Nmap"><span class="toc-number">1.1.1.</span> <span class="toc-text">Nmap</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#端口扫描"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">端口扫描</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#脚本扫描"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">脚本扫描</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nikto"><span class="toc-number">1.1.2.</span> <span class="toc-text">Nikto</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        KALI 渗透测试工具[2]
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">卦师的博客</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-04-17T13:54:28.000Z" itemprop="datePublished">2019-04-17</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><img src="http://imglf5.nosdn0.126.net/img/d0pJMFNGSnJ5LzZRbXpmcUFTQWlsME9YcUhINHBweWIza2t2Wm1MT1JEMjE3L0xWVkpZZHJnPT0.jpg" alt></p>
+<h1 id="KALI-渗透测试工具-2"><a href="#KALI-渗透测试工具-2" class="headerlink" title="KALI 渗透测试工具[2]"></a>KALI 渗透测试工具[2]</h1><h2 id="端口扫描，服务识别，OS识别，漏洞扫描"><a href="#端口扫描，服务识别，OS识别，漏洞扫描" class="headerlink" title="端口扫描，服务识别，OS识别，漏洞扫描"></a>端口扫描，服务识别，OS识别，漏洞扫描</h2><h3 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h3><p>带服务识别和操作系统指纹识别的TCP/IP主机和端口扫描工具<br><img src="http://imglf5.nosdn.127.net/img/d0pJMFNGSnJ5LzZUdU5IQVVpUlNoUEZDUzdkOVdiZXl1MmhNNzl4TUZURzE5RXFvMzhGYUZ3PT0.gif?imageView" alt></p>
+<h4 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h4><ul>
+<li>扫描前1000号TCP端口</li>
+</ul>
+<p>nmap 192.168.100.2</p>
+<ul>
+<li>Ping批量扫描本地主机</li>
+</ul>
+<p>nmap –sP 192.168.100.0-9</p>
+<ul>
+<li>扫描80,443端口</li>
+</ul>
+<p>nmap -p 80,443 192.168.100.2</p>
+<ul>
+<li>扫描前1000号TCP端口，OS指纹，服务，然后运行一个NSE脚本</li>
+</ul>
+<p>sudo nmap -A 192.168.100.2</p>
+<ul>
+<li>扫描全部65535个TCP端口，OS指纹，服务，然后运行一个NSE脚本</li>
+</ul>
+<p>sudo nmap –A –p- 192.168.100.2</p>
+<ul>
+<li>扫描前1000号UDP端口</li>
+</ul>
+<p>nmap -sU 192.168.100.2</p>
+<ul>
+<li>扫描所有65535个UDP端口</li>
+</ul>
+<p>nmap -sU –p- 192.168.100.2</p>
+<h4 id="脚本扫描"><a href="#脚本扫描" class="headerlink" title="脚本扫描"></a>脚本扫描</h4><p>nmap脚本主要分为以下几类，在扫描时可根据需要设置–script=类别这种方式进行比较笼统的扫描：</p>
+<p>auth: 负责处理鉴权证书（绕开鉴权）的脚本<br>broadcast: 在局域网内探查更多服务开启状况，如dhcp/dns/sqlserver等服务<br>brute: 提供暴力破解方式，针对常见的应用如http/snmp等<br>default: 使用-sC或-A选项扫描时候默认的脚本，提供基本脚本扫描能力<br>discovery: 对网络进行更多的信息，如SMB枚举、SNMP查询等<br>dos: 用于进行拒绝服务攻击<br>exploit: 利用已知的漏洞入侵系统<br>external: 利用第三方的数据库或资源，例如进行whois解析<br>fuzzer: 模糊测试的脚本，发送异常的包到目标机，探测出潜在漏洞 intrusive: 入侵性的脚本，此类脚本可能引发对方的IDS/IPS的记录或屏蔽<br>malware: 探测目标机是否感染了病毒、开启了后门等信息<br>safe: 此类与intrusive相反，属于安全性脚本<br>version: 负责增强服务与版本扫描（Version Detection）功能的脚本<br>vuln: 负责检查目标机是否有常见的漏洞（Vulnerability），如是否有MS08_067</p>
+<ul>
+<li>nmap –script=auth 192.168.2.129</li>
+</ul>
+<p>​    负责处理鉴权证书（绕开鉴权）的脚本,也可以作为检测部分应用弱口令</p>
+<ul>
+<li><p>nmap –script=brute 192.168.2.129</p>
+<p>提供暴力破解的方式  可对数据库，smb，snmp等进行简单密码的暴力猜解</p>
+</li>
+<li><p>nmap –script=default 192.168.2.129</p>
+<p>默认的脚本扫描，主要是搜集各种应用服务的信息，收集到后，可再针对具体服务进行攻击</p>
+</li>
+<li><p>nmap –script=vuln 192.168.2.129<br>检查是否存在常见漏洞</p>
+</li>
+<li><p>nmap -n -p445 –script=broadcast 192.168.2.129</p>
+<p>在局域网内探查更多服务开启状况</p>
+</li>
+</ul>
+<h3 id="Nikto"><a href="#Nikto" class="headerlink" title="Nikto"></a>Nikto</h3><p>有指纹识别功能的Web服务漏洞扫描器</p>
+<ul>
+<li>Nikto -list-plugins #查看插件<br><img src="http://imglf6.nosdn.127.net/img/d0pJMFNGSnJ5Lzd5Qm9rUWt5V0tSaDFkS1pVQWpQZHVsQytkVkZuWFdQRnVsSmVIZ3RSMDVnPT0.gif?imageView" alt></li>
+<li>Nikto -host <a href="http://1.1.1.1" target="_blank" rel="noopener">http://1.1.1.1</a> #扫描目标：域名方式<br><img src="http://imglf4.nosdn.127.net/img/d0pJMFNGSnJ5LzQxNnpHWlI3azB4VitmNi9DQ0pkRUNkUE9YSWEvMTE2SkFXT0FqYUkxTUl3PT0.gif?imageView" alt></li>
+<li>Nikto -host <a href="http://1.1.1.1" target="_blank" rel="noopener">http://1.1.1.1</a> -output #扫描并输出结果</li>
+<li>Nikto -host 1.1.1.1 -port 80 #扫描目标：ip地址加端口</li>
+</ul>
+<p><img src="http://imglf5.nosdn.127.net/img/d0pJMFNGSnJ5LzRKdGF2d0g1Q29VSVNEeFBKMk1NNHlMNUp0c2tYaDVoWU9LUkRuMkxUeXNBPT0.gif?imageView" alt></p>
+<ul>
+<li>Nikto -host <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> -port 443 -ssl #扫描https网站</li>
+</ul>
+<p><img src="http://imglf6.nosdn.127.net/img/d0pJMFNGSnJ5LzdTT3ZuTy9XdUdRNmJDaGxSemVmQ3JhbGZsNTdhcVE2cENLcWltK0JvRU9nPT0.gif?imageView" alt></p>
+<ul>
+<li>Nikto -host 文件名.txt #批量扫描目标</li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/lilifengcode">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#KALI-渗透测试工具-2"><span class="toc-number">1.</span> <span class="toc-text">KALI 渗透测试工具[2]</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#端口扫描，服务识别，OS识别，漏洞扫描"><span class="toc-number">1.1.</span> <span class="toc-text">端口扫描，服务识别，OS识别，漏洞扫描</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Nmap"><span class="toc-number">1.1.1.</span> <span class="toc-text">Nmap</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#端口扫描"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">端口扫描</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#脚本扫描"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">脚本扫描</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nikto"><span class="toc-number">1.1.2.</span> <span class="toc-text">Nikto</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[2]/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[2]/&text=KALI 渗透测试工具[2]"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[2]/&title=KALI 渗透测试工具[2]"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[2]/&is_video=false&description=KALI 渗透测试工具[2]"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=KALI 渗透测试工具[2]&body=Check out this article: http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[2]/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[2]/&title=KALI 渗透测试工具[2]"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[2]/&title=KALI 渗透测试工具[2]"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[2]/&title=KALI 渗透测试工具[2]"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[2]/&title=KALI 渗透测试工具[2]"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[2]/&name=KALI 渗透测试工具[2]&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 卦师
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/lilifengcode">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
