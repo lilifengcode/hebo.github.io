@@ -1,160 +1,59 @@
 <!DOCTYPE html>
-<html lang=zh>
+<html lang="en">
 <head><meta name="generator" content="Hexo 3.8.0">
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="KALI 渗透测试工具[1]域名注册信息 whois    用法： whois  www.xxxx.com   dig  用法： dig www.xxxx.com/123.123.123.*  DNS查询  dnsrecon这是我最喜欢的一款DNS查询工具，具体可以看我以前文章。 情报收集   Recon-NG 用法：root@kali:~# recon-ng   启动的时候报错显示红色【！】请">
-<meta property="og:type" content="article">
-<meta property="og:title" content="KALI 渗透测试工具[1]">
-<meta property="og:url" content="http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[1]/index.html">
-<meta property="og:site_name" content="裁决的博客">
-<meta property="og:description" content="KALI 渗透测试工具[1]域名注册信息 whois    用法： whois  www.xxxx.com   dig  用法： dig www.xxxx.com/123.123.123.*  DNS查询  dnsrecon这是我最喜欢的一款DNS查询工具，具体可以看我以前文章。 情报收集   Recon-NG 用法：root@kali:~# recon-ng   启动的时候报错显示红色【！】请">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://imglf3.nosdn0.126.net/img/d0pJMFNGSnJ5LzQ5dW85VzhtSmJ3NmxobE1DTHA2QjE0TlJ5OTlVd0FiM2VkTkhsWTM3UFBnPT0.jpg">
-<meta property="og:image" content="http://imglf4.nosdn.127.net/img/d0pJMFNGSnJ5LzZDeXAyQ1hMRzI5L3I1a2JiQmRRUm1RZTVXMVYvUk1jNXd6UDFhUmdTb01RPT0.jpg?imageView">
-<meta property="og:image" content="http://imglf4.nosdn.127.net/img/d0pJMFNGSnJ5LzZqNmh4SEZvSDJ1NHBsdVkwdUZ5SmVuVjFhR3hUQzloS00zZlNzak5VSTB3PT0.jpg?imageView">
-<meta property="og:image" content="http://imglf5.nosdn.127.net/img/d0pJMFNGSnJ5LzUyVUxNSldrNjJUYkQwdFBwZkRKOFdIRUJ0anMrOTRNL2I2SzJ0MllTOTJRPT0.jpg?imageView">
-<meta property="og:image" content="http://imglf6.nosdn.127.net/img/d0pJMFNGSnJ5LzUyVUxNSldrNjJUU05BSnVuV2tVN01QcHFJbU5CR1RFb2E1MnN3UEFEa1BRPT0.jpg?imageView">
-<meta property="og:image" content="http://imglf4.nosdn.127.net/img/d0pJMFNGSnJ5LzZPUUpDVFN2d0Flc2paQk1YWG83c3VOSW5YR0JLMzlEVmJWOHcyemFHQjNBPT0.jpg?imageView">
-<meta property="og:image" content="http://imglf3.nosdn.127.net/img/d0pJMFNGSnJ5LzVPTDYwcFhMWHVNc0FUcDVEeEYxQnBCR3NPK2dyc2ZVeTN1a0d3ZDNqMGtnPT0.jpg?imageView">
-<meta property="og:image" content="http://imglf3.nosdn.127.net/img/d0pJMFNGSnJ5LzRFRUhCNUVrQkhleHE5NG1qZXRHQmZqMEw4UE1qNUZkWHNGYUlZNUovY0l3PT0.jpg?imageView">
-<meta property="og:image" content="http://imglf5.nosdn.127.net/img/d0pJMFNGSnJ5LzU3eVo1cDFIdGplWmpoVktZaVg0NFIxMXllZmlaOFROYjN5TmNzdVZJdnpnPT0.jpg?imageView">
-<meta property="og:image" content="http://imglf6.nosdn.127.net/img/d0pJMFNGSnJ5LzZDWVcyUmFlSWxFNzlYdlBQMC9jc3NISWdhMkx1UGV3b0V0ZWxhZGFFYzJBPT0.jpg?imageView">
-<meta property="og:image" content="http://imglf6.nosdn.127.net/img/d0pJMFNGSnJ5LzR2OWZwaUFIeUc4bEwyd01MRU5JMnRXVTNhZmdwQmRpME91eGJwbDFRY0hnPT0.jpg?imageView">
-<meta property="og:image" content="http://imglf3.nosdn.127.net/img/d0pJMFNGSnJ5LzQ5VkQ1SzBpRndMOVM0d3lUUnNDV1lpYmY1aHdMZjQ2MHpHMmM1M2J5L1FnPT0.jpg?imageView">
-<meta property="og:updated_time" content="2019-04-18T11:26:28.384Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="KALI 渗透测试工具[1]">
-<meta name="twitter:description" content="KALI 渗透测试工具[1]域名注册信息 whois    用法： whois  www.xxxx.com   dig  用法： dig www.xxxx.com/123.123.123.*  DNS查询  dnsrecon这是我最喜欢的一款DNS查询工具，具体可以看我以前文章。 情报收集   Recon-NG 用法：root@kali:~# recon-ng   启动的时候报错显示红色【！】请">
-<meta name="twitter:image" content="http://imglf3.nosdn0.126.net/img/d0pJMFNGSnJ5LzQ5dW85VzhtSmJ3NmxobE1DTHA2QjE0TlJ5OTlVd0FiM2VkTkhsWTM3UFBnPT0.jpg">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    KALI 渗透测试工具[1] |
     
-    
-        
-          
-              <link rel="shortcut icon" href="/images/favicon.ico">
-          
-        
-        
-          
-            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-          
-        
-        
-          
-            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-          
-        
-    
-    <!-- title -->
-    <title>KALI 渗透测试工具[1]</title>
-    <!-- styles -->
-    <link rel="stylesheet" href="/css/style.css">
-    <!-- persian styles -->
-    
-      <link rel="stylesheet" href="/css/rtl.css">
-    
-    <!-- rss -->
-    
-    
+    裁决的博客</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
 </head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-KALI 渗透测试工具[1]" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
-<body class="max-width mx-auto px3 ltr">
+  <div class="article-inner">
     
-      <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-         
-          <li><a href="/">首页</a></li>
-         
-          <li><a href="/about/">关于</a></li>
-         
-          <li><a href="/archives/">归档</a></li>
-         
-          <li><a href="https://github.com/lilifengcode">项目</a></li>
+      <header class="article-header">
         
-      </ul>
-    </span>
-    <br>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" href="/2019/04/17/KALI 渗透测试工具[2]/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" href="/2019/04/17/windows 渗透测试必备命令/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">上一篇</span>
-      <span id="i-next" class="info" style="display:none;">下一篇</span>
-      <span id="i-top" class="info" style="display:none;">返回顶部</span>
-      <span id="i-share" class="info" style="display:none;">分享文章</span>
-    </span>
-    <br>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[1]/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[1]/&text=KALI 渗透测试工具[1]"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[1]/&title=KALI 渗透测试工具[1]"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[1]/&is_video=false&description=KALI 渗透测试工具[1]"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=KALI 渗透测试工具[1]&body=Check out this article: http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[1]/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[1]/&title=KALI 渗透测试工具[1]"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[1]/&title=KALI 渗透测试工具[1]"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[1]/&title=KALI 渗透测试工具[1]"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[1]/&title=KALI 渗透测试工具[1]"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[1]/&name=KALI 渗透测试工具[1]&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-    <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#KALI-渗透测试工具-1"><span class="toc-number">1.</span> <span class="toc-text">KALI 渗透测试工具[1]</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#域名注册信息"><span class="toc-number">1.1.</span> <span class="toc-text">域名注册信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS查询-dnsrecon"><span class="toc-number">1.2.</span> <span class="toc-text">DNS查询  dnsrecon</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#情报收集-Recon-NG"><span class="toc-number">1.3.</span> <span class="toc-text">情报收集   Recon-NG</span></a></li></ol></li></ol>
-    </div>
-  </span>
-</div>
-
-    
-    <div class="content index py4">
-        
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
-    
-    <h1 class="posttitle" itemprop="name headline">
-        KALI 渗透测试工具[1]
+  
+    <h1 class="article-title" itemprop="name">
+      KALI 渗透测试工具[1]
     </h1>
-
-
-
-    <div class="meta">
-      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">裁决的博客</span>
-      </span>
-      
-    <div class="postdate">
-      
-        <time datetime="2019-04-17T13:53:40.000Z" itemprop="datePublished">2019-04-17</time>
-        
-      
-    </div>
-
-
-      
-
-      
-
-    </div>
-  </header>
   
 
-  <div class="content" itemprop="articleBody">
-    <p><img src="http://imglf3.nosdn0.126.net/img/d0pJMFNGSnJ5LzQ5dW85VzhtSmJ3NmxobE1DTHA2QjE0TlJ5OTlVd0FiM2VkTkhsWTM3UFBnPT0.jpg" alt></p>
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/04/17/KALI 渗透测试工具[1]/" class="article-date">
+  <time datetime="2019-04-17T13:53:40.000Z" itemprop="datePublished">2019-04-17</time>
+</a>
+        
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <p><img src="http://imglf3.nosdn0.126.net/img/d0pJMFNGSnJ5LzQ5dW85VzhtSmJ3NmxobE1DTHA2QjE0TlJ5OTlVd0FiM2VkTkhsWTM3UFBnPT0.jpg" alt></p>
 <h1 id="KALI-渗透测试工具-1"><a href="#KALI-渗透测试工具-1" class="headerlink" title="KALI 渗透测试工具[1]"></a>KALI 渗透测试工具[1]</h1><h2 id="域名注册信息"><a href="#域名注册信息" class="headerlink" title="域名注册信息"></a>域名注册信息</h2><ol>
 <li>whois  </li>
 </ol>
@@ -317,98 +216,140 @@
 <p>查看key  ,可以输入keys  list </p>
 <p><img src="http://imglf3.nosdn.127.net/img/d0pJMFNGSnJ5LzQ5VkQ1SzBpRndMOVM0d3lUUnNDV1lpYmY1aHdMZjQ2MHpHMmM1M2J5L1FnPT0.jpg?imageView" alt></p>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[1]/" data-id="cjvt0849900063gpx8x5slwk0" class="article-share-link">分享</a>
+      
+    </footer>
+
   </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/04/17/KALI 渗透测试工具[2]/" class="article-nav-link">
+        <strong class="article-nav-caption">前一篇</strong>
+        <div class="article-nav-title">
+          
+            KALI 渗透测试工具[2]
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/04/17/windows 渗透测试必备命令/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">windows 渗透测试必备命令</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
 </article>
 
 
 
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
-
-    <div id="nav-footer" style="display: none">
-      <ul>
-         
-          <li><a href="/">首页</a></li>
-         
-          <li><a href="/about/">关于</a></li>
-         
-          <li><a href="/archives/">归档</a></li>
-         
-          <li><a href="https://github.com/lilifengcode">项目</a></li>
-        
-      </ul>
-    </div>
-
-    <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#KALI-渗透测试工具-1"><span class="toc-number">1.</span> <span class="toc-text">KALI 渗透测试工具[1]</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#域名注册信息"><span class="toc-number">1.1.</span> <span class="toc-text">域名注册信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS查询-dnsrecon"><span class="toc-number">1.2.</span> <span class="toc-text">DNS查询  dnsrecon</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#情报收集-Recon-NG"><span class="toc-number">1.3.</span> <span class="toc-text">情报收集   Recon-NG</span></a></li></ol></li></ol>
-    </div>
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[1]/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[1]/&text=KALI 渗透测试工具[1]"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[1]/&title=KALI 渗透测试工具[1]"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[1]/&is_video=false&description=KALI 渗透测试工具[1]"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=KALI 渗透测试工具[1]&body=Check out this article: http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[1]/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[1]/&title=KALI 渗透测试工具[1]"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[1]/&title=KALI 渗透测试工具[1]"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[1]/&title=KALI 渗透测试工具[1]"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[1]/&title=KALI 渗透测试工具[1]"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[1]/&name=KALI 渗透测试工具[1]&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</section>
+  <footer class="footer">
+  
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
 </ul>
-
     </div>
-
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
-        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
-    </div>
-
-  </div>
-</div>
-
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy; 2019 裁决
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-         
-          <li><a href="/">首页</a></li>
-         
-          <li><a href="/about/">关于</a></li>
-         
-          <li><a href="/archives/">归档</a></li>
-         
-          <li><a href="https://github.com/lilifengcode">项目</a></li>
-        
-      </ul>
-    </nav>
+    <ul class="list-inline">
+      <li>&copy; 2019 裁决的博客</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
   </div>
 </footer>
 
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="裁决的博客"></a>
     </div>
-    <!-- styles -->
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery/caijuedebug.jpg">相册</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
 
-    <!-- jquery -->
-<script src="/lib/jquery/jquery.min.js"></script>
-<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
-<script src="/js/main.js"></script>
-<!-- search -->
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+      <li class="nav-item">
+          <div class="totop" id="totop">
+    <i class="fe fe-rocket"></i>
+</div>
+      </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
 
-<!-- Google Analytics -->
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+<script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
 
-<!-- Baidu Analytics -->
 
-<!-- Disqus Comments -->
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
 
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
 
 </body>
 </html>
