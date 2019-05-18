@@ -56,6 +56,7 @@
         <p><img src="http://imglf4.nosdn0.126.net/img/d0pJMFNGSnJ5LzdrekNMM0dHSW1KWWI1RE1FUEtqL29PQWlMOU5UNll5dVQzK2J2azRHR3NnPT0.jpg" alt></p>
 <h1 id="web安全漏洞-任意文件下载漏洞"><a href="#web安全漏洞-任意文件下载漏洞" class="headerlink" title="web安全漏洞-任意文件下载漏洞"></a>web安全漏洞-任意文件下载漏洞</h1><p><strong>php代码</strong></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>    </span><br><span class="line">$filename = $_GET[<span class="string">'filename'</span>];    </span><br><span class="line"><span class="keyword">echo</span> <span class="string">'&lt;h1&gt;开始下载文件！&lt;/h1&gt;&lt;br /&gt;&lt;br /&gt;'</span>; </span><br><span class="line"><span class="keyword">echo</span> file_get_contents($filename); </span><br><span class="line">header(<span class="string">'Content-Type: imgage/jpeg'</span>);       </span><br><span class="line">header(<span class="string">'Content-Disposition: attachment; filename='</span>.$filename);    <span class="comment">//Content-Disposition 响应头，设置文件在浏览器打开还是下载</span></span><br><span class="line">header(<span class="string">'Content-Lengh: '</span>.filesize($filename));</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="window环境演示"><a href="#window环境演示" class="headerlink" title="window环境演示"></a>window环境演示</h2><p>环境介绍</p>
 <p>C盘根目录-存放了flag.txt</p>
 <p>www目录-有phpinfo.php</p>
@@ -68,8 +69,7 @@
 <p><img src="http://imglf5.nosdn.127.net/img/d0pJMFNGSnJ5LzdoSXJzeHNCQTcxOEVvTUhGZWxNMTd3SjRkWjkrT25hcjJQUlZnaGRZWVd3PT0.png?imageView" alt></p>
 <p>burpsuite抓包</p>
 <p><img src="http://imglf3.nosdn.127.net/img/d0pJMFNGSnJ5LzZUVnZwRVRWbG1jK1NSdjY5VENKaG9LamdrcVR3TnYzZHRxemdlcUgzM0h3PT0.png?imageView" alt></p>
-<h2 id="漏洞检测"><a href="#漏洞检测" class="headerlink" title="漏洞检测"></a>漏洞检测</h2><p><strong><strong>.php?file=/etc/passwd
-</strong></strong>.php?file=../../../../../../../../etc/passwd<br><em>**</em>.php?file=../../../../../../../../etc/passwd%00</p>
+<h2 id="漏洞检测"><a href="#漏洞检测" class="headerlink" title="漏洞检测"></a>漏洞检测</h2><p><strong>*<em>.php?file=/etc/passwd<br>*</em></strong>.php?file=../../../../../../../../etc/passwd<br>****.php?file=../../../../../../../../etc/passwd%00</p>
 <h2 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h2><ul>
 <li>禁用../的使用</li>
 <li>使用open_basedir将下载文件限定为一个指定目录里</li>
@@ -142,7 +142,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lilifengcode.github.io/2019/04/17/web安全漏洞-任意文件下载漏洞/" data-id="cjvt084ag000d3gpxp8n8hhae" class="article-share-link">分享</a>
+      <a data-url="http://lilifengcode.github.io/2019/04/17/web安全漏洞-任意文件下载漏洞/" data-id="cjvtoagwq000erkpxa4as16cr" class="article-share-link">分享</a>
       
     </footer>
 

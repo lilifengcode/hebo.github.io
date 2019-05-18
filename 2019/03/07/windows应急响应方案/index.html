@@ -78,7 +78,11 @@
 <p> <strong>ps:还有一种，叫自己人的渗透！！！</strong> </p>
 </li>
 </ol>
-<h2 id="0x03-排查流程"><a href="#0x03-排查流程" class="headerlink" title="0x03 排查流程"></a>0x03 排查流程</h2><font size="4"><br><br>注:业内通常使用的PDCERF方法学（最早由 1987 年美国宾夕法尼亚匹兹堡软件工程研究所在关于应急响应的邀请工作会议上提出），将应急响应分成准备（Preparation）、检测（Detection）、抑制（Containment）、根除（Eradication）、恢复（Recovery）、跟踪（Follow-up）6个阶段的工作，并根据网络安全应急响应总体策略对每个阶段定义适当的目的，明确响应顺序和过程。<br><br>​ 准备阶段——&gt;检测阶段——&gt;抑制阶段——&gt;根除阶段——&gt;恢复阶段——&gt;跟踪总结<br><br><br> </font>
+<h2 id="0x03-排查流程"><a href="#0x03-排查流程" class="headerlink" title="0x03 排查流程"></a>0x03 排查流程</h2><font size="4"> 
+
+<p>注:业内通常使用的PDCERF方法学（最早由 1987 年美国宾夕法尼亚匹兹堡软件工程研究所在关于应急响应的邀请工作会议上提出），将应急响应分成准备（Preparation）、检测（Detection）、抑制（Containment）、根除（Eradication）、恢复（Recovery）、跟踪（Follow-up）6个阶段的工作，并根据网络安全应急响应总体策略对每个阶段定义适当的目的，明确响应顺序和过程。</p>
+<p>​ 准备阶段——&gt;检测阶段——&gt;抑制阶段——&gt;根除阶段——&gt;恢复阶段——&gt;跟踪总结</p>
+ </font>
 
 <p><em>下图自画，非PDCERF模型</em></p>
 <p><img src="https://s2.ax1x.com/2019/03/06/kvV70f.png" alt="此图自画，非PDCERF模型"></p>
@@ -128,8 +132,7 @@ b) 应用日志分析
 
 i. Access.log
 
-ii. Error.log
-</code></pre><h2 id="0x04-常规排查流程"><a href="#0x04-常规排查流程" class="headerlink" title="0x04 常规排查流程"></a>0x04 常规排查流程</h2><ol>
+ii. Error.log</code></pre><h2 id="0x04-常规排查流程"><a href="#0x04-常规排查流程" class="headerlink" title="0x04 常规排查流程"></a>0x04 常规排查流程</h2><ol>
 <li><p>检查系统账号安全</p>
 <p>  a)查看服务器是否有弱口令</p>
 <p>  b）查看服务器是否存在可疑账号、新增账号</p>
@@ -142,8 +145,7 @@ ii. Error.log
 打开注册表 ，查看管理员对应键值。
 使用 D 盾 _web 查杀工具，集成了对克隆账号检测的功能
 
- ![](https://s2.ax1x.com/2019/03/06/kv3ise.png)
-</code></pre><ol start="2">
+ ![](https://s2.ax1x.com/2019/03/06/kv3ise.png)</code></pre><ol start="2">
 <li><p>检查异常端口</p>
 <p> a)netstat -ano 查看目前的网络连接，定位可疑的 ESTABLISHED</p>
 <p> <img src="https://s2.ax1x.com/2019/03/06/kv3fyD.png" alt></p>
@@ -173,8 +175,7 @@ d)查看可疑的进程及其子进程。可以通过观察以下内容：
 
 进程的路径是否合法
 
-CPU 或内存资源占用长时间过高的进程
-</code></pre><ol start="4">
+CPU 或内存资源占用长时间过高的进程</code></pre><ol start="4">
 <li><p>检查启动项</p>
 <p> a)登录服务器，单击【开始】&gt;【所有程序】&gt;【启动】，默认情况下此目录在是一个空目录，确认是否有非业务程序在该目录下。</p>
 <p> b)单击开始菜单 &gt;【运行】，输入 msconfig，查看是否存在命名异常的启动项目，是则取消勾选命名异常的启动项目，并到命令中显示的路径删除文件。</p>
@@ -191,12 +192,10 @@ CPU 或内存资源占用长时间过高的进程
 </ol>
 <pre><code>a)单击【开始】&gt;【设置】&gt;【控制面板】&gt;【任务计划】，查看计划任务属性，便可以发现木马文件的路径。
 
-b)单击【开始】&gt;【运行】；输入 cmd，然后输入at，检查计算机与网络上的其它计算机之间的会话或计划任务，如有，则确认是否为正常连接
-</code></pre><ol start="6">
+b)单击【开始】&gt;【运行】；输入 cmd，然后输入at，检查计算机与网络上的其它计算机之间的会话或计划任务，如有，则确认是否为正常连接</code></pre><ol start="6">
 <li>服务自启动</li>
 </ol>
-<pre><code>单击【开始】&gt;【运行】，输入 services.msc，注意服务状态和启动类型，检查是否有异常服务。
-</code></pre><ol start="7">
+<pre><code>单击【开始】&gt;【运行】，输入 services.msc，注意服务状态和启动类型，检查是否有异常服务。</code></pre><ol start="7">
 <li>检查系统相关信息<br> 查看系统版本以及补丁信息<br> 单击【开始】&gt;【运行】，输入 systeminfo，查看系统信息</li>
 </ol>
 <ol start="8">
@@ -208,8 +207,7 @@ b)单击【开始】&gt;【运行】；输入 cmd，然后输入at，检查计�
 </ol>
 <pre><code>WEB 访问日志：
 
-a）找到中间件的 web 日志，打包到本地方便进行分析。
-</code></pre><h2 id="0x05-综合排查工具"><a href="#0x05-综合排查工具" class="headerlink" title="0x05 综合排查工具"></a>0x05 综合排查工具</h2><ol>
+a）找到中间件的 web 日志，打包到本地方便进行分析。</code></pre><h2 id="0x05-综合排查工具"><a href="#0x05-综合排查工具" class="headerlink" title="0x05 综合排查工具"></a>0x05 综合排查工具</h2><ol>
 <li>火绒剑</li>
 </ol>
 <p><img src="https://s2.ax1x.com/2019/03/06/kvso7t.md.png" alt></p>
@@ -221,12 +219,11 @@ a）找到中间件的 web 日志，打包到本地方便进行分析。
 <li>文件监视器</li>
 </ol>
 <p><img src="https://s2.ax1x.com/2019/03/06/kvsI0I.png" alt></p>
-<h2 id="PS"><a href="#PS" class="headerlink" title="PS"></a>PS</h2><pre><code>其实无非就是“打补丁、升级，再厉害我拔网线，再厉害我拆硬盘还原快照，莫得怕它，盘它就完了
-</code></pre>
+<h2 id="PS"><a href="#PS" class="headerlink" title="PS"></a>PS</h2><pre><code>其实无非就是“打补丁、升级，再厉害我拔网线，再厉害我拆硬盘还原快照，莫得怕它，盘它就完了</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lilifengcode.github.io/2019/03/07/windows应急响应方案/" data-id="cjvt084b2000l3gpxv9vdhox9" class="article-share-link">分享</a>
+      <a data-url="http://lilifengcode.github.io/2019/03/07/windows应急响应方案/" data-id="cjvtoagx6000lrkpxem0rl5mc" class="article-share-link">分享</a>
       
     </footer>
 
