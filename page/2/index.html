@@ -56,253 +56,6 @@
 
     
       
-        <article id="post-web安全漏洞-任意文件下载漏洞" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2019/04/17/web安全漏洞-任意文件下载漏洞/">web安全漏洞-任意文件下载漏洞</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/04/17/web安全漏洞-任意文件下载漏洞/" class="article-date">
-  <time datetime="2019-04-17T13:55:00.000Z" itemprop="datePublished">2019-04-17</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <p><img src="http://imglf4.nosdn0.126.net/img/d0pJMFNGSnJ5LzdrekNMM0dHSW1KWWI1RE1FUEtqL29PQWlMOU5UNll5dVQzK2J2azRHR3NnPT0.jpg" alt></p>
-<h1 id="web安全漏洞-任意文件下载漏洞"><a href="#web安全漏洞-任意文件下载漏洞" class="headerlink" title="web安全漏洞-任意文件下载漏洞"></a>web安全漏洞-任意文件下载漏洞</h1><p><strong>php代码</strong></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>    </span><br><span class="line">$filename = $_GET[<span class="string">'filename'</span>];    </span><br><span class="line"><span class="keyword">echo</span> <span class="string">'&lt;h1&gt;开始下载文件！&lt;/h1&gt;&lt;br /&gt;&lt;br /&gt;'</span>; </span><br><span class="line"><span class="keyword">echo</span> file_get_contents($filename); </span><br><span class="line">header(<span class="string">'Content-Type: imgage/jpeg'</span>);       </span><br><span class="line">header(<span class="string">'Content-Disposition: attachment; filename='</span>.$filename);    <span class="comment">//Content-Disposition 响应头，设置文件在浏览器打开还是下载</span></span><br><span class="line">header(<span class="string">'Content-Lengh: '</span>.filesize($filename));</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="window环境演示"><a href="#window环境演示" class="headerlink" title="window环境演示"></a>window环境演示</h2><p>环境介绍</p>
-<p>C盘根目录-存放了flag.txt</p>
-<p>www目录-有phpinfo.php</p>
-<p>将上面代码，运行，访问，burpsuite抓包</p>
-<p><img src="http://imglf6.nosdn.127.net/img/d0pJMFNGSnJ5LzROZDZxcHJvSytNZTEyUlAzSFRxUHppZEhaU2ZlNWE2RSs1QTkzdjFZTXdBPT0.png?imageView" alt></p>
-<h2 id="linux环境演示"><a href="#linux环境演示" class="headerlink" title="linux环境演示"></a>linux环境演示</h2><p>演示环境为bee蜂箱</p>
-<p>首先打开虚拟机，查看环境IP</p>
-<p><img src="http://imglf3.nosdn.127.net/img/d0pJMFNGSnJ5LzRvN1BDb3pQQWptcmRrd0xIdUNUZmZKaW5zcXJmcG03V1kwaXZRclBkNUtBPT0.png?imageView" alt></p>
-<p>本地浏览器访问</p>
-<p><img src="http://imglf5.nosdn.127.net/img/d0pJMFNGSnJ5LzdoSXJzeHNCQTcxOEVvTUhGZWxNMTd3SjRkWjkrT25hcjJQUlZnaGRZWVd3PT0.png?imageView" alt></p>
-<p>burpsuite抓包</p>
-<p><img src="http://imglf3.nosdn.127.net/img/d0pJMFNGSnJ5LzZUVnZwRVRWbG1jK1NSdjY5VENKaG9LamdrcVR3TnYzZHRxemdlcUgzM0h3PT0.png?imageView" alt></p>
-<h2 id="漏洞检测"><a href="#漏洞检测" class="headerlink" title="漏洞检测"></a>漏洞检测</h2><p><strong>*<em>.php?file=/etc/passwd<br>*</em></strong>.php?file=../../../../../../../../etc/passwd<br>****.php?file=../../../../../../../../etc/passwd%00</p>
-<h2 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h2><ul>
-<li>禁用../的使用</li>
-<li>使用open_basedir将下载文件限定为一个指定目录里</li>
-<li>正则严格判断用户输入参数的格式</li>
-</ul>
-<h2 id="漏洞探测-google语法"><a href="#漏洞探测-google语法" class="headerlink" title="漏洞探测-google语法"></a>漏洞探测-google语法</h2><ul>
-<li>inrul:”readfile.php?file=“</li>
-</ul>
-<h2 id="可探测敏感信息"><a href="#可探测敏感信息" class="headerlink" title="可探测敏感信息"></a>可探测敏感信息</h2><ul>
-<li>Linux：</li>
-</ul>
-<ul>
-<li><p>​    /root/.ssh/authorized_keys</p>
-</li>
-<li><p>​    /root/.ssh/id_rsa</p>
-</li>
-<li><p>​    /root/.ssh/id_ras.keystore</p>
-</li>
-<li><p>​    /root/.ssh/known_hosts</p>
-</li>
-<li><p>​    /etc/httpd/conf/httpd.conf</p>
-</li>
-<li><p>​    /root/.bash_history</p>
-</li>
-<li><p>​    /root/.mysql_history</p>
-</li>
-<li><p>​    /proc/self/fd/fd[0-9]*(文件标识符)</p>
-</li>
-<li><p>​    /proc/mounts</p>
-</li>
-<li><p>​    /porc/config.gz</p>
-</li>
-<li><p>​    /etc/passwd</p>
-</li>
-<li><p>​    /etc/shadow</p>
-</li>
-<li><p>​    /etc/my.cnf</p>
-</li>
-</ul>
-<ul>
-<li>Windows：</li>
-</ul>
-<ul>
-<li><p>​    C:\Program Files\mysql\my.ini </p>
-</li>
-<li><p>​    C:\Program Files\mysql\data\mysql\user.MYD  </p>
-</li>
-<li><p>​    C:\Windows\php.ini </p>
-</li>
-<li><p>​    C:\Windows\my.ini  </p>
-</li>
-<li><p>​    C:\boot.ini  </p>
-</li>
-<li><p>​    C:\Windows\System32\inetsrv\MetaBase.xml  </p>
-</li>
-<li><p>​    C:\Windows\repair\sam  //存储系统初次安装的密码</p>
-</li>
-</ul>
-<h2 id="代码审计挖掘经验"><a href="#代码审计挖掘经验" class="headerlink" title="代码审计挖掘经验"></a>代码审计挖掘经验</h2><ul>
-<li><p>查看网站，相应功能点—-查找相应代码文件</p>
-</li>
-<li><p>搜索文件读取得函数</p>
-<p>file_get_contents(),fopen（），readfile(),fread(),fgets()等。</p>
-</li>
-<li><p>文件包含函数include</p>
-</li>
-</ul>
-<p>  <strong><em>经典举例—-phpcms  v9 任意文件读取漏洞</em></strong></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://lilifengcode.github.io/2019/04/17/web安全漏洞-任意文件下载漏洞/" data-id="cjvts1d3c000djwpxfa4gfpep" class="article-share-link">分享</a>
-      
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-KALI 渗透测试工具[2]" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2019/04/17/KALI 渗透测试工具[2]/">KALI 渗透测试工具[2]</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/04/17/KALI 渗透测试工具[2]/" class="article-date">
-  <time datetime="2019-04-17T13:54:28.000Z" itemprop="datePublished">2019-04-17</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <p><img src="http://imglf5.nosdn0.126.net/img/d0pJMFNGSnJ5LzZRbXpmcUFTQWlsME9YcUhINHBweWIza2t2Wm1MT1JEMjE3L0xWVkpZZHJnPT0.jpg" alt></p>
-<h1 id="KALI-渗透测试工具-2"><a href="#KALI-渗透测试工具-2" class="headerlink" title="KALI 渗透测试工具[2]"></a>KALI 渗透测试工具[2]</h1><h2 id="端口扫描，服务识别，OS识别，漏洞扫描"><a href="#端口扫描，服务识别，OS识别，漏洞扫描" class="headerlink" title="端口扫描，服务识别，OS识别，漏洞扫描"></a>端口扫描，服务识别，OS识别，漏洞扫描</h2><h3 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h3><p>带服务识别和操作系统指纹识别的TCP/IP主机和端口扫描工具<br><img src="http://imglf5.nosdn.127.net/img/d0pJMFNGSnJ5LzZUdU5IQVVpUlNoUEZDUzdkOVdiZXl1MmhNNzl4TUZURzE5RXFvMzhGYUZ3PT0.gif?imageView" alt></p>
-<h4 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h4><ul>
-<li>扫描前1000号TCP端口</li>
-</ul>
-<p>nmap 192.168.100.2</p>
-<ul>
-<li>Ping批量扫描本地主机</li>
-</ul>
-<p>nmap –sP 192.168.100.0-9</p>
-<ul>
-<li>扫描80,443端口</li>
-</ul>
-<p>nmap -p 80,443 192.168.100.2</p>
-<ul>
-<li>扫描前1000号TCP端口，OS指纹，服务，然后运行一个NSE脚本</li>
-</ul>
-<p>sudo nmap -A 192.168.100.2</p>
-<ul>
-<li>扫描全部65535个TCP端口，OS指纹，服务，然后运行一个NSE脚本</li>
-</ul>
-<p>sudo nmap –A –p- 192.168.100.2</p>
-<ul>
-<li>扫描前1000号UDP端口</li>
-</ul>
-<p>nmap -sU 192.168.100.2</p>
-<ul>
-<li>扫描所有65535个UDP端口</li>
-</ul>
-<p>nmap -sU –p- 192.168.100.2</p>
-<h4 id="脚本扫描"><a href="#脚本扫描" class="headerlink" title="脚本扫描"></a>脚本扫描</h4><p>nmap脚本主要分为以下几类，在扫描时可根据需要设置–script=类别这种方式进行比较笼统的扫描：</p>
-<p>auth: 负责处理鉴权证书（绕开鉴权）的脚本<br>broadcast: 在局域网内探查更多服务开启状况，如dhcp/dns/sqlserver等服务<br>brute: 提供暴力破解方式，针对常见的应用如http/snmp等<br>default: 使用-sC或-A选项扫描时候默认的脚本，提供基本脚本扫描能力<br>discovery: 对网络进行更多的信息，如SMB枚举、SNMP查询等<br>dos: 用于进行拒绝服务攻击<br>exploit: 利用已知的漏洞入侵系统<br>external: 利用第三方的数据库或资源，例如进行whois解析<br>fuzzer: 模糊测试的脚本，发送异常的包到目标机，探测出潜在漏洞 intrusive: 入侵性的脚本，此类脚本可能引发对方的IDS/IPS的记录或屏蔽<br>malware: 探测目标机是否感染了病毒、开启了后门等信息<br>safe: 此类与intrusive相反，属于安全性脚本<br>version: 负责增强服务与版本扫描（Version Detection）功能的脚本<br>vuln: 负责检查目标机是否有常见的漏洞（Vulnerability），如是否有MS08_067</p>
-<ul>
-<li>nmap –script=auth 192.168.2.129</li>
-</ul>
-<p>​    负责处理鉴权证书（绕开鉴权）的脚本,也可以作为检测部分应用弱口令</p>
-<ul>
-<li><p>nmap –script=brute 192.168.2.129</p>
-<p>提供暴力破解的方式  可对数据库，smb，snmp等进行简单密码的暴力猜解</p>
-</li>
-<li><p>nmap –script=default 192.168.2.129</p>
-<p>默认的脚本扫描，主要是搜集各种应用服务的信息，收集到后，可再针对具体服务进行攻击</p>
-</li>
-<li><p>nmap –script=vuln 192.168.2.129<br>检查是否存在常见漏洞</p>
-</li>
-<li><p>nmap -n -p445 –script=broadcast 192.168.2.129</p>
-<p>在局域网内探查更多服务开启状况</p>
-</li>
-</ul>
-<h3 id="Nikto"><a href="#Nikto" class="headerlink" title="Nikto"></a>Nikto</h3><p>有指纹识别功能的Web服务漏洞扫描器</p>
-<ul>
-<li>Nikto -list-plugins #查看插件<br><img src="http://imglf6.nosdn.127.net/img/d0pJMFNGSnJ5Lzd5Qm9rUWt5V0tSaDFkS1pVQWpQZHVsQytkVkZuWFdQRnVsSmVIZ3RSMDVnPT0.gif?imageView" alt></li>
-<li>Nikto -host <a href="http://1.1.1.1" target="_blank" rel="noopener">http://1.1.1.1</a> #扫描目标：域名方式<br><img src="http://imglf4.nosdn.127.net/img/d0pJMFNGSnJ5LzQxNnpHWlI3azB4VitmNi9DQ0pkRUNkUE9YSWEvMTE2SkFXT0FqYUkxTUl3PT0.gif?imageView" alt></li>
-<li>Nikto -host <a href="http://1.1.1.1" target="_blank" rel="noopener">http://1.1.1.1</a> -output #扫描并输出结果</li>
-<li>Nikto -host 1.1.1.1 -port 80 #扫描目标：ip地址加端口</li>
-</ul>
-<p><img src="http://imglf5.nosdn.127.net/img/d0pJMFNGSnJ5LzRKdGF2d0g1Q29VSVNEeFBKMk1NNHlMNUp0c2tYaDVoWU9LUkRuMkxUeXNBPT0.gif?imageView" alt></p>
-<ul>
-<li>Nikto -host <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> -port 443 -ssl #扫描https网站</li>
-</ul>
-<p><img src="http://imglf6.nosdn.127.net/img/d0pJMFNGSnJ5LzdTT3ZuTy9XdUdRNmJDaGxSemVmQ3JhbGZsNTdhcVE2cENLcWltK0JvRU9nPT0.gif?imageView" alt></p>
-<ul>
-<li>Nikto -host 文件名.txt #批量扫描目标</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[2]/" data-id="cjvts1d0x0003jwpxvzzkfpfx" class="article-share-link">分享</a>
-      
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
         <article id="post-KALI 渗透测试工具[1]" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -499,7 +252,170 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[1]/" data-id="cjvts1d1q0006jwpxhehlgx0y" class="article-share-link">分享</a>
+      <a data-url="http://lilifengcode.github.io/2019/04/17/KALI 渗透测试工具[1]/" data-id="cjvtsiohm0005u4pxx055324f" class="article-share-link">分享</a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+
+
+
+      
+        <article id="post-windows 渗透测试必备命令" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/04/17/windows 渗透测试必备命令/">windows 渗透测试必备命令</a>
+    </h2>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/04/17/windows 渗透测试必备命令/" class="article-date">
+  <time datetime="2019-04-17T13:00:19.000Z" itemprop="datePublished">2019-04-17</time>
+</a>
+        
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <p><img src="https://s2.ax1x.com/2019/04/17/AzoxDU.md.jpg" alt></p>
+<h1 id="windows-渗透测试必备命令"><a href="#windows-渗透测试必备命令" class="headerlink" title="windows 渗透测试必备命令"></a>windows 渗透测试必备命令</h1><p><img src="https://s2.ax1x.com/2019/04/17/Az5bZQ.jpg" alt></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://lilifengcode.github.io/2019/04/17/windows 渗透测试必备命令/" data-id="cjvtsiojx000hu4pxesygxkrz" class="article-share-link">分享</a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+
+
+
+      
+        <article id="post-Talking About CISP PTE" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/04/17/Talking About CISP PTE/">Talking About CISP PTE</a>
+    </h2>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/04/17/Talking About CISP PTE/" class="article-date">
+  <time datetime="2019-04-17T10:53:34.000Z" itemprop="datePublished">2019-04-17</time>
+</a>
+        
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <pre><code>   .aMMMb  dMP .dMMMb  dMMMMb         dMMMMb dMMMMMMP dMMMMMP 
+  dMP&quot;VMP amr dMP&quot; VP dMP.dMP        dMP.dMP   dMP   dMP      
+ dMP     dMP  VMMMb  dMMMMP&quot;        dMMMMP&quot;   dMP   dMMMP     
+dMP.aMP dMP dP .dMP dMP            dMP       dMP   dMP        
+VMMMP&quot; dMP  VMMMP&quot; dMP            dMP       dMP   dMMMMMP     </code></pre><h2 id="CISP-PTE-介绍"><a href="#CISP-PTE-介绍" class="headerlink" title="CISP PTE 介绍"></a>CISP PTE 介绍</h2><p>注册信息安全专业人员-渗透测试，英文为 Certified Information Security Professional – Penetration Test Engineer ，简称 CISP-PTE。证书持有人员主要从事信息安全技术领域网站渗透测试工作，具有规划测试方案、 编写项目测试计划、编写测试用例、测试报告的基本知识和能力。</p>
+<h2 id="CISP-PTE-考试模式"><a href="#CISP-PTE-考试模式" class="headerlink" title="CISP PTE 考试模式"></a>CISP PTE 考试模式</h2><ol>
+<li>考试时间： 4个小时/240分钟</li>
+<li>考试模式： 上机操作</li>
+<li>考试机系统： windows server 2003</li>
+</ol>
+<h2 id="CISP-PTE-题型"><a href="#CISP-PTE-题型" class="headerlink" title="CISP PTE 题型"></a>CISP PTE 题型</h2><ul>
+<li>选择题【20分 20道】</li>
+<li>实验题【50分 5道 5个key】 </li>
+<li>综合题【30分 1道 3个key】</li>
+<li>分值占比</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2019/04/11/A72JAA.png" alt></p>
+<h2 id="CISP-PTE-大纲"><a href="#CISP-PTE-大纲" class="headerlink" title="CISP PTE 大纲"></a>CISP PTE 大纲</h2><p><img src="https://s2.ax1x.com/2019/04/11/A72K1K.png" alt></p>
+<h2 id="CISP-PTE-经验"><a href="#CISP-PTE-经验" class="headerlink" title="CISP PTE 经验"></a>CISP PTE 经验</h2><h3 id="选择题"><a href="#选择题" class="headerlink" title="选择题"></a>选择题</h3><ul>
+<li>看经验，看基础，加密、密码学相关的也会考点儿</li>
+</ul>
+<h3 id="实验题"><a href="#实验题" class="headerlink" title="实验题"></a>实验题</h3><ul>
+<li><p>第一题：一般是sql注入，考的是sqlmap用法</p>
+<p>  举例：slqmap -u “<a href="http://www.baidu.com&quot;" target="_blank" rel="noopener">www.baidu.com&quot;</a> –dbs –batch –level 5 –risk 3 –tamper=space2plus</p>
+</li>
+<li><p>第二题：文件上传，考的是黑名单绕过，文件头绕过或者MIME绕过等等</p>
+<p>  举例：我在考试的时候比较特殊，过滤了eval等参数；我直接用<?php readfile("../key.php");?>和图片合成一句话木马，上传时用burp修改文件后缀为php3 ，菜刀链接就好<br>  或者file_get_contents 读文件</p>
+</li>
+<li><p>第三题：文件包含，伪协议</p>
+<p>  举例：php://filter/read=convert.base64-encode/resource=;</p>
+</li>
+<li><p>第四题：爆破</p>
+<p>  举例：burp intruder用法</p>
+</li>
+<li><p>第五题：日志分析，白送</p>
+<p>  举例：ctrl+f 搜索关键状态码 200 之类的；或者get get 突然 post 的日志</p>
+</li>
+</ul>
+<h3 id="综合题"><a href="#综合题" class="headerlink" title="综合题"></a>综合题</h3><ul>
+<li>大概思路是=&gt;nmap 扫描端口=&gt;御剑扫目录=&gt;找到登录框爆破=&gt;分析zip网站备份文件=&gt;连接数据库=&gt;开启XP_CMDSHELL=&gt;关闭防火墙，加用户或者写shell，lcx端口转发=&gt;mstsc连接主机</li>
+<li>综合题一共三个key,第一个在登录框处；第二个在连到数据库的数据库列表里面；第三个在远程主机桌面上</li>
+</ul>
+<h2 id="实战举例"><a href="#实战举例" class="headerlink" title="实战举例"></a>实战举例</h2><ul>
+<li><p>sql注入  </p>
+<p>ps:我用的payload，参数不一定都是有用的，只是习惯了</p>
+<p><img src="https://s2.ax1x.com/2019/04/12/AqnlEn.png" alt></p>
+<p><img src="https://s2.ax1x.com/2019/04/12/Aqndb9.png" alt></p>
+</li>
+<li><p>命令执行 </p>
+<p>ps:grep用好！！！</p>
+<p><img src="https://s2.ax1x.com/2019/04/12/AquGdA.png" alt></p>
+</li>
+<li><p>文件包含</p>
+<p>ps:因为是要获取key值，所以凡是能带出数据的协议都值得背下来</p>
+<p><img src="https://s2.ax1x.com/2019/04/12/AquXQO.png" alt></p>
+</li>
+</ul>
+<h2 id="CISP-PTE-学习链接"><a href="#CISP-PTE-学习链接" class="headerlink" title="CISP PTE 学习链接"></a>CISP PTE 学习链接</h2><ol>
+<li>漏洞银行第86期[B站搜】</li>
+<li><a href="http://zgao.top/2018/06/" target="_blank" rel="noopener">http://zgao.top/2018/06/</a></li>
+<li>web安全深度剖析【刷完】</li>
+<li><a href="https://www.360.net/service/examcisp" target="_blank" rel="noopener">https://www.360.net/service/examcisp</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://lilifengcode.github.io/2019/04/17/Talking About CISP PTE/" data-id="cjvtsioif0009u4px9rzd0f1g" class="article-share-link">分享</a>
       
     </footer>
 
