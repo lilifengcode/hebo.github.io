@@ -52,7 +52,7 @@
 
     
       
-        <article id="post-tomcat渗透测试" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+        <article id="post-web安全漏洞-任意文件下载漏洞" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
     
@@ -60,7 +60,7 @@
         
   
     <h2 itemprop="name">
-      <a class="article-title" href="/2019/04/15/tomcat渗透测试/">tomcat渗透测试</a>
+      <a class="article-title" href="/2019/04/17/web安全漏洞-任意文件下载漏洞/">web安全漏洞-任意文件下载漏洞</a>
     </h2>
   
 
@@ -69,8 +69,8 @@
 
     
       <div class="article-meta">
-        <a href="/2019/04/15/tomcat渗透测试/" class="article-date">
-  <time datetime="2019-04-15T15:04:08.000Z" itemprop="datePublished">2019-04-15</time>
+        <a href="/2019/04/17/web安全漏洞-任意文件下载漏洞/" class="article-date">
+  <time datetime="2019-04-17T13:55:00.000Z" itemprop="datePublished">2019-04-17</time>
 </a>
         
       </div>
@@ -82,230 +82,96 @@
       
 
       
-        <p><img src="https://s2.ax1x.com/2019/04/15/AvkwMF.md.jpg" alt></p>
-<h2 id="Tomcat-burpsuite爆破"><a href="#Tomcat-burpsuite爆破" class="headerlink" title="Tomcat burpsuite爆破"></a>Tomcat burpsuite爆破</h2><ol>
-<li><p>在渗透测试中，我们经常遇到tomcat后台被默认部署在外部的情况，<br><a href="http://192.168.6.16:8080/" target="_blank" rel="noopener">http://192.168.6.16:8080/</a>   【本地搭建—这是废话—我怕又被官方封了】</p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvkodA.png" alt></p>
+        <p><img src="http://imglf4.nosdn0.126.net/img/d0pJMFNGSnJ5LzdrekNMM0dHSW1KWWI1RE1FUEtqL29PQWlMOU5UNll5dVQzK2J2azRHR3NnPT0.jpg" alt></p>
+<h1 id="web安全漏洞-任意文件下载漏洞"><a href="#web安全漏洞-任意文件下载漏洞" class="headerlink" title="web安全漏洞-任意文件下载漏洞"></a>web安全漏洞-任意文件下载漏洞</h1><p><strong>php代码</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>    </span><br><span class="line">$filename = $_GET[<span class="string">'filename'</span>];    </span><br><span class="line"><span class="keyword">echo</span> <span class="string">'&lt;h1&gt;开始下载文件！&lt;/h1&gt;&lt;br /&gt;&lt;br /&gt;'</span>; </span><br><span class="line"><span class="keyword">echo</span> file_get_contents($filename); </span><br><span class="line">header(<span class="string">'Content-Type: imgage/jpeg'</span>);       </span><br><span class="line">header(<span class="string">'Content-Disposition: attachment; filename='</span>.$filename);    <span class="comment">//Content-Disposition 响应头，设置文件在浏览器打开还是下载</span></span><br><span class="line">header(<span class="string">'Content-Lengh: '</span>.filesize($filename));</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="window环境演示"><a href="#window环境演示" class="headerlink" title="window环境演示"></a>window环境演示</h2><p>环境介绍</p>
+<p>C盘根目录-存放了flag.txt</p>
+<p>www目录-有phpinfo.php</p>
+<p>将上面代码，运行，访问，burpsuite抓包</p>
+<p><img src="http://imglf6.nosdn.127.net/img/d0pJMFNGSnJ5LzROZDZxcHJvSytNZTEyUlAzSFRxUHppZEhaU2ZlNWE2RSs1QTkzdjFZTXdBPT0.png?imageView" alt></p>
+<h2 id="linux环境演示"><a href="#linux环境演示" class="headerlink" title="linux环境演示"></a>linux环境演示</h2><p>演示环境为bee蜂箱</p>
+<p>首先打开虚拟机，查看环境IP</p>
+<p><img src="http://imglf3.nosdn.127.net/img/d0pJMFNGSnJ5LzRvN1BDb3pQQWptcmRrd0xIdUNUZmZKaW5zcXJmcG03V1kwaXZRclBkNUtBPT0.png?imageView" alt></p>
+<p>本地浏览器访问</p>
+<p><img src="http://imglf5.nosdn.127.net/img/d0pJMFNGSnJ5LzdoSXJzeHNCQTcxOEVvTUhGZWxNMTd3SjRkWjkrT25hcjJQUlZnaGRZWVd3PT0.png?imageView" alt></p>
+<p>burpsuite抓包</p>
+<p><img src="http://imglf3.nosdn.127.net/img/d0pJMFNGSnJ5LzZUVnZwRVRWbG1jK1NSdjY5VENKaG9LamdrcVR3TnYzZHRxemdlcUgzM0h3PT0.png?imageView" alt></p>
+<h2 id="漏洞检测"><a href="#漏洞检测" class="headerlink" title="漏洞检测"></a>漏洞检测</h2><p><strong>*<em>.php?file=/etc/passwd<br>*</em></strong>.php?file=../../../../../../../../etc/passwd<br>****.php?file=../../../../../../../../etc/passwd%00</p>
+<h2 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h2><ul>
+<li>禁用../的使用</li>
+<li>使用open_basedir将下载文件限定为一个指定目录里</li>
+<li>正则严格判断用户输入参数的格式</li>
+</ul>
+<h2 id="漏洞探测-google语法"><a href="#漏洞探测-google语法" class="headerlink" title="漏洞探测-google语法"></a>漏洞探测-google语法</h2><ul>
+<li>inrul:”readfile.php?file=“</li>
+</ul>
+<h2 id="可探测敏感信息"><a href="#可探测敏感信息" class="headerlink" title="可探测敏感信息"></a>可探测敏感信息</h2><ul>
+<li>Linux：</li>
+</ul>
+<ul>
+<li><p>​    /root/.ssh/authorized_keys</p>
 </li>
-<li><p>在这种情况下，我们都会选择去爆破来进入后台部署shell。<br>先抓取一下我们的登录包：</p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvkqRf.png" alt></p>
+<li><p>​    /root/.ssh/id_rsa</p>
 </li>
-<li><p>输出用户名tomcat 密码tomcat,打开burpsuite 抓包</p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvkzZj.jpg" alt></p>
+<li><p>​    /root/.ssh/id_ras.keystore</p>
 </li>
-<li><p>解码看看，发现用户名是以tomcat:tomcat方式用base64加密了</p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvAPJ0.png" alt></p>
+<li><p>​    /root/.ssh/known_hosts</p>
 </li>
-<li><p>接下来，我们演示如何用burpsuite进行爆破</p>
-<p>首先将数据包发送到Intruder模块，添加一个变量：</p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvAmw9.png" alt></p>
+<li><p>​    /etc/httpd/conf/httpd.conf</p>
 </li>
-<li><p>在设置Payload的时候要使用自定义迭代器：</p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvA3QO.png" alt></p>
+<li><p>​    /root/.bash_history</p>
 </li>
-<li><p>由于登录令牌都是base64加密的，我们需要 [用户名]:[密码]这样的格式进行base64-encde才可以发送出去</p>
+<li><p>​    /root/.mysql_history</p>
 </li>
-<li><p>设置三个迭代payload分别代表：用户名  、   :       、  密码   。<br>第一位设置用户名这类的字典</p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvAYeH.png" alt></p>
+<li><p>​    /proc/self/fd/fd[0-9]*(文件标识符)</p>
 </li>
-<li><p>第二位设置  :</p>
+<li><p>​    /proc/mounts</p>
 </li>
-</ol>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvA7m4.png" alt></p>
-<ol start="10">
-<li><p>第三位设置密码</p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvAH0J.png" alt></p>
+<li><p>​    /porc/config.gz</p>
 </li>
-<li><p>然后设置一个编码器，选择base64这个函数：</p>
+<li><p>​    /etc/passwd</p>
 </li>
-</ol>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvAOt1.png" alt></p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvAXfx.png" alt></p>
-<p>12.接下来再将url编码去掉，因为在base64密文里=会被编码</p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvEP7d.png" alt></p>
-<ol start="13">
-<li><p>爆破【上面有个小错误，为了长记性就没修改，添加变量的时候把basic加上了】</p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvEktI.png" alt></p>
+<li><p>​    /etc/shadow</p>
 </li>
-</ol>
+<li><p>​    /etc/my.cnf</p>
+</li>
+</ul>
+<ul>
+<li>Windows：</li>
+</ul>
+<ul>
+<li><p>​    C:\Program Files\mysql\my.ini </p>
+</li>
+<li><p>​    C:\Program Files\mysql\data\mysql\user.MYD  </p>
+</li>
+<li><p>​    C:\Windows\php.ini </p>
+</li>
+<li><p>​    C:\Windows\my.ini  </p>
+</li>
+<li><p>​    C:\boot.ini  </p>
+</li>
+<li><p>​    C:\Windows\System32\inetsrv\MetaBase.xml  </p>
+</li>
+<li><p>​    C:\Windows\repair\sam  //存储系统初次安装的密码</p>
+</li>
+</ul>
+<h2 id="代码审计挖掘经验"><a href="#代码审计挖掘经验" class="headerlink" title="代码审计挖掘经验"></a>代码审计挖掘经验</h2><ul>
+<li><p>查看网站，相应功能点—-查找相应代码文件</p>
+</li>
+<li><p>搜索文件读取得函数</p>
+<p>file_get_contents(),fopen（），readfile(),fread(),fgets()等。</p>
+</li>
+<li><p>文件包含函数include</p>
+</li>
+</ul>
+<p>  <strong><em>经典举例—-phpcms  v9 任意文件读取漏洞</em></strong></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lilifengcode.github.io/2019/04/15/tomcat渗透测试/" data-id="cjvtsvivy000d4kpx63hw00ww" class="article-share-link">分享</a>
-      
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-浅谈DNS" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2019/04/15/浅谈DNS/">浅谈DNS</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/04/15/浅谈DNS/" class="article-date">
-  <time datetime="2019-04-15T11:52:37.000Z" itemprop="datePublished">2019-04-15</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <h1 id="浅谈DNS"><a href="#浅谈DNS" class="headerlink" title="浅谈DNS"></a>浅谈DNS</h1><h2 id="0X00-什么是DNS"><a href="#0X00-什么是DNS" class="headerlink" title="0X00 什么是DNS"></a>0X00 什么是DNS</h2><p>DNS（Domain Name System，域名系统），万维网上作为域名和IP地址相互映射的一个分布式数据库，能够使用户更方便的访问互联网，而不用去记住能够被机器直接读取的IP数串。通过域名，最终得到该域名对应的IP地址的过程叫做域名解析（或主机名解析）。<br>在整个互联网体系中，约定俗成的用于标识网络上设备的地址是IP，然而我们输入的是DNS，因为域名更方便人们记忆，不然那么多网站，人怎么可能记住所有的IP地址</p>
-<p><strong>简单来说，如果没有DNS，你访问网站就需要，记住网站的IP地址    【123.XXX.XXX.XXX】，进而通过IP地址来访问网站,我就问你能记住多少！浪费脑细 胞！</strong></p>
-<p>DNS协议运行在<a href="https://baike.baidu.com/item/UDP" target="_blank" rel="noopener">UDP</a>协议之上，使用端口号53</p>
-<h2 id="0X01-DNS查询方式"><a href="#0X01-DNS查询方式" class="headerlink" title="0X01 DNS查询方式"></a>0X01 DNS查询方式</h2><ol>
-<li>递归查询: 一般客户机和首选DNS服务器(宽带连接是设置的默认DNS)之间属递归查询，即当客户机向DNS服务器发出请求后,若DNS服务器本身不能解析，则会向另外的DNS服务器发出查询请求，得到最终结果后转交给客户机</li>
-<li>迭代查询(反复查询): 一般DNS服务器之间属迭代查询，如：若DNS2不能响应DNS1的请求，则它会将DNS3的IP给DNS2，以便其再向DNS3发出请求</li>
-</ol>
-<p><img src="https://s2.ax1x.com/2019/04/15/AjJq6H.png" alt="AjJq6H.png"></p>
-<h2 id="0X02-DNS解析过程"><a href="#0X02-DNS解析过程" class="headerlink" title="0X02 DNS解析过程"></a>0X02 DNS解析过程</h2><ol>
-<li>浏览器缓存：浏览器会按照一定的频率缓存DNS记录。</li>
-<li>操作系统缓存：如果浏览器缓存中找不到需要的DNS记录，那就去操作系统中找。　　</li>
-<li>路由缓存：路由器也有DNS缓存。</li>
-<li>ISP的DNS服务器：ISP是互联网服务提供商(Internet Service Provider)的简称，ISP有专门的DNS服务器应对DNS查询请求。</li>
-<li>根服务器：ISP的DNS服务器还找不到的话，它就会向根服务器发出请求，进行递归查询（DNS服务器先问根域名服务器.com域名服务器的IP地址，然后再问.com域名服务器，依次类推）。</li>
-</ol>
-<p><img src="https://s2.ax1x.com/2019/04/15/AjYGH1.png" alt="AjYGH1.png"></p>
-<h2 id="0X03-DNS记录类型"><a href="#0X03-DNS记录类型" class="headerlink" title="0X03 DNS记录类型"></a>0X03 DNS记录类型</h2><ol>
-<li>主机记录(A记录)<br>RFC 1035定义，A记录是用于名称解析的重要记录，它将特定的主机名映射到对应主机的IP地址上。过A记录，大家可以设置自己的不同域名转到不同的IP上去，如：<br>1) <a href="http://www.dns.la" target="_blank" rel="noopener">www.dns.la</a> 转到IP 116.255.202.1<br>2) web.dns.la 转到IP 116.255.202.11<br>3) mail.dns.la 转到IP 116.255.202.111</li>
-<li>别名记录(CNAME记录)<br>RFC 1035定义，CNAME记录用于将某个别名指向到某个A记录上，这样就不需要再为某个新名字另外创建一条新的A记录。对于CNAME的原理要注意和URL转发进行区分:<br>1) url转发可以转发到某一个目录下，甚至某一个文件上<br>2) 而cname是不可以，这就是url转发和cname的主要区别所在</li>
-<li>MX记录(Mail Exchange)<br>邮件交换记录，用户可以将该域名下的邮件服务器指向到自己的mail server上，然后即可自行操作控制所有的邮箱设置。要注意的是邮箱DNS解析和HTTP DNS解析是独立的，如果你设置A记录<br>  是指向123.12.123.123，而MX记录你设置是指向222.22.222.222，那么你的DNS服务器接收到别人的邮件路 由请求时就将会将它的请求解释到222.22.222.222上去！而别人访问你的网页<br>  的时候仍然是访问123.12.123.123。</li>
-<li>NS(Name Server)<br>域名服务器记录，用来指定该域名由哪个DNS服务器来进行解析，可以把一个域名的不同二级域名分别指向到不同的DNS系统来解析</li>
-<li>IPv6主机语录(AAAA记录)<br>RFC 3596定义，与A记录对应，用于将特定的主机名映射到一个主机的IPv6地址。</li>
-<li>服务位置记录(SRV记录)<br>RFC 2782定义，用于定义提供特定服务的服务器的位置，如主机(hostname)，端口(port number)等。</li>
-<li>NAPTR记录<br>RFC 3403定义，它提供了正则表达式方式去映射一个域名。NAPTR记录非常著名的一个应用是用于ENUM查询。</li>
-</ol>
-<h2 id="0X04-DNS搜集信息工具"><a href="#0X04-DNS搜集信息工具" class="headerlink" title="0X04 DNS搜集信息工具"></a>0X04 DNS搜集信息工具</h2><h3 id="dnsrecon"><a href="#dnsrecon" class="headerlink" title="dnsrecon"></a>dnsrecon</h3><ul>
-<li><p>命令  dnsrecon -t std -d <a href="http://www.ichunqiu.com" target="_blank" rel="noopener">www.ichunqiu.com</a></p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AjYHU0.png" alt="AjYHU0.png"></p>
-<p>这里可以看出**使用了创宇盾，加速乐还有一条A记录</p>
-</li>
-<li><p>域传送漏洞的验证</p>
-<p>命令  dnsrecon -t std -d <a href="http://www.ichunqiu.com" target="_blank" rel="noopener">www.ichunqiu.com</a> -a</p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AjtSbR.png" alt="AjtSbR.png"></p>
-<h3 id="dnswalk"><a href="#dnswalk" class="headerlink" title="dnswalk"></a>dnswalk</h3><h3 id="dnstracer"><a href="#dnstracer" class="headerlink" title="dnstracer"></a>dnstracer</h3></li>
-</ul>
-<ol>
-<li><p>向指定域名服务器发送非递归域名请求。非递归请求的意思是，如果域名服务器知道，那么它会返回请求数据。如果域名服务器不知道，它会返回授权域的域名服务器或返回根域名服务器的地址。</p>
-</li>
-<li><p>参数含义-c: 不允许使用本地缓存,默认允许 -C: 启用否定缓存，默认禁用-o: 启用收到响应的概述，默认禁用-q   <querytype>: 设置请求的DNS查询记录类型, 默认为A记录-r <retries>: 请求重试次数, 默认为  3 次-s <server>: 设置一个DNS服务器，默认为本地-t <maximum timeout>: 超时时间-v: 查看详细信息-S <ip address>: 伪造一个源地址.</ip></maximum></server></retries></querytype></p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AjNnlF.png" alt="AjNnlF.png"></p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://lilifengcode.github.io/2019/04/15/浅谈DNS/" data-id="cjvtsviwf000h4kpxcj65qvy8" class="article-share-link">分享</a>
-      
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-fuzz--渗透测试利器" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2019/04/15/fuzz--渗透测试利器/">Fuzz-漏洞挖掘利器</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/04/15/fuzz--渗透测试利器/" class="article-date">
-  <time datetime="2019-04-15T11:41:49.000Z" itemprop="datePublished">2019-04-15</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <h1 id="Fuzz-漏洞挖掘利器"><a href="#Fuzz-漏洞挖掘利器" class="headerlink" title="Fuzz-漏洞挖掘利器"></a>Fuzz-漏洞挖掘利器</h1><h2 id="0x00-什么模糊测试"><a href="#0x00-什么模糊测试" class="headerlink" title="0x00 什么模糊测试"></a>0x00 什么模糊测试</h2><p>模糊测试（fuzz testing）是一种介于完全的手工渗透测试与完全的自动化测试之间的安全性测试类型。能够在一项产品投入市场使用之前对潜在的应当被堵塞的攻击渠道进行提示。</p>
-<p>模糊测试（fuzz testing)和渗透测试（penetration test）都是属于安全测试的方法，它们有同也有异，渗透测试一般是模拟黑客恶意入侵的方式对产品进行测试，对测试者的执行力要求很高，成本高，难以被大规模应用。而模糊测试，它能够充分利用机器本身，随机生成和发送数据；与此同时，又能够引进业内安全专家在安全性方面的建议。模糊测试其数据具有不确定性，也没有明显的针对性，简单来说就是没有逻辑，没有常理。只要将准备好的那些杂乱的程序插入其中，然后等待bug的出现，而出现的漏洞是测试员们先前无法预知的。</p>
-<h2 id="0x01-Web渗透中常规FUZZ相关的手段"><a href="#0x01-Web渗透中常规FUZZ相关的手段" class="headerlink" title="0x01 Web渗透中常规FUZZ相关的手段"></a>0x01 Web渗透中常规FUZZ相关的手段</h2><ul>
-<li>目录扫描</li>
-<li>口令枚举</li>
-<li>爬虫</li>
-<li>….</li>
-</ul>
-<h2 id="0x02-ByPass的原理"><a href="#0x02-ByPass的原理" class="headerlink" title="0x02 ByPass的原理"></a>0x02 ByPass的原理</h2><p>在这里我们构建一个概念模型：</p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AjwhvT.png" alt></p>
-<p>Bypass就是寻找大于深绿区域的那块黑色内容</p>
-<p><strong>没有绝对安全的系统，当然防护是一样</strong></p>
-<p>通常情况下，我们的目的都是发送一些攻击且能够快速有效验证漏洞payload，但是这些常用的payload都被WAF加入了规则库中，如果遇到了规则库中存在的payload，WAF就要出来搞事情了，它会记录你的攻击数据，并且将到达Web服务器之前的数据给丢弃。如此一来，我们无法进行进一步的测试了   </p>
-<h2 id="0x02-FuzzDB"><a href="#0x02-FuzzDB" class="headerlink" title="0x02 FuzzDB"></a>0x02 FuzzDB</h2><ul>
-<li><strong>GIT:<a href="https://github.com/fuzzdb-project/fuzzdb" target="_blank" rel="noopener">https://github.com/fuzzdb-project/fuzzdb</a></strong></li>
-<li><strong>playload下载：<a href="https://github.com/foospidy/payloads" target="_blank" rel="noopener">https://github.com/foospidy/payloads</a></strong></li>
-</ul>
-<p>FuzzDB是为了通过动态应用程序安全性测试来增加引起和识别安全感兴趣条件的可能性。</p>
-<p>这是第一个也是最全面的故障注入模式的开放字典，可预测的资源位置，以及匹配服务器响应的正则表达式。</p>
-<p>该数据库收集了大量已知的攻击模式，如XSS，Xpath注入，SQL注入，XML攻击，本地文件包含，路径遍历，远程文件包含，ldap攻击，格式化字符串，http协议攻击等</p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AjB1TH.png" alt></p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AjBl0e.png" alt></p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AjB1TH.png" alt></p>
-<h2 id="0x03-FUZZDB项目"><a href="#0x03-FUZZDB项目" class="headerlink" title="0x03 FUZZDB项目"></a>0x03 FUZZDB项目</h2><ul>
-<li>OWASP Zap Proxy fuzzdb plugin <a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project" target="_blank" rel="noopener">https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project</a></li>
-<li>SecLists <a href="https://github.com/danielmiessler/SecLists" target="_blank" rel="noopener">https://github.com/danielmiessler/SecLists</a></li>
-<li>TrustedSec Pentesters Framework <a href="https://github.com/trustedsec/ptf" target="_blank" rel="noopener">https://github.com/trustedsec/ptf</a></li>
-<li>Rapid7 Metasploit <a href="https://github.com/rapid7/metasploit-framework" target="_blank" rel="noopener">https://github.com/rapid7/metasploit-framework</a></li>
-<li>Portswigger Burp Suite <a href="http://portswigger.net" target="_blank" rel="noopener">http://portswigger.net</a></li>
-<li>Protofuzz <a href="https://github.com/trailofbits/protofuzz" target="_blank" rel="noopener">https://github.com/trailofbits/protofuzz</a></li>
-<li>BlackArch Linux <a href="https://www.blackarch.org/" target="_blank" rel="noopener">https://www.blackarch.org/</a></li>
-<li>ArchStrike Linux <a href="https://archstrike.org/" target="_blank" rel="noopener">https://archstrike.org/</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://lilifengcode.github.io/2019/04/15/fuzz--渗透测试利器/" data-id="cjvtsviuu00094kpxsjmah3xg" class="article-share-link">分享</a>
+      <a data-url="http://lilifengcode.github.io/2019/04/17/web安全漏洞-任意文件下载漏洞/" data-id="cjvunvmyx000dugpxzhwp1jy5" class="article-share-link">分享</a>
       
     </footer>
 
@@ -325,7 +191,7 @@
   
     <nav class="page-nav">
       
-      <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
+      <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
     </nav>
   
 </section>
