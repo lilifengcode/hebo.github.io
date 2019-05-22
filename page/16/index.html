@@ -52,7 +52,7 @@
 
     
       
-        <article id="post-mest-tomcat" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+        <article id="post-xss validator" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
     
@@ -60,7 +60,7 @@
         
   
     <h2 itemprop="name">
-      <a class="article-title" href="/2018/09/16/mest-tomcat/">Metasploit爆破Tomcat弱口令</a>
+      <a class="article-title" href="/2018/09/16/xss validator/">xss Validator</a>
     </h2>
   
 
@@ -69,8 +69,8 @@
 
     
       <div class="article-meta">
-        <a href="/2018/09/16/mest-tomcat/" class="article-date">
-  <time datetime="2018-09-16T12:33:09.000Z" itemprop="datePublished">2018-09-16</time>
+        <a href="/2018/09/16/xss validator/" class="article-date">
+  <time datetime="2018-09-16T13:34:00.000Z" itemprop="datePublished">2018-09-16</time>
 </a>
         
       </div>
@@ -82,60 +82,50 @@
       
 
       
-        <h2 id="Metasploit爆破Tomcat弱口令"><a href="#Metasploit爆破Tomcat弱口令" class="headerlink" title="Metasploit爆破Tomcat弱口令"></a>Metasploit爆破Tomcat弱口令</h2><p><img src="http://pic.netbian.com/uploads/allimg/190413/202741-15551584619a4b.jpg" alt></p>
-<h2 id="0x00-tomcat-爆破"><a href="#0x00-tomcat-爆破" class="headerlink" title="0x00 tomcat 爆破"></a>0x00 tomcat 爆破</h2><ol>
-<li>nmap  扫描主机       【依然本地搭建的】执行命令 nmap –sV  192.168.6.16</li>
-</ol>
-<p><img src="http://imglf5.nosdn.127.net/img/d0pJMFNGSnJ5LzRxQnd1NXg5bXlJSzMwRTZTdTZvMmxVd0J2VklUUE8zREFRN2tjQU1TbGZ3PT0.png?imageView" alt></p>
-<p>可以发现8080端口开着tomcat</p>
-<ol start="2">
-<li>kali终端中输入命令“msfconsole”，启动MSF终端。</li>
-</ol>
-<p><img src="http://imglf3.nosdn.127.net/img/d0pJMFNGSnJ5LzRxNFRhKzl3TWlxUHBvQUJtblBVWXA4WE5uUWdiYkxHTURNQ2pEdHRMSnpRPT0.png?imageView" alt></p>
-<ol start="3">
-<li>在msf终端下输入命令“search tomcat”, 搜索tomcat的相关工具和攻击载荷</li>
-</ol>
-<p><img src="http://imglf3.nosdn.127.net/img/d0pJMFNGSnJ5LzY0cnBxZEJ4MG52L3BXZzZHa2lRY3grazRFYlZpSjc4bXB1dHJ2NzQrNGFnPT0.png?imageView" alt></p>
-<ol start="4">
-<li><p>在终端输入“use auxiliary/scanner/http/tomcat_mgr_login”， 启用漏洞利用模块, 提示符就会提示进入到该路径下</p>
-<p><img src="http://imglf3.nosdn.127.net/img/d0pJMFNGSnJ5LzVMUGtKSHVyb3NPcmVidmZlZEJZSk5NSVh6Y1NMNXhPaEF2NHArSWw0aE53PT0.png?imageView" alt></p>
-</li>
-<li><p>在终端输入“show options ” 查看需要配置的参数</p>
-<p><img src="http://imglf6.nosdn.127.net/img/d0pJMFNGSnJ5LzQvajBhOFJ3bHZEZno3blhvZmtHaUpwenlXZWVnVTRJVjdpYkpqL0JjWklRPT0.png?imageView" alt></p>
-</li>
-<li><p>终端下输入“set RHOSTS 192.168.6.16”,设置攻击目标主机IP</p>
-<p>终端下输入“set RPORT 8180”,设置攻击目标主机端口号</p>
-</li>
-</ol>
-<p><img src="http://imglf4.nosdn.127.net/img/d0pJMFNGSnJ5LzUzQk8rOUR2MU9yZTdYdWtTaGQwSWZMRmxCWHpQM3FmbEp3WWhFaC91SkZ3PT0.png?imageView" alt></p>
-<ol start="7">
-<li><p>终端下输入“exploit”, 实施攻击</p>
-<p><img src="http://imglf5.nosdn.127.net/img/d0pJMFNGSnJ5LzRkbms5Z3drdDFDMXd0YkdEOEsrYUUwdXFkWWlYZzF0ZWt6ZEd0bEc5QUpnPT0.png?imageView" alt></p>
-</li>
-</ol>
-<p>账户密码都是tomcat</p>
-<ul>
-<li>0x01 反弹shell,建立会话</li>
-</ul>
-<ol>
-<li>终端下输入“use exploit/multi/http/tomcat_mgr_deploy”</li>
-</ol>
-<p><img src="http://imglf4.nosdn.127.net/img/d0pJMFNGSnJ5LzRZMENyeG9OOVdZZlpnMk1xR0Uxem5SNzVUNmF6VzRiRVpCVkluM1M4N1FnPT0.png?imageView" alt></p>
-<ol start="2">
-<li><p>终端下输入“set RHOST 192.168.6.16”,设置攻击的目标主机IP<br>终端下输入“set RPORT 8080”,设置攻击目标主机端口号</p>
-<p><img src="http://imglf5.nosdn.127.net/img/d0pJMFNGSnJ5LzV5UHh4SzdZMGcwTWpCYisvTUdXSkUvMzNBZmtJUGNZdkdib21yblZhMlJnPT0.png?imageView" alt></p>
-</li>
-<li><p>终端下输入“set username tomcat”,设置攻击时使用的登录账号tomcat<br>终端下输入“set password tomcat”,设置攻击时使用的密码tomcat</p>
-<p><img src="http://imglf3.nosdn.127.net/img/d0pJMFNGSnJ5LzZlV3hSdVZnNzRmWXY3ZkhJWGxYdmtjSllXVG14Q1lCSkcrazlNM2lPTFlRPT0.png?imageView" alt></p>
-</li>
-<li><p>run 开始攻击</p>
-</li>
-</ol>
+        <p><img src="https://image.3001.net/images/20190326/1553589224_5c99e3e87cad9.png!small" alt></p>
+<h2 id="一-burp-suite插件之xss-Validator"><a href="#一-burp-suite插件之xss-Validator" class="headerlink" title="一.burp suite插件之xss Validator"></a>一.burp suite插件之xss Validator</h2><h3 id="1-安装xss-Validator"><a href="#1-安装xss-Validator" class="headerlink" title="1.安装xss Validator"></a>1.安装xss Validator</h3><p>安装xss Validator 最简单的方法就是通过burp—Extender模块—BApp Store菜单，找到xss Validator 插件单击”installing”进行安装</p>
+<p><img src="https://image.3001.net/images/20190325/1553501604_5c988da400a89.png!small" alt></p>
+<h3 id="2-安装Phantom-js和xss-detector"><a href="#2-安装Phantom-js和xss-detector" class="headerlink" title="2.安装Phantom.js和xss-detector"></a>2.安装Phantom.js和xss-detector</h3><h3 id="xss-Validator还需要Phantom-js和xss-detector脚本的配合使用来检测XSS漏洞"><a href="#xss-Validator还需要Phantom-js和xss-detector脚本的配合使用来检测XSS漏洞" class="headerlink" title="xss Validator还需要Phantom.js和xss-detector脚本的配合使用来检测XSS漏洞"></a>xss Validator还需要Phantom.js和xss-detector脚本的配合使用来检测XSS漏洞</h3><p>phantom.js  下载地址：<a href="http://phantomjs.org/download.html&gt;" target="_blank" rel="noopener">http://phantomjs.org/download.html&gt;</a></p>
+<p>xss-detector 下载地址：<a href="https://github.com/PortSwigger/xss-validator" target="_blank" rel="noopener">https://github.com/PortSwigger/xss-validator</a></p>
+<p><img src="https://image.3001.net/images/20190325/1553504738_5c9899e25faf0.png!small" alt></p>
+<p><strong>配置phantom.js环境变量</strong></p>
+<p>将解压好的phantomjs，位置路径复制—添加到PATH系统变量里 【win 7前面加;】</p>
+<p><img src="https://image.3001.net/images/20190325/1553513951_5c98bddfdd0fb.png!small" alt></p>
+<p><img src="https://image.3001.net/images/20190325/1553514211_5c98bee3abc59.png!small" alt></p>
+<p><img src="https://image.3001.net/images/20190325/1553514405_5c98bfa5a7ca1.png!small" alt></p>
+<h3 id="3-使用方法"><a href="#3-使用方法" class="headerlink" title="3.使用方法"></a>3.使用方法</h3><p>xss Validator此扩展将响应发送到本地运行的XSS-Detector服务器，由Phantom.js和/或Slimer.js提供支持</p>
+<p>用法：</p>
+<p>在开始攻击之前，必须启动XSS-Detector服务器。导航到xss-detector目录并执行以下命令：</p>
+<p>$ phantomjs xss.js＆<br>$ slimerjs slimer.js＆</p>
+<p>默认情况下，服务器将在端口8093上侦听。服务器期望通过http响应传递base64编码的页面响应，该响应将通过Burp扩展器传递。</p>
+<p>导航到xssValidator选项卡，然后复制Grep Phrase的值。在Burp Intruder grep-match函数中输入此值。与此Grep Phrase匹配的有效负载表示成功执行XSS有效负载。</p>
+<h3 id="4-演示"><a href="#4-演示" class="headerlink" title="4.演示"></a>4.演示</h3><p><strong>1）首先打开cmd界面进入到xss-detector目录，执行phantomjs xss.js</strong></p>
+<p><img src="https://image.3001.net/images/20190325/1553515249_5c98c2f1f1d95.png!small" alt></p>
+<p><strong>2）访问测试环境开始抓包</strong></p>
+<p>​    <strong>大概步骤：请求包—-发送到intruder—定义变量—设置playloads[playload sets] [playload options][playload processing]三个模块—设置options添加匹配规则</strong></p>
+<p><strong>发送到intruder</strong></p>
+<p><img src="https://image.3001.net/images/20190325/1553516276_5c98c6f45d5af.png!small" alt></p>
+<p><strong>定义变量</strong></p>
+<p><img src="https://image.3001.net/images/20190325/1553516502_5c98c7d6016a6.png!small" alt></p>
+<p><img src="https://image.3001.net/images/20190325/1553516547_5c98c8035bdf0.png!small" alt></p>
+<p><strong>设置playloads[playload sets] [playload options][playload processing]三个模块</strong></p>
+<p><img src="https://image.3001.net/images/20190325/1553516831_5c98c91faeab3.png!small" alt></p>
+<p><img src="https://image.3001.net/images/20190325/1553516849_5c98c9311fac7.png!small" alt></p>
+<p><strong>设置options添加匹配规则</strong></p>
+<p><img src="https://image.3001.net/images/20190325/1553517311_5c98caff120cd.png!small" alt></p>
+<p><img src="https://image.3001.net/images/20190326/1553575006_5c99ac5ee4f04.png!small" alt></p>
+<p><strong>点击右上方start attack</strong></p>
+<p><img src="https://image.3001.net/images/20190326/1553576276_5c99b15452444.png!small" alt></p>
+<p><img src="https://image.3001.net/images/20190326/1553575076_5c99aca4eb600.png!small" alt></p>
+<p><strong>3）测试</strong></p>
+<p><img src="https://image.3001.net/images/20190326/1553575144_5c99ace89e11d.png!small" alt></p>
+<p><img src="https://image.3001.net/images/20190326/1553575113_5c99acc9ee201.png!small" alt></p>
+<p><img src="https://image.3001.net/images/20190326/1553575162_5c99acfaab76d.png!small" alt></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lilifengcode.github.io/2018/09/16/mest-tomcat/" data-id="cjvunvmy20008ugpx67lfatuf" class="article-share-link">分享</a>
+      <a data-url="http://lilifengcode.github.io/2018/09/16/xss validator/" data-id="cjvzbspiu000gqgpxo9ni4n10" class="article-share-link">分享</a>
       
     </footer>
 
@@ -155,7 +145,7 @@
   
     <nav class="page-nav">
       
-      <a class="extend prev" rel="prev" href="/page/15/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/17/">下一页</a>
+      <a class="extend prev" rel="prev" href="/page/15/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/17/">下一页</a>
     </nav>
   
 </section>
