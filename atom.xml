@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lilifengcode.github.io/"/>
-  <updated>2019-06-24T15:53:19.889Z</updated>
+  <updated>2019-06-27T14:30:11.742Z</updated>
   <id>http://lilifengcode.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Github Vmware搭建个人博客</title>
+    <link href="http://lilifengcode.github.io/2019/06/27/github%E6%90%AD%E5%BB%BA%E4%BC%AF%E5%85%8B/"/>
+    <id>http://lilifengcode.github.io/2019/06/27/github搭建伯克/</id>
+    <published>2019-06-27T14:20:04.000Z</published>
+    <updated>2019-06-27T14:30:11.742Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://s2.ax1x.com/2019/06/27/Zu2d0O.jpg" alt="Zu2d0O.jpg"></p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>重新搭建github博客，之前没有记录。这次托挖矿木马的福，我终于可以重新搭建一次了</p><p>建议<code>虚拟机上搭建</code>，即使换电脑了，重做系统了，也不用再搞了</p><h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ul><li>虚拟机             windows 7 x64 </li><li>node.js           地址： <a href="http://nodejs.cn/download/" target="_blank" rel="noopener">http://nodejs.cn/download/</a></li><li>git                    地址：<a href="https://gitforwindows.org/" target="_blank" rel="noopener">https://gitforwindows.org/</a>  </li><li>github账号     注册</li></ul><h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><p><img src="https://s2.ax1x.com/2019/06/26/ZmKP4P.gif" alt="ZmKP4P.gif"></p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>安装git、node.js</p><p><img src="https://s2.ax1x.com/2019/06/26/Zml3gf.gif" alt="Zml3gf.gif"></p><p>之后新建一个文件夹blog,鼠标右键点击git bash here</p><p>执行命令<code>npm install -g hexo</code>和<code>hexo init</code></p><p><img src="https://s2.ax1x.com/2019/06/26/Zm3fc6.gif" alt="Zm3fc6.gif"></p><p>执行<code>hexo server</code>,即可以本地访问博客环境【127.0.0.1：4000】</p><p><img src="https://s2.ax1x.com/2019/06/26/Zm8B8I.gif" alt="Zm8B8I.gif"></p><p>执行：<code>npm install hexo-deployer-git --save</code></p><p>​           <code>git config --global user.email &quot;邮箱&quot;</code></p><p>​           <code>git config --global user.name &quot;名字&quot;</code> </p><p>为后面部署做准备</p><p>接下来，注册一个github账号，新建一个仓库命名：…..github.io</p><p><img src="https://s2.ax1x.com/2019/06/26/ZmtldO.gif" alt="ZmtldO.gif"></p><p><img src="https://s2.ax1x.com/2019/06/26/ZmNfgA.gif" alt="ZmNfgA.gif"></p><p>本地和github,建立连接 <code>cd ~./ssh</code></p><p><img src="https://s2.ax1x.com/2019/06/26/ZmNIDP.png" alt="ZmNIDP.png"></p><p>第一次，显示上图</p><p>执行<code>ssh-keygen -t rsa -C &quot;邮件地址&quot;</code> 点击回车三次</p><p><img src="https://s2.ax1x.com/2019/06/26/ZmUP5F.gif" alt="ZmUP5F.gif"></p><p>打开<code>.ssh\id_rsa.pub</code>复制里面的秘钥</p><p><img src="https://s2.ax1x.com/2019/06/26/ZmUuVK.gif" alt="ZmUuVK.gif"></p><p>打开github主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key</p><p><img src="https://s2.ax1x.com/2019/06/27/ZmU8xA.gif" alt="ZmU8xA.gif"></p><p>执行<code>ssh -T gi@github.com</code></p><p><img src="https://s2.ax1x.com/2019/06/27/ZmU0Pg.gif" alt="ZmU0Pg.gif"></p><p>修改全局的<code>_config.yml</code></p><p><img src="https://s2.ax1x.com/2019/06/27/ZmaFdf.gif" alt="ZmaFdf.gif"></p><p>我这个直接将之前的文件夹覆盖了</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总之就是，<code>本地先部署</code>好，之后<code>github建立一个仓库</code>，再通过<code>ssh key</code>将本地和github的仓库进行<code>连接</code>，其他的就是丰富内容了</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;https://s2.ax1x.com/2019/06/27/Zu2d0O.jpg&quot; alt=&quot;Zu2d0O.jpg&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Weblogic反序列化RCE复现(CVE-2019-2725)</title>

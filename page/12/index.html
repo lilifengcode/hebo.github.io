@@ -53,7 +53,7 @@
 
     
       
-        <article id="post-Msfconsole常用命令" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+        <article id="post-Python" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
     
@@ -61,7 +61,7 @@
         
   
     <h2 itemprop="name">
-      <a class="article-title" href="/2019/03/17/Msfconsole常用命令/">Msfconsole常用命令</a>
+      <a class="article-title" href="/2019/04/12/Python/">Python Skill</a>
     </h2>
   
 
@@ -70,8 +70,8 @@
 
     
       <div class="article-meta">
-        <a href="/2019/03/17/Msfconsole常用命令/" class="article-date">
-  <time datetime="2019-03-17T13:56:06.000Z" itemprop="datePublished">2019-03-17</time>
+        <a href="/2019/04/12/Python/" class="article-date">
+  <time datetime="2019-04-12T14:53:04.000Z" itemprop="datePublished">2019-04-12</time>
 </a>
         
       </div>
@@ -83,116 +83,21 @@
       
 
       
-        <p><img src="http://imglf6.nosdn0.126.net/img/d0pJMFNGSnJ5LzZacFJIckJTRGJ5cGlBUWdzMUg5ZE55ZksyOHVydWxQUDlZQjU1ME1RZnpnPT0.jpg" alt></p>
-<h1 id="Msfconsole常用命令"><a href="#Msfconsole常用命令" class="headerlink" title="Msfconsole常用命令"></a>Msfconsole常用命令</h1><p>  命令： show exploits</p>
-<p>列出metasploit框架中的所有渗透攻击模块。</p>
-<p>   命令：show payloads</p>
-<p>列出metasploit框架中的所有攻击载荷。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：show auxiliary</span><br></pre></td></tr></table></figure>
+        <hr>
+<h2 id="使用队列-多线程方法"><a href="#使用队列-多线程方法" class="headerlink" title="使用队列 多线程方法"></a>使用队列 多线程方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">sys.path.append(&quot;..&quot;)</span><br><span class="line"></span><br><span class="line">import threading,socket,queue</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line">lock = threading.Lock() # 线程锁</span><br><span class="line"></span><br><span class="line"># 扫描端口队列</span><br><span class="line">def GetQueue(host):</span><br><span class="line">    PortQueue = queue.Queue()</span><br><span class="line">    for port in range(1,65535):</span><br><span class="line">        PortQueue.put((host,port))</span><br><span class="line">    return PortQueue</span><br><span class="line"></span><br><span class="line">class ScanThread(threading.Thread):</span><br><span class="line">    def __init__(self,SingleQueue,outip):</span><br><span class="line">        threading.Thread.__init__(self)</span><br><span class="line">        self.daemon = True</span><br><span class="line">        # self.setDaemon(True)</span><br><span class="line">        self.SingleQueue = SingleQueue</span><br><span class="line">        self.outip = outip</span><br><span class="line">    def ping(self,scanIP,port):</span><br><span class="line">        global OpenPort,Lock</span><br><span class="line">        sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">        sock.settimeout(1)</span><br><span class="line">        address = (scanIP,port)</span><br><span class="line">        try:</span><br><span class="line">            sock.connect(address)</span><br><span class="line">        except:</span><br><span class="line">            sock.close()</span><br><span class="line">            return False</span><br><span class="line">        sock.close()</span><br><span class="line">        print(scanIP, port)</span><br><span class="line">        if lock.acquire():</span><br><span class="line">            lock.release()</span><br><span class="line">        return True</span><br><span class="line">    def run(self):</span><br><span class="line">        while not self.SingleQueue.empty():</span><br><span class="line">            # print(self.SingleQueue.get())</span><br><span class="line">            host,port = self.SingleQueue.get()</span><br><span class="line">            self.ping(host,port)</span><br><span class="line"></span><br><span class="line">class Work():</span><br><span class="line">    def __init__(self,scan_id = &apos;&apos;,scan_target=&apos;&apos;,scan_type = &apos;&apos;,scan_args=&apos;&apos;,back_fn=None):</span><br><span class="line">        self.scan_id = scan_id</span><br><span class="line">        self.target = scan_target</span><br><span class="line">        self.scan_type = scan_type</span><br><span class="line">        self.args = scan_args</span><br><span class="line">        self.back_fn = back_fn</span><br><span class="line">        self.result= []</span><br><span class="line">    def run(self):</span><br><span class="line">        ThreadList = []</span><br><span class="line">        SingLeQueue = GetQueue(self.target)</span><br><span class="line">        resultQueue = queue.Queue()</span><br><span class="line">        for i in range(0,200):</span><br><span class="line">            t = ScanThread(SingLeQueue,resultQueue)</span><br><span class="line">            ThreadList.append(t)</span><br><span class="line">        for t in ThreadList:</span><br><span class="line">            t.start()</span><br><span class="line">        for t in ThreadList:</span><br><span class="line">            t.join()</span><br><span class="line">start_time = time.time()</span><br><span class="line">t = Work(scan_target = &quot;111.7.163.233&quot;)</span><br><span class="line">t.run()</span><br><span class="line">print(&apos;%d second&apos; % (time.time() - start_time))</span><br></pre></td></tr></table></figure>
 
-<p>列出metasploit框架中的所有辅助攻击载荷。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：search name</span><br></pre></td></tr></table></figure>
+<p>执行完成63S</p>
+<h2 id="使用协程的方式"><a href="#使用协程的方式" class="headerlink" title="使用协程的方式"></a>使用协程的方式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import gevent</span><br><span class="line">from gevent import monkey</span><br><span class="line">from gevent.pool import Pool</span><br><span class="line">monkey.patch_all()</span><br><span class="line">import socket,time</span><br><span class="line"></span><br><span class="line">class work():</span><br><span class="line">    def __init__(self,scan_target = &quot;&quot;):</span><br><span class="line">        self.pool = Pool(200)</span><br><span class="line">        self.timeout=0.1</span><br><span class="line">        self.target = scan_target</span><br><span class="line">    def port_scan(self,port):</span><br><span class="line">        sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">        sock.settimeout(self.timeout)</span><br><span class="line">        try:</span><br><span class="line">            sock.connect((self.target,port))</span><br><span class="line">            print(self.target,&quot;:&quot;,port)</span><br><span class="line">        except:</span><br><span class="line">            sock.close()</span><br><span class="line">    def run(self):</span><br><span class="line">        res = []</span><br><span class="line">        for port in range(1,65535):</span><br><span class="line">            res.append(port)</span><br><span class="line">        self.pool.map(self.port_scan,res)</span><br><span class="line"></span><br><span class="line">start_time = time.time()</span><br><span class="line">t = work(&apos;127.0.0.1&apos;)</span><br><span class="line">t.run()</span><br><span class="line">print(&apos;%d second&apos; % (time.time() - start_time))</span><br></pre></td></tr></table></figure>
 
-<p>查找metasploit框架中所有的渗透攻击和其他模块。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：info</span><br></pre></td></tr></table></figure>
+<p>扫描完成需155S</p>
+<h2 id="Python-简单的爬取网站状态码"><a href="#Python-简单的爬取网站状态码" class="headerlink" title="Python 简单的爬取网站状态码"></a>Python 简单的爬取网站状态码</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import re</span><br><span class="line">import time</span><br><span class="line">import threadpool</span><br><span class="line">import traceback</span><br><span class="line">code_200 = []</span><br><span class="line">code_not200 = []</span><br><span class="line">_REGEX_ = &apos;&lt;title&gt;(.*)&lt;/title&gt;&apos;</span><br><span class="line">def getTitle(url):</span><br><span class="line">    try:</span><br><span class="line">        response = requests.get(url)</span><br><span class="line">        pattern = re.compile(_REGEX_, flags=re.IGNORECASE)</span><br><span class="line">        try:</span><br><span class="line">            title = re.findall(pattern, response.text)[0]</span><br><span class="line">        except IndexError:</span><br><span class="line">            title = &apos;无标题&apos;</span><br><span class="line">        if response.status_code == 200:</span><br><span class="line">            code_200.append(&#123;&apos;url&apos;:url,&apos;title&apos;:title,&quot;status_code&quot;:response.status_code&#125;)</span><br><span class="line">            print(&#123;&apos;url&apos;:url,&apos;title&apos;:title,&quot;status_code&quot;:response.status_code&#125;)</span><br><span class="line">            return</span><br><span class="line">        else:</span><br><span class="line">            code_not200.append(&#123;&apos;url&apos;:url,&apos;title&apos;:title,&quot;status_code&quot;:response.status_code&#125;)</span><br><span class="line">            print(&#123;&apos;url&apos;: url, &apos;title&apos;: title, &quot;status_code&quot;: response.status_code&#125;)</span><br><span class="line">            return</span><br><span class="line">    except Exception as e:</span><br><span class="line">        traceback.print_exc()</span><br><span class="line">        return 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    domain = []</span><br><span class="line">    with open(&apos;test5.txt&apos;,&apos;r&apos;) as f:</span><br><span class="line">        for i in f.readlines():</span><br><span class="line">            domain.append(i.strip())</span><br><span class="line">        f.close()</span><br><span class="line">    print(domain)</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    pool = threadpool.ThreadPool(100)</span><br><span class="line">    requests_1 = threadpool.makeRequests(getTitle, domain)</span><br><span class="line">    [pool.putRequest(req) for req in requests_1]</span><br><span class="line">    pool.wait()</span><br><span class="line">    with open(&apos;test6.txt&apos;,&apos;w+&apos;,encoding=&apos;UTF-8&apos;) as f:</span><br><span class="line">        for i in code_200:</span><br><span class="line">            f.write(str(i) + &apos;\n&apos;)</span><br><span class="line">        for i in code_not200:</span><br><span class="line">            f.write(str(i) + &apos;\n&apos;)</span><br><span class="line">    print(&apos;%d second&apos; % (time.time() - start_time))</span><br></pre></td></tr></table></figure>
 
-<p>展示出制定渗透攻击或模块的相关信息。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：use name</span><br></pre></td></tr></table></figure>
 
-<p>装载一个渗透攻击或模块。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：LHOST</span><br></pre></td></tr></table></figure>
-
-<p>你本地可以让目标主机连接的IP地址，通常当目标主机不在同一个局域网内时，就需要是一个公共IP地址，特别为反弹式shell使用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：RHOST</span><br></pre></td></tr></table></figure>
-
-<p>远程主机或是目标主机。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：set function</span><br></pre></td></tr></table></figure>
-
-<p>设置特定的配置参数（EG：设置本地或远程主机参数）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：setg function</span><br></pre></td></tr></table></figure>
-
-<p>以全局方式设置特定的配置参数（EG：设置本地或远程主机参数）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：show options</span><br></pre></td></tr></table></figure>
-
-<p>列出某个渗透攻击或模块中所有的配置参数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：show targets</span><br></pre></td></tr></table></figure>
-
-<p>列出渗透攻击所有支持的目标平台。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：set target num</span><br></pre></td></tr></table></figure>
-
-<p>指定你所知道的目标的操作系统以及补丁版本类型。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：set payload name</span><br></pre></td></tr></table></figure>
-
-<p>指定想要使用的攻击载荷。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：show advanced</span><br></pre></td></tr></table></figure>
-
-<p>列出所有高级配置选项。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：set autorunscript migrate -f.</span><br></pre></td></tr></table></figure>
-
-<p>在渗透攻击完成后，将自动迁移到另一个进程。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：check</span><br></pre></td></tr></table></figure>
-
-<p>检测目标是否选定渗透攻击存在相应的安全漏洞。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：exploit</span><br></pre></td></tr></table></figure>
-
-<p>执行渗透攻击或模块来攻击目标。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：exploit -j</span><br></pre></td></tr></table></figure>
-
-<p>在计划任务下进行渗透攻击（攻击将在后台进行）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：exploit -z</span><br></pre></td></tr></table></figure>
-
-<p>渗透攻击完成后不与回话进行交互。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：exploit -e encoder</span><br></pre></td></tr></table></figure>
-
-<p>制定使用的攻击载荷编码方式（EG：exploit -e shikata_ga_nai）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：exploit -h</span><br></pre></td></tr></table></figure>
-
-<p>列出exploit命令的帮助信息。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：sessions -l</span><br></pre></td></tr></table></figure>
-
-<p>列出可用的交互会话（在处理多个shell时使用）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：sessions -l -v</span><br></pre></td></tr></table></figure>
-
-<p>列出所有可用的交互会话以及详细信息，EG：攻击系统时使用了哪个安全漏洞。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：sessions -s script</span><br></pre></td></tr></table></figure>
-
-<p>在所有活跃的metasploit会话中运行一个特定的metasploit脚本。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：sessions -K</span><br></pre></td></tr></table></figure>
-
-<p>杀死所有活跃的交互会话。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：sessions -c cmd</span><br></pre></td></tr></table></figure>
-
-<p>在所有活跃的metasploit会话上执行一个命令。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：sessions -u sessionID</span><br></pre></td></tr></table></figure>
-
-<p>升级一个普通的win32 shell到metasploit shell。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：db_create name</span><br></pre></td></tr></table></figure>
-
-<p>创建一个数据库驱动攻击所要使用的数据库（EG：db_create autopwn）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：db_connect name</span><br></pre></td></tr></table></figure>
-
-<p>创建并连接一个数据库驱动攻击所要使用的数据库（EG：db_connect user:passwd@ip/sqlname）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：db_namp</span><br></pre></td></tr></table></figure>
-
-<p>利用nmap并把扫描数据存储到数据库中（支持普通的nmap语句，EG：-sT -v -P0）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：db_autopwn -h</span><br></pre></td></tr></table></figure>
-
-<p>展示出db_autopwn命令的帮助信息。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：db_autopwn -p -r -e</span><br></pre></td></tr></table></figure>
-
-<p>对所有发现的开放端口执行db_autopwn，攻击所有系统，并使用一个反弹式shell。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：db_destroy</span><br></pre></td></tr></table></figure>
-
-<p>删除当前数据库。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：db_destroy user：passwd@host：port/database</span><br></pre></td></tr></table></figure>
-
-<p>使用高级选项来删除数据库。</p>
-<p>metasploit命令Permalink</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">help 打开meterpreter使用帮助。</span><br><span class="line"></span><br><span class="line">run scriptname 运行meterpreter脚本，在scripts/meterpreter目录下可查看到所有脚本名。</span><br><span class="line"></span><br><span class="line">sysinfo 列出受控主机的系统信息。</span><br><span class="line"></span><br><span class="line">ls 列出目标主机的文件和文件夹信息。</span><br><span class="line"></span><br><span class="line">use priv 加载特权提升扩展模块，来扩展metasploit库。</span><br><span class="line"></span><br><span class="line">ps 显示所有运行的进程以及相关联的用户账户。</span><br><span class="line"></span><br><span class="line">migrate PID 迁移到一个指定的进程ID（PID号可通过ps命令从主机上获得）。</span><br><span class="line"></span><br><span class="line">use incognito 加载incognito功能（用来盗窃目标主机的令牌或假冒用户）</span><br><span class="line"></span><br><span class="line">list_tokens -u 列出目标主机用户的可用令牌。</span><br><span class="line"></span><br><span class="line">list_tokens -g 列出目标主机用户组的可用令牌。</span><br><span class="line"></span><br><span class="line">impersonate_token DOMAIN_NAME\USERNAME 假冒目标主机上的可用令牌。</span><br><span class="line"></span><br><span class="line">steal_token PID 盗窃给定进程的可用令牌并进行令牌假冒。</span><br><span class="line"></span><br><span class="line">drop_token 停止假冒当前令牌。</span><br><span class="line"></span><br><span class="line">getsystem 通过各种攻击向量来提升系统用户权限。</span><br><span class="line"></span><br><span class="line">execute -f cmd.exe -i 执行cmd.exe命令并进行交互。</span><br><span class="line"></span><br><span class="line">execute -f cmd.exe -i -t 以所有可用令牌来执行cmd命令并隐藏该进程。</span><br><span class="line"></span><br><span class="line">rev2self 回到控制目标主机的初始用户账户下。</span><br><span class="line"></span><br><span class="line">reg command 在目标主机注册表中进行交互，创建，删除，查询等操作。</span><br><span class="line"></span><br><span class="line">setdesktop number 切换到另一个用户界面（该功能基于那些用户已登录）。</span><br><span class="line"></span><br><span class="line">screenshot 对目标主机的屏幕进行截图。</span><br><span class="line"></span><br><span class="line">upload file 向目标主机上传文件。</span><br><span class="line"></span><br><span class="line">download file 从目标主机下载文件。</span><br><span class="line"></span><br><span class="line">keyscan_start 针对远程目标主机开启键盘记录功能。</span><br><span class="line"></span><br><span class="line">keyscan_dump 存储目标主机上捕获的键盘记录。</span><br><span class="line"></span><br><span class="line">keyscan_stop 停止针对目标主机的键盘记录。</span><br><span class="line"></span><br><span class="line">getprivs 尽可能多的获取目标主机上的特权。</span><br><span class="line"></span><br><span class="line">uictl enable keyboard/mouse 接管目标主机的键盘和鼠标。</span><br><span class="line"></span><br><span class="line">background 将你当前的metasploit shell转为后台执行。</span><br><span class="line"></span><br><span class="line">hashdump 导出目标主机中的口令哈希值。</span><br><span class="line"></span><br><span class="line">use sniffer 加载嗅探模式。</span><br><span class="line"></span><br><span class="line">sniffer_interfaces 列出目标主机所有开放的网络端口。</span><br><span class="line"></span><br><span class="line">sniffer_dump interfaceID pcapname 在目标主机上启动嗅探。</span><br><span class="line"></span><br><span class="line">sniffer_start interfaceID packet-buffer 在目标主机上针对特定范围的数据包缓冲区启动嗅探。</span><br><span class="line"></span><br><span class="line">sniffer_stats interfaceID 获取正在实施嗅探网络接口的统计数据。</span><br><span class="line"></span><br><span class="line">sniffer_stop interfaceID 停止嗅探。</span><br><span class="line"></span><br><span class="line">add_user username password -h ip 在远程目标主机上添加一个用户。</span><br><span class="line"></span><br><span class="line">clearev 清楚目标主机上的日志记录。</span><br><span class="line"></span><br><span class="line">timestomp 修改文件属性，例如修改文件的创建时间（反取证调查）。</span><br><span class="line"></span><br><span class="line">reboot 重启目标主机。</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lilifengcode.github.io/2019/03/17/Msfconsole常用命令/" data-id="cjxak9ug80004agpxgh4756uo"
+      <a data-url="http://lilifengcode.github.io/2019/04/12/Python/" data-id="cjxermb4c0005sst7tnkwbwe7"
          class="article-share-link">分享</a>
       
     </footer>
@@ -213,7 +118,7 @@
   
     <nav class="page-nav">
       
-      <a class="extend prev" rel="prev" href="/page/11/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/13/">下一页</a>
+      <a class="extend prev" rel="prev" href="/page/11/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/13/">下一页</a>
     </nav>
   
 </section>
