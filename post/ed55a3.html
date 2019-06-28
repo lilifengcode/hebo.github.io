@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Coding List不可逆编码方式 MD4   MD4是麻省理工学院教授Ronald Rivest于1990年设计的一种信息摘要算法。它是一种用来测试信息完整性的密码散列函数的实行。其摘要长度为128位，一般128位长的MD4散列被表示为32位的十六进制数字。这个算法影响了后来的算法如MD5、SHA 家族和RIPEMD等。   MD4(123)=C58CDA49F00748A3BC0FCFA51">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Coding List">
+<meta property="og:url" content="http://lilifengcode.github.io/post/ed55a3.html">
+<meta property="og:site_name" content="裁决的博客">
+<meta property="og:description" content="Coding List不可逆编码方式 MD4   MD4是麻省理工学院教授Ronald Rivest于1990年设计的一种信息摘要算法。它是一种用来测试信息完整性的密码散列函数的实行。其摘要长度为128位，一般128位长的MD4散列被表示为32位的十六进制数字。这个算法影响了后来的算法如MD5、SHA 家族和RIPEMD等。   MD4(123)=C58CDA49F00748A3BC0FCFA51">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxMawR.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxMJlF.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxMUm9.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/03/07/kxMtOJ.png">
+<meta property="og:updated_time" content="2019-06-28T08:25:01.160Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Coding List">
+<meta name="twitter:description" content="Coding List不可逆编码方式 MD4   MD4是麻省理工学院教授Ronald Rivest于1990年设计的一种信息摘要算法。它是一种用来测试信息完整性的密码散列函数的实行。其摘要长度为128位，一般128位长的MD4散列被表示为32位的十六进制数字。这个算法影响了后来的算法如MD5、SHA 家族和RIPEMD等。   MD4(123)=C58CDA49F00748A3BC0FCFA51">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/03/07/kxMawR.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Coding List</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/lilifengcode">项目</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/post/e722f820.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/post/2f10d862.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://lilifengcode.github.io/post/ed55a3.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://lilifengcode.github.io/post/ed55a3.html&text=Coding List"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://lilifengcode.github.io/post/ed55a3.html&title=Coding List"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://lilifengcode.github.io/post/ed55a3.html&is_video=false&description=Coding List"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Coding List&body=Check out this article: http://lilifengcode.github.io/post/ed55a3.html"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://lilifengcode.github.io/post/ed55a3.html&title=Coding List"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://lilifengcode.github.io/post/ed55a3.html&title=Coding List"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://lilifengcode.github.io/post/ed55a3.html&title=Coding List"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://lilifengcode.github.io/post/ed55a3.html&title=Coding List"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://lilifengcode.github.io/post/ed55a3.html&name=Coding List&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Coding-List"><span class="toc-number">1.</span> <span class="toc-text">Coding List</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#不可逆编码方式"><span class="toc-number">1.1.</span> <span class="toc-text">不可逆编码方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可逆编码方式"><span class="toc-number">1.2.</span> <span class="toc-text">可逆编码方式</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Coding List
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">裁决的博客</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2018-03-07T07:15:17.000Z" itemprop="datePublished">2018-03-07</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Coding-List"><a href="#Coding-List" class="headerlink" title="Coding List"></a>Coding List</h1><h2 id="不可逆编码方式"><a href="#不可逆编码方式" class="headerlink" title="不可逆编码方式"></a>不可逆编码方式</h2><ol>
+<li><p>MD4</p>
+<p>  MD4是麻省理工学院教授Ronald Rivest于1990年设计的一种信息摘要算法。它是一种用来测试信息完整性的密码散列函数的实行。其摘要长度为128位，一般128位长的MD4散列被表示为32位的十六进制数字。这个算法影响了后来的算法如MD5、SHA 家族和RIPEMD等。</p>
+<p>  MD4(123)=C58CDA49F00748A3BC0FCFA511D516CB</p>
+</li>
+</ol>
+<ol start="2">
+<li><p>MD5</p>
+<p>  MD5即Message-Digest Algorithm 5（信息-摘要算法5），用于确保信息传输完整一致。是计算机广泛使用的杂凑算法之一（又译摘要算法、哈希算法），MD5的作用是让大容量信息在用数字签名软件签署私人密钥前被”压缩”成一种保密的格式（就是把一个任意长度的字节串变换成一定长的十六进制数字串）。<br>  对MD5算法简要的叙述可以为：MD5以512位分组来处理输入的信息，且每一分组又被划分为16个32位子分组，经过了一系列的处理后，算法的输出由四个32位分组组成，将这四个32位分组级联后将生成一个128位散列值。<br>  MD5加密后所得到的通常是32位的编码，而在不少地方会用到16位的编码，16位加密就是从32位MD5散列中把中间16位提取出来！其实破解16位MD5散列要比破解32位MD5散列还慢，因为他多了一个步骤,就是使用32位加密后再把中间16位提取出来, 然后再进行对比，而破解32位的则不需要,加密后直接对比就可以了 。</p>
+<p>  16位：MD5(123)=AC59075B964B0715</p>
+<p>  32位：MD5(123)=202CB962AC59075B964B07152D234B70</p>
+</li>
+</ol>
+<ol start="3">
+<li><p>MD6  (了解)</p>
+<p>  MD6是一种算法。继MD5被攻破后，在Crypto2008上， Rivest提出了MD6算法，该算法的Block size为512 bytes(MD5的Block Size是512 bits), Chaining value长度为1024 bits, 算法增加了并行 机制，适合于多核CPU。</p>
+</li>
+<li><p>SHA1</p>
+<p>  安全哈希算法（Secure Hash Algorithm）主要适用于数字签名标准 （Digital Signature Standard DSS）里面定义的数字签名算法（Digital Signature Algorithm DSA）。对于长度小于2^64位的消息，SHA1会产生一个160位的消息摘要。当接收到消息的时候，这个消息摘要可以用来验证数据的完整性。在传输的过程中，数据很可能会发生变化，那么这时候就会产生不同的消息摘要。 SHA1有如下特性：不可以从消息摘要中复原信息；两个不同的消息不会产生同样的消息摘要,(但会有1x10 ^ 48分之一的机率出现相同的消息摘要,一般使用时忽略)。</p>
+<p>   SH1(123)=40bd001563085fc35165329ea1ff5c5ecbdbbeef</p>
+</li>
+<li><p>SHA2</p>
+<p>   SHA-224、SHA-256、SHA-384，和SHA-512并称为SHA-2。新的散列函数并没有接受像SHA-1一样的公众密码社区做详细的检验，所以它们的密码安全性还不被大家广泛的信任。虽然至今尚未出现对SHA-2有效的攻击，它的算法跟SHA-1基本上仍然相似；因此有些人开始发展其他替代的散列算法。</p>
+<p>   SHA224(123)= 78d8045d684abd2eece923758f3cd781489df3a48e1278982466017f</p>
+<p>   SHA256(123)= a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3</p>
+<p>   SHA384(123)= 9a0a82f0c0cf31470d7affede3406cc9aa8410671520b727044eda15b4c25532a9b5cd8aaf9cec4919d76255b6bfb00f</p>
+<p>   SHA(123)= 3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2</p>
+</li>
+<li><p>SHA3</p>
+<p>   由于近年来对传统常用Hash 函数如MD4、MD5、SHA0、SHA1、RIPENMD 等的成功攻击，美国国家标准技术研究所（NIST）在2005年、2006年分别举行了2届密码Hash 研讨会；同时于2007年正式宣布在全球范围内征集新的下一代密码Hash算法，举行SHA-3竞赛•新的Hash算法将被称为SHA-3，并且作为新的安全Hash标准，增强现有的FIPS 180-2标准。算法提交已于2008年10月结束，NIST 将分别于2009年和2010年举行2轮会议，通过2轮的筛选选出进入最终轮（final round）的算法，最后将在2012年公布获胜算法。公开竞赛的整个进程仿照高级加密标准AES 的征集过程。2012年10月2日，Keccak被选为NIST竞赛的胜利者， 成为SHA-3.。<br>   SHA-3，之前名为Keccak算法，是一个加密杂凑算法。SHA-3并不是要取代SHA-2，因为SHA-2目前并没有出现明显的弱点。由于对MD5出现成功的破解，以及对SHA-0和SHA-1出现理论上破解的方法，NIST感觉需要一个与之前算法不同的，可替换的加密杂凑算法，也就是现在的SHA-3。</p>
+</li>
+<li><p>RIPEMD-160哈希加密算法</p>
+<p>   RIPEMD-160 是一个 160 位加密哈希函数。它旨在用于替代 128 位哈希函数 MD4、MD5 和 RIPEMD。RIPEMD 是在 EU 项目 RIPE（RACE Integrity Primitives Evaluation，1988-1992）的框架中开发的。<br>   RIPEMD（123）=e3431a8e0adbf96fd140103dc6f63a3f8fa343ab</p>
+<h2 id="可逆编码方式"><a href="#可逆编码方式" class="headerlink" title="可逆编码方式"></a>可逆编码方式</h2></li>
+<li><p>url编码</p>
+<pre><code>url编码是一种浏览器用来打包表单输入的格式。浏览器从表单中获取所有的name和其中的值 ，将它们以name/value参数编码（移去那些不能传送的字符，将数据排行等等）
+作为URL的一部分或者分离地发给服务器。
+http://www.xxx.com/index.php?parameter=123&amp;code=del
+http%3a%2f%2fwww.xxx.com%2findex.php%3fparameter%3d123%26code%3ddel</code></pre></li>
+<li><p>ASCll编码</p>
+<p>   最早的计算机在设计时采用8个比特（bit）作为一个字节（byte），所以，一个字节能表示的最大的整数就是255（二进制11111111=十进制255），0 - 255被用来表示大小写英文字母、数字和一些符号，这个编码表被称为ASCII编码，比如大写字母A的编码是65，小写字母z的编码是122。</p>
+</li>
+</ol>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxMawR.png" alt></p>
+<ol start="3">
+<li><p>unicode编码：</p>
+<p>  Unicode 给所有的字符指定了一个数字用来表示该字符，Unicode通常用两个字节表示一个字符，原有的英文编码从单字节变成双字节，只需要把高字节全部填为0就可以。</p>
+</li>
+</ol>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxMJlF.png" alt></p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxMUm9.png" alt></p>
+<ol start="4">
+<li><p>UTF-8编码：</p>
+<p>  UTF-8编码规则：如果只有一个字节则其最高二进制位为0；如果是多字节，其第一个字节从最高位开始，连续的二进制位值为1的个数决定了其编码的字节数，其余各字节均以10开头。UTF-8转换表表示如下：</p>
+<p><img src="https://s2.ax1x.com/2019/03/07/kxMtOJ.png" alt></p>
+</li>
+</ol>
+<ol start="5">
+<li><p>Base64编码</p>
+<p>  Base64是网络上最常见的用于传输8Bit字节码的编码方式之一，Base64就是一种基于64个可打印字符来表示二进制数据的方法。可查看RFC2045～RFC2049，上面有MIME的详细规范。</p>
+<p>  Base64编码是从二进制到字符的过程，可用于在HTTP环境下传递较长的标识信息。例如，在Java Persistence系统Hibernate中，就采用了Base64来将一个较长的唯一标识符（一般为128-bit的UUID）编码为一个字符串，用作HTTP表单和HTTP GET URL中的参数。在其他应用程序中，也常常需要把二进制数据编码为适合放在URL（包括隐藏表单域）中的形式。此时，采用Base64编码具有不可读性，需要解码后才能阅读。</p>
+</li>
+</ol>
+<ol start="6">
+<li><p>计算机单位：</p>
+<p> 位：bit，是电子计算机中最小的数据单位。每一位的状态只能是0或1。</p>
+<p> 字节：Byte，8个二进制位构成1个”字节(Byte，可简写为B)”，它是存储空间的基本计量单位。1个字节可以储存1个英文字母或者半个汉字，换句话说，1个汉字占据2个字节的存储空间。</p>
+<p> 字：”字”由若干个字节构成，字的位数叫做字长，不同档次的机器有不同的字长。例如一台8位机，它的1个字就等于1个字节，字长为8位。如果是一台16位机，那么，它的1个字就由2个字节构成，字长为16位。字是计算机进行数据处理和运算的单位。</p>
+<p> KB：在一般的计量单位中，通常K表示1000。只是这时K表示1024，也就是2的10次 方。1KB表示1K个Byte，也就是1024个字节。1KB=1024B</p>
+<p> 1KB=1024B=210B<br> 1MB=1024KB=1024<em>1024B=220B<br> 1GB=1024MB=1024</em>2014KB=1024<em>1024</em>1024B=230B<br> 1TB=1024GB=240B</p>
+</li>
+</ol>
+<hr>
+<pre><code>` 时刻提醒自己的，基础是基石 `</code></pre>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/lilifengcode">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Coding-List"><span class="toc-number">1.</span> <span class="toc-text">Coding List</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#不可逆编码方式"><span class="toc-number">1.1.</span> <span class="toc-text">不可逆编码方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可逆编码方式"><span class="toc-number">1.2.</span> <span class="toc-text">可逆编码方式</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://lilifengcode.github.io/post/ed55a3.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://lilifengcode.github.io/post/ed55a3.html&text=Coding List"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://lilifengcode.github.io/post/ed55a3.html&title=Coding List"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://lilifengcode.github.io/post/ed55a3.html&is_video=false&description=Coding List"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Coding List&body=Check out this article: http://lilifengcode.github.io/post/ed55a3.html"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://lilifengcode.github.io/post/ed55a3.html&title=Coding List"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://lilifengcode.github.io/post/ed55a3.html&title=Coding List"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://lilifengcode.github.io/post/ed55a3.html&title=Coding List"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://lilifengcode.github.io/post/ed55a3.html&title=Coding List"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://lilifengcode.github.io/post/ed55a3.html&name=Coding List&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 裁决
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/lilifengcode">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
