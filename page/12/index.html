@@ -1,221 +1,329 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang=zh>
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
-  
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="裁决的博客">
+<meta property="og:url" content="http://lilifengcode.github.io/page/12/index.html">
+<meta property="og:site_name" content="裁决的博客">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="裁决的博客">
     
-    裁决的博客</title>
-  
-    <link rel="shortcut icon" href="/favicon.ico">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-  
-  <script src="/js/pace.min.js"></script>
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>裁决的博客</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
 </head>
-</html>
-<body>
-<main class="content">
-  <section class="jumbotron">
-  <div class="video">
-    
-    <div class="video-media">
-      <video playsinline="" autoplay="" loop="" muted="" data-autoplay=""
-             poster="/images/ocean/ocean.png" x5-video-player-type="h5">
-        <source src="/images/ocean/ocean.mp4" type="video/mp4">
-        <source src="/images/ocean/ocean.ogv" type="video/ogg">
-        <source src="/images/ocean/ocean.webm" type="video/webm">
-        <p>Your user agent does not support the HTML5 Video element.</p>
-      </video>
-      <div class="video-overlay"></div>
-    </div>
-    <div class="video-inner text-center text-white">
-      <h1><a href="/">裁决的博客</a></h1>
-      <p>安全圈小帅哥</p>
-      <div><img src="/images/hexo-inverted.svg" class="brand" alt="裁决的博客"></div>
-    </div>
-    <div class="video-learn-more">
-      <a class="anchor" href="#landingpage"><i class="fe fe-mouse"></i></a>
-    </div>
-  </div>
-</section>
 
-<div id="landingpage">
-  <section class="outer">
-  <article class="articles">
+<body class="max-width mx-auto px3 ltr">
     
-    <h1 class="page-type-title"></h1>
-
-    
-      
-        <article id="post-Python" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-      <header class="article-header">
+    <div class="content index py4">
         
+          <header id="header">
+  <a href="/">
   
-    <h2 itemprop="name">
-      <a class="article-title" href="/2019/04/12/Python/">Python Skill</a>
-    </h2>
+    
+      <div id="logo" style="background-image: url(/images/logo.png);"></div>
+    
   
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/04/12/Python/" class="article-date">
-  <time datetime="2019-04-12T14:53:04.000Z" itemprop="datePublished">2019-04-12</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <hr>
-<h2 id="使用队列-多线程方法"><a href="#使用队列-多线程方法" class="headerlink" title="使用队列 多线程方法"></a>使用队列 多线程方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">sys.path.append(&quot;..&quot;)</span><br><span class="line"></span><br><span class="line">import threading,socket,queue</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line">lock = threading.Lock() # 线程锁</span><br><span class="line"></span><br><span class="line"># 扫描端口队列</span><br><span class="line">def GetQueue(host):</span><br><span class="line">    PortQueue = queue.Queue()</span><br><span class="line">    for port in range(1,65535):</span><br><span class="line">        PortQueue.put((host,port))</span><br><span class="line">    return PortQueue</span><br><span class="line"></span><br><span class="line">class ScanThread(threading.Thread):</span><br><span class="line">    def __init__(self,SingleQueue,outip):</span><br><span class="line">        threading.Thread.__init__(self)</span><br><span class="line">        self.daemon = True</span><br><span class="line">        # self.setDaemon(True)</span><br><span class="line">        self.SingleQueue = SingleQueue</span><br><span class="line">        self.outip = outip</span><br><span class="line">    def ping(self,scanIP,port):</span><br><span class="line">        global OpenPort,Lock</span><br><span class="line">        sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">        sock.settimeout(1)</span><br><span class="line">        address = (scanIP,port)</span><br><span class="line">        try:</span><br><span class="line">            sock.connect(address)</span><br><span class="line">        except:</span><br><span class="line">            sock.close()</span><br><span class="line">            return False</span><br><span class="line">        sock.close()</span><br><span class="line">        print(scanIP, port)</span><br><span class="line">        if lock.acquire():</span><br><span class="line">            lock.release()</span><br><span class="line">        return True</span><br><span class="line">    def run(self):</span><br><span class="line">        while not self.SingleQueue.empty():</span><br><span class="line">            # print(self.SingleQueue.get())</span><br><span class="line">            host,port = self.SingleQueue.get()</span><br><span class="line">            self.ping(host,port)</span><br><span class="line"></span><br><span class="line">class Work():</span><br><span class="line">    def __init__(self,scan_id = &apos;&apos;,scan_target=&apos;&apos;,scan_type = &apos;&apos;,scan_args=&apos;&apos;,back_fn=None):</span><br><span class="line">        self.scan_id = scan_id</span><br><span class="line">        self.target = scan_target</span><br><span class="line">        self.scan_type = scan_type</span><br><span class="line">        self.args = scan_args</span><br><span class="line">        self.back_fn = back_fn</span><br><span class="line">        self.result= []</span><br><span class="line">    def run(self):</span><br><span class="line">        ThreadList = []</span><br><span class="line">        SingLeQueue = GetQueue(self.target)</span><br><span class="line">        resultQueue = queue.Queue()</span><br><span class="line">        for i in range(0,200):</span><br><span class="line">            t = ScanThread(SingLeQueue,resultQueue)</span><br><span class="line">            ThreadList.append(t)</span><br><span class="line">        for t in ThreadList:</span><br><span class="line">            t.start()</span><br><span class="line">        for t in ThreadList:</span><br><span class="line">            t.join()</span><br><span class="line">start_time = time.time()</span><br><span class="line">t = Work(scan_target = &quot;111.7.163.233&quot;)</span><br><span class="line">t.run()</span><br><span class="line">print(&apos;%d second&apos; % (time.time() - start_time))</span><br></pre></td></tr></table></figure>
-
-<p>执行完成63S</p>
-<h2 id="使用协程的方式"><a href="#使用协程的方式" class="headerlink" title="使用协程的方式"></a>使用协程的方式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import gevent</span><br><span class="line">from gevent import monkey</span><br><span class="line">from gevent.pool import Pool</span><br><span class="line">monkey.patch_all()</span><br><span class="line">import socket,time</span><br><span class="line"></span><br><span class="line">class work():</span><br><span class="line">    def __init__(self,scan_target = &quot;&quot;):</span><br><span class="line">        self.pool = Pool(200)</span><br><span class="line">        self.timeout=0.1</span><br><span class="line">        self.target = scan_target</span><br><span class="line">    def port_scan(self,port):</span><br><span class="line">        sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">        sock.settimeout(self.timeout)</span><br><span class="line">        try:</span><br><span class="line">            sock.connect((self.target,port))</span><br><span class="line">            print(self.target,&quot;:&quot;,port)</span><br><span class="line">        except:</span><br><span class="line">            sock.close()</span><br><span class="line">    def run(self):</span><br><span class="line">        res = []</span><br><span class="line">        for port in range(1,65535):</span><br><span class="line">            res.append(port)</span><br><span class="line">        self.pool.map(self.port_scan,res)</span><br><span class="line"></span><br><span class="line">start_time = time.time()</span><br><span class="line">t = work(&apos;127.0.0.1&apos;)</span><br><span class="line">t.run()</span><br><span class="line">print(&apos;%d second&apos; % (time.time() - start_time))</span><br></pre></td></tr></table></figure>
-
-<p>扫描完成需155S</p>
-<h2 id="Python-简单的爬取网站状态码"><a href="#Python-简单的爬取网站状态码" class="headerlink" title="Python 简单的爬取网站状态码"></a>Python 简单的爬取网站状态码</h2><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import re</span><br><span class="line">import time</span><br><span class="line">import threadpool</span><br><span class="line">import traceback</span><br><span class="line">code_200 = []</span><br><span class="line">code_not200 = []</span><br><span class="line">_REGEX_ = &apos;&lt;title&gt;(.*)&lt;/title&gt;&apos;</span><br><span class="line">def getTitle(url):</span><br><span class="line">    try:</span><br><span class="line">        response = requests.get(url)</span><br><span class="line">        pattern = re.compile(_REGEX_, flags=re.IGNORECASE)</span><br><span class="line">        try:</span><br><span class="line">            title = re.findall(pattern, response.text)[0]</span><br><span class="line">        except IndexError:</span><br><span class="line">            title = &apos;无标题&apos;</span><br><span class="line">        if response.status_code == 200:</span><br><span class="line">            code_200.append(&#123;&apos;url&apos;:url,&apos;title&apos;:title,&quot;status_code&quot;:response.status_code&#125;)</span><br><span class="line">            print(&#123;&apos;url&apos;:url,&apos;title&apos;:title,&quot;status_code&quot;:response.status_code&#125;)</span><br><span class="line">            return</span><br><span class="line">        else:</span><br><span class="line">            code_not200.append(&#123;&apos;url&apos;:url,&apos;title&apos;:title,&quot;status_code&quot;:response.status_code&#125;)</span><br><span class="line">            print(&#123;&apos;url&apos;: url, &apos;title&apos;: title, &quot;status_code&quot;: response.status_code&#125;)</span><br><span class="line">            return</span><br><span class="line">    except Exception as e:</span><br><span class="line">        traceback.print_exc()</span><br><span class="line">        return 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    domain = []</span><br><span class="line">    with open(&apos;test5.txt&apos;,&apos;r&apos;) as f:</span><br><span class="line">        for i in f.readlines():</span><br><span class="line">            domain.append(i.strip())</span><br><span class="line">        f.close()</span><br><span class="line">    print(domain)</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    pool = threadpool.ThreadPool(100)</span><br><span class="line">    requests_1 = threadpool.makeRequests(getTitle, domain)</span><br><span class="line">    [pool.putRequest(req) for req in requests_1]</span><br><span class="line">    pool.wait()</span><br><span class="line">    with open(&apos;test6.txt&apos;,&apos;w+&apos;,encoding=&apos;UTF-8&apos;) as f:</span><br><span class="line">        for i in code_200:</span><br><span class="line">            f.write(str(i) + &apos;\n&apos;)</span><br><span class="line">        for i in code_not200:</span><br><span class="line">            f.write(str(i) + &apos;\n&apos;)</span><br><span class="line">    print(&apos;%d second&apos; % (time.time() - start_time))</span><br></pre></td></tr></table></figure>
-
-
-      
+    <div id="title">
+      <h1>裁决的博客</h1>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://lilifengcode.github.io/2019/04/12/Python/" data-id="cjxfoqsqc0005tct7jtpxrn2c"
-         class="article-share-link">分享</a>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#"><i class="fas fa-bars fa-2x"></i></a>
+      </li>
+       
+        <li><a href="/">首页</a></li>
+       
+        <li><a href="/about/">关于</a></li>
+       
+        <li><a href="/archives/">归档</a></li>
+       
+        <li><a href="https://github.com/lilifengcode">项目</a></li>
       
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-  </article>
-  
-  
-    <nav class="page-nav">
-      
-      <a class="extend prev" rel="prev" href="/page/11/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/13/">下一页</a>
-    </nav>
-  
-</section>
-</div>
-
-  <footer class="footer">
-  
-  <div class="outer">
-    <div class="float-right">
-      <ul class="list-inline">
-  
-    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
-  
-</ul>
-    </div>
-    <ul class="list-inline">
-      <li>&copy; 2019 裁决的博客</li>
-      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
-      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
     </ul>
+  </div>
+</header>
+
+        
+        <section id="about">
+  
+  
+    <p>
+      How to Find Me ：
+      
+      
+      
+        
+          <a class="icon" target="_blank" href="https://github.com/lilifengcode">
+            <i class="fab fa-github"></i><!--
+      ---></a><!--
+    ---><!--
+    --->  
+        
+      
+        
+          <a class="icon" target="_blank" href="/">
+            <i class="fab fa-twitter"></i><!--
+      ---></a><!--
+    ---><!--
+    --->  
+        
+      
+        
+          <a class="icon" target="_blank" href="/">
+            <i class="fab fa-facebook"></i><!--
+      ---></a><!--
+    ---><!--
+    --->  
+        
+      
+        
+          <a class="icon" target="_blank" href="/">
+            <i class="fab fa-linkedin"></i><!--
+      ---></a><!--
+    ---><!--
+    --->   
+        
+      
+        
+          <a class="icon" target="_blank" href="/">
+            <i class="fas fa-envelope"></i><!--
+      ---></a><!--
+      ---><!--
+    --->.
+        
+      
+    </p>
+  
+</section>
+
+<section id="writing">
+  <span class="h1"><a href="/archives">文章</a></span>
+  
+  <ul class="post-list">
+    
+    
+      
+    
+    
+      <li class="post-item">
+        
+    <div class="meta">
+      
+        
+          <time datetime="2019-06-27T14:20:04.000Z" itemprop="datePublished">2019-06-27</time>
+        
+      
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2019/06/27/github搭建伯克/">Github Vmware搭建个人博客</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+      
+        
+          <time datetime="2019-04-28T15:20:25.000Z" itemprop="datePublished">2019-04-28</time>
+        
+      
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2019/04/28/Weblogic反序列化RCE复现(CVE-2019-2725)/">Weblogic反序列化RCE复现(CVE-2019-2725)</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+      
+        
+          <time datetime="2019-04-18T13:10:13.000Z" itemprop="datePublished">2019-04-18</time>
+        
+      
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2019/04/18/CVE-2019-2618/">CVE-2019-2618</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+      
+        
+          <time datetime="2019-04-17T15:50:34.000Z" itemprop="datePublished">2019-04-17</time>
+        
+      
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2019/04/17/Talking About CISP PTE/">Talking About CISP PTE</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+      
+        
+          <time datetime="2019-04-17T15:49:42.000Z" itemprop="datePublished">2019-04-17</time>
+        
+      
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2019/04/17/w3af/">W3af Scanner</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+      
+        
+          <time datetime="2019-04-17T13:55:00.000Z" itemprop="datePublished">2019-04-17</time>
+        
+      
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2019/04/17/web安全漏洞-任意文件下载漏洞/">web安全漏洞-任意文件下载漏洞</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+      
+        
+          <time datetime="2019-04-17T13:54:28.000Z" itemprop="datePublished">2019-04-17</time>
+        
+      
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2019/04/17/KALI 渗透测试工具[2]/">About Kali linux Penetration Test</a>
+    
+
+
+</span>
+      </li>
+    
+  </ul>
+  
+</section>
+
+
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 裁决
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/lilifengcode">项目</a></li>
+        
+      </ul>
+    </nav>
   </div>
 </footer>
 
-</main>
-<aside class="sidebar">
-  <button class="navbar-toggle"></button>
-
-<nav class="navbar">
-  
-    <div class="logo">
-      <a href="/"><img src="/images/hexo.svg" alt="裁决的博客"></a>
     </div>
-  
-  <ul class="nav nav-main">
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/">主页</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/archives">归档</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/gallery/caijuedebug.jpg">相册</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/about">关于</a>
-      </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link nav-item-search" title="搜索">
-        <i class="fe fe-search"></i>
-        搜索
-      </a>
-    </li>
-  </ul>
-</nav>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
 
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-      <li class="nav-item">
-          <div class="totop" id="totop">
-    <i class="fe fe-rocket"></i>
-</div>
-      </li>
-    <li class="nav-item">
-      
-        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-          <i class="fe fe-feed"></i>
-        </a>
-      
-    </li>
-  </ul>
-</nav>
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
 
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-</aside>
-<script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
+<!-- Google Analytics -->
 
+<!-- Baidu Analytics -->
 
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
+<!-- Disqus Comments -->
 
-
-
-  <script src="/js/search.js"></script>
-
-
-<script src="/js/ocean.js"></script>
 
 </body>
 </html>
