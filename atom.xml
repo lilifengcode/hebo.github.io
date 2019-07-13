@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lilifengcode.github.io/"/>
-  <updated>2019-06-28T08:25:01.143Z</updated>
+  <updated>2019-06-30T15:19:31.730Z</updated>
   <id>http://lilifengcode.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HW社会工程学攻击---钓鱼</title>
+    <link href="http://lilifengcode.github.io/post/6f20dcf1.html"/>
+    <id>http://lilifengcode.github.io/post/6f20dcf1.html</id>
+    <published>2019-06-28T10:58:36.000Z</published>
+    <updated>2019-06-30T15:19:31.730Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://s2.ax1x.com/2019/06/28/ZMdqxS.jpg" alt="ZMdqxS.jpg"></p><h2 id="钓鱼方式"><a href="#钓鱼方式" class="headerlink" title="钓鱼方式"></a>钓鱼方式</h2><ol><li>钓鱼邮件</li></ol><p>钓鱼邮件指利用伪装的电邮，欺骗收件人将账号、口令等信息回复给指定的接收者；或引导收件人连接到特制的网页，这些网页通常会伪装成和真实网站一样，如银行或理财的网页，令登录者信以为真，输入信用卡或银行卡号码、账户名称及密码等而被盗取。</p><ol start="2"><li>钓鱼wifi</li></ol><p>仿造一个假的wifi,欺骗用户登陆，之后窃取用户信息</p><ol start="3"><li>钓鱼二维码</li></ol><p>网站地址（URL）被编成QR二维码，有些网站将网站登录的URL存储在QR码上。攻击者用伪造的QR码替换合法的QR码，篡改登录网站的URL信息，将用户导向一个假冒的登录页面。在这种情况下，用户扫描QR码后，访问了伪造的登陆页面，将个人信息泄露给了攻击者。</p><p>注:共享单车二位码…</p><ol start="4"><li>伪基站</li></ol><p>又称假基站、假基地台，是一种利用GSM单向认证缺陷的非法无线电通信设备，主要由主机和笔记本电脑组成，能够搜取以其为中心、一定半径范围内的GSM移动电话信息，并任意冒用他人手机号码强行向用户手机发送诈骗、推销等垃圾短信，通常安放在汽车或者一个比较隐蔽的地方发送。</p><p>伪基站+短信+网页……</p><ol start="5"><li>标签钓鱼</li></ol><p>标签钓鱼(tabnabbing)是一种新的网络钓鱼攻击手法，该攻击手法是由Mozilla Firefox浏览器的界面及创意负责人Aza Raskin发现和命名的，tabnabbing可改变用户浏览网页的标签及接口，以诱导用户输入网络服务的账号与密码。 因此，Raskin将此手法称为标签绑架（tabnapping），他指出当使用者连上一个嵌有第三方script程序或Flash工具的网页时，就会让自己曝露于风险中，因为相关的恶意软件得以侦测使用者经常使用或正在使用的网络服务，在用户暂时离开该网页后，该网页内容及网页标签会悄悄地变身成为伪造的网络服务，并诱导用户输入个人信息</p><ol start="6"><li>鱼叉式网络钓鱼</li></ol><p>指一种源于亚洲与东欧只针对<strong>特定目标</strong>进行攻击的网络钓鱼攻击。</p><p><em>注：</em></p><p><em>水坑攻击</em></p><p><em>水坑攻击”，黑客攻击方式之一，顾名思义，是在受害者必经之路设置了一个“水坑(陷阱)”。最常见的做法是，黑客分析攻击目标的上网活动规律，寻找攻击目标经常访问的网站的弱点，先将此网站“攻破”并植入攻击代码，一旦攻击目标访问该网站就会“中招”。</em></p><p><em>水坑攻击属于APT攻击的一种，与钓鱼攻击相比，黑客无需耗费精力制作钓鱼网站，而是利用合法网站的弱点，隐蔽性比较强。在人们安全意识不断加强的今天，黑客处心积虑地制作钓鱼网站却被有心人轻易识破，而水坑攻击则利用了被攻击者对网站的信任。水坑攻击利用网站的弱点在其中植入攻击代码，攻击代码利用浏览器的缺陷，被攻击者访问网站时终端会被植入恶意程序或者直接被盗取个人重要信息。</em></p><p><em>水坑攻击相对于通过社会工程方式引诱目标用户访问恶意网站更具欺骗性，效率也更高。水坑方法主要被用于有针对性的攻击，而Adobe Reader、Java运行时环境（JRE）、Flash和IE中的零漏洞被用于安装恶意软件。</em></p><ol start="7"><li>U盘钓鱼</li></ol><p>简单来说就是在U盘里面植入木马或者病毒，进行钓鱼</p><p>注：U盘嘛，你可以撇目标单位门口，或者社工个人信息，邮寄给他</p><h2 id="演示环境"><a href="#演示环境" class="headerlink" title="演示环境"></a>演示环境</h2><ul><li><p>服务器：centos 7 </p></li><li><p>服务器：windows 7  </p></li><li><p>服务器：windows 2008 r2</p></li><li><p>攻击机：kali linux  </p></li><li><p>靶机：windows 7  </p></li></ul><h2 id="制作钓鱼邮件内容-Cobalt-strike"><a href="#制作钓鱼邮件内容-Cobalt-strike" class="headerlink" title="制作钓鱼邮件内容-Cobalt strike"></a>制作钓鱼邮件内容-Cobalt strike</h2><p>进入cobalt strike目录</p><p><img src="https://s2.ax1x.com/2019/06/27/ZnN2WQ.png" alt="ZnN2WQ.png"></p><p>启动teamserver</p><p>执行命令<code>sudo ./teamserver 192.168.32.138 mitian</code></p><p><img src="https://s2.ax1x.com/2019/06/27/ZnhFyt.png" alt="ZnhFyt.png"></p><p>新建终端，进入目录，启动客户端</p><p>执行<code>./cobalstrike</code></p><p><img src="https://s2.ax1x.com/2019/06/27/ZnoaE6.png" alt="ZnoaE6.png"></p><p><img src="https://s2.ax1x.com/2019/06/27/Znogbt.png" alt="Znogbt.png"></p><p>新建一个监听器</p><p><img src="https://s2.ax1x.com/2019/06/27/ZnTqQH.png" alt="ZnTqQH.png"></p><p>点击底部add添加</p><p><img src="https://s2.ax1x.com/2019/06/27/Zn7hcQ.png" alt="Zn7hcQ.png"></p><p><img src="https://s2.ax1x.com/2019/06/27/Zn7oBn.png" alt="Zn7oBn.png"></p><p>点击attacks-packages-ms office macro创建word宏病毒</p><p><img src="https://s2.ax1x.com/2019/06/27/ZnH6KJ.png" alt="ZnH6KJ.png"></p><p><img src="https://s2.ax1x.com/2019/06/27/Znb9MQ.png" alt="Znb9MQ.png"></p><p><img src="https://s2.ax1x.com/2019/06/27/ZnbViV.png" alt="ZnbViV.png"></p><p>创建word文档，添加病毒</p><p><img src="https://s2.ax1x.com/2019/06/27/ZnqntP.png" alt="ZnqntP.png"></p><p><img src="https://s2.ax1x.com/2019/06/27/ZnqUhV.png" alt="ZnqUhV.png"></p><p>正文随便加点东西【当然我这是测试，加什么都行】</p><p><img src="https://s2.ax1x.com/2019/06/27/Znqgtx.png" alt="Znqgtx.png"></p><h2 id="钓鱼网站的制作"><a href="#钓鱼网站的制作" class="headerlink" title="钓鱼网站的制作"></a>钓鱼网站的制作</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>上面是利用cobalstrike制作一个word文档的病毒，当然你也可以使用它clone一个网站</p><p>点击attacks—web drive-by — clone site,添加你要克隆的网站，我选的补天登陆页面</p><p><img src="https://s2.ax1x.com/2019/06/27/ZnXnt1.png" alt="ZnXnt1.png"></p><p><img src="https://s2.ax1x.com/2019/06/27/ZnXQ1K.png" alt="ZnXQ1K.png"></p><p>访问192.168.32.142:80</p><p><img src="https://s2.ax1x.com/2019/06/27/ZnXy7j.png" alt="ZnXy7j.png"></p><p>当然最好是自己搭建一个钓鱼网站，上面是演示</p><h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>打开kali linux 的Social-Engineer Toolkit</p><p><img src="https://s2.ax1x.com/2019/06/27/ZnjcrD.png" alt="ZnjcrD.png"></p><p>【或者终端输入setoolkit启动】</p><p><img src="https://s2.ax1x.com/2019/06/27/Znjvin.png" alt="Znjvin.png"></p><p>选择1 社会工程学攻击，出现下图</p><p><img src="https://s2.ax1x.com/2019/06/27/ZnvgS0.png" alt="ZnvgS0.png"></p><p>选择2 网站攻击，出现下图</p><p><img src="https://s2.ax1x.com/2019/06/27/ZnvL6K.png" alt="ZnvL6K.png"></p><p>选择3 钓鱼网站攻击，出现下图</p><p><img src="https://s2.ax1x.com/2019/06/27/ZnxF6f.png" alt="ZnxF6f.png"></p><p>选择2 网站克隆，出现下图</p><p>并输入ip，这里已经给出了</p><p><a href="https://imgchr.com/i/ZnxMpq" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/06/27/ZnxMpq.png" alt="ZnxMpq.png"></a></p><p>输入要克隆的网站</p><p><img src="https://s2.ax1x.com/2019/06/27/Znzr2q.png" alt="Znzr2q.png"></p><p>到这的时候输入一个Y</p><p><img src="https://s2.ax1x.com/2019/06/27/ZuSMLT.png" alt="ZuSMLT.png"></p><p>访问网站</p><p><img src="https://s2.ax1x.com/2019/06/27/ZupUhj.png" alt="ZupUhj.png"></p><p>假装受害者登陆，输入用户和密码</p><p><img src="https://s2.ax1x.com/2019/06/27/Zup0cq.png" alt="Zup0cq.png"></p><p>kali 终端显示信息</p><p><img src="https://s2.ax1x.com/2019/06/27/ZuEPOA.png" alt="ZuEPOA.png"></p><p><strong>注：Social-Engineer Toolkit有很多玩法，比如鱼叉，钓鱼二维码，wifi等，使用方法大同小异，自行研究</strong></p><h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><p>自己搭建一个，比如QQ空间</p><p>找个QQ空间的源码，放到服务器上</p><p><img src="https://s2.ax1x.com/2019/06/27/ZuZeMQ.png" alt="ZuZeMQ.png"></p><p>访问，输入用户mitian,密码mitian</p><p><img src="https://s2.ax1x.com/2019/06/27/ZuZnqs.png" alt="ZuZnqs.png"></p><p>访问后台</p><p><img src="https://s2.ax1x.com/2019/06/27/ZumXGV.png" alt="ZumXGV.png"></p><h2 id="U盘钓鱼"><a href="#U盘钓鱼" class="headerlink" title="U盘钓鱼"></a>U盘钓鱼</h2><h3 id="Unicode-RTLO"><a href="#Unicode-RTLO" class="headerlink" title="Unicode RTLO"></a>Unicode RTLO</h3><p>RIGHT TO LEVER OVERRIDE是一种Unicode，主要用于书写和阅读阿拉伯语或希伯来语文本。Unicode有一个特殊字符U + 202e，它告诉计算机以从右到左的顺序显示它后面的文本。此漏洞用于伪装文件名称。例如，caijueexe.doc的文件名实际上是caijuedoc.exe的可执行文件</p><ol><li>准备一个bat文件</li></ol><p><img src="https://s2.ax1x.com/2019/06/30/Z1b2Tg.png" alt="Z1b2Tg.png"></p><ol start="2"><li>鼠标右键—重命名—插入Unicode字符—选择RLO–输入“txt.bat”<br><img src="https://s2.ax1x.com/2019/06/30/Z1qtcq.png" alt="Z1qtcq.png"></li><li>显示如下，看到的是一个以txt结尾的文件，但实际上却是从右开始读的bat文件，在属性里面可以看到<br><img src="https://s2.ax1x.com/2019/06/30/Z1qbvt.png" alt="Z1qbvt.png"><br><img src="https://s2.ax1x.com/2019/06/30/Z1LpCj.png" alt="Z1LpCj.png"></li></ol><p>4.假如目标以为这是一个txt文本，双击执行一下</p><p><img src="https://s2.ax1x.com/2019/06/30/Z1L5LV.png" alt="Z1L5LV.png"></p><h2 id="邮件伪造发送之SWAKS"><a href="#邮件伪造发送之SWAKS" class="headerlink" title="邮件伪造发送之SWAKS"></a>邮件伪造发送之SWAKS</h2><ol><li>测试是否可以和目标邮箱发送数据</li></ol><p>执行命令：<code>swaks –to [136*****@qq.com]</code></p><p><img src="https://s2.ax1x.com/2019/06/30/Z3uTvn.gif" alt="Z3uTvn.gif"></p><ol start="2"><li>swaks参数说明</li></ol><p>执行命令：<code>swaks –help</code> 可以看到n多参数和实例</p><p><img src="https://s2.ax1x.com/2019/06/27/ZuKGDg.png" alt="ZuKGDg.png"></p><p>–to 目标邮箱</p><p>–from 邮件发送者</p><p>–attach 添加附件</p><p>–header-From 邮件头 </p><p>–header “Subject:主题” 邮件主题</p><ol start="3"><li>发送钓鱼邮件</li></ol><p>执行</p><p><code>swaks --to 136****46@qq.com --from l***ng@qianxin.com --h-From: &#39;&quot;总裁办&quot;&lt;admin@qianxin.com&gt;&#39; --header &quot;Subject: 关于集团报告渗透测试word模板更新的通告&quot; --body &quot;各位一线工程师，集团对外word统一格式，请下载附件使用，谢谢合作！&quot; --attach-name 渗透报告模版.doc --attach-type application/msword --attach /tmp/渗透报告模版.doc</code></p><p><strong>注： attach-type是传输文件的MIME类型</strong></p><pre><code>**attach-name是名字** </code></pre><p><strong>理论上不加这两个也可以的，不过我这里面不加有点小问题</strong></p><p><img src="https://s2.ax1x.com/2019/06/27/ZuQg91.png" alt="ZuQg91.png"></p><p><img src="https://s2.ax1x.com/2019/06/27/ZulEuT.png" alt="ZulEuT.png"></p><p>伪造发送成功</p><ol start="4"><li>cobalstrike主机上线啦！</li></ol><p>假装受害者打开word</p><p>滴！肉鸡上线</p><p><img src="https://s2.ax1x.com/2019/06/27/Zu1pqO.png" alt="Zu1pqO.png"></p><p><img src="https://s2.ax1x.com/2019/06/27/Zu1NLT.png" alt="Zu1NLT.png"></p><h2 id="邮件伪造发送之EMKEI’SMAILER"><a href="#邮件伪造发送之EMKEI’SMAILER" class="headerlink" title="邮件伪造发送之EMKEI’SMAILER"></a>邮件伪造发送之EMKEI’SMAILER</h2><p>在线的邮件伪造发送工具</p><p>网址：<a href="https://emkei.cz/" target="_blank" rel="noopener">https://emkei.cz/</a></p><p><img src="https://s2.ax1x.com/2019/06/27/Zu3lnK.png" alt="Zu3lnK.png"></p><p><img src="https://s2.ax1x.com/2019/06/27/Zu3DHS.png" alt="Zu3DHS.png"></p><p>简单试了试139邮箱，噢哟可以哦！</p><p><img src="https://s2.ax1x.com/2019/06/27/Zu3Rcq.png" alt="Zu3Rcq.png"></p><p>附赠一个：邮箱匿名注册的网站</p><p>网址：<a href="http://www.yopmail.com" target="_blank" rel="noopener">http://www.yopmail.com</a></p><p><strong>注：邮件发送，还可以自己搭建SMTP服务，之后使用诸如SimpleEmailSpoofer等伪造域名发送。</strong></p><h2 id="伪造钓鱼邮件注意事项"><a href="#伪造钓鱼邮件注意事项" class="headerlink" title="伪造钓鱼邮件注意事项"></a>伪造钓鱼邮件注意事项</h2><ol><li>钓鱼嘛，鱼饵肯定要诱人才会有鱼上钩,比如：美女图片、中奖</li><li>尽量仿造的像真的一样，注意：签名、模版、图标、落款等细节</li><li>网站，链接等钓鱼，最好用相似度较高的域名</li><li>附件肯定要过杀软！！！【百度一下肯定有】</li></ol><h2 id="钓鱼邮件防范"><a href="#钓鱼邮件防范" class="headerlink" title="钓鱼邮件防范"></a>钓鱼邮件防范</h2><ol><li>不要轻易相信邮件里的附件，比如word里的宏</li><li>注册链接，中奖链接不要轻易相信</li><li>注意邮件行文风格、落款、签名等地方</li><li>服务器响应快慢，一般钓鱼的服务器配置都不是很高</li><li>如果突然有封邮件言辞激励，请不要回复，因为它可能在社工你的邮件签名等信息</li></ol><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总结个锤子…</p><p><img src="https://s2.ax1x.com/2019/06/27/ZuJZtg.png" alt="ZuJZtg.png"></p><p><strong>本人作者裁决， 转载请注明出处</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;https://s2.ax1x.com/2019/06/28/ZMdqxS.jpg&quot; alt=&quot;ZMdqxS.jpg&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;钓鱼方式&quot;&gt;&lt;a href=&quot;#钓鱼方式&quot; class=&quot;headerlink&quot; title=&quot;钓鱼方式&quot;&gt;
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Github Vmware搭建个人博客</title>
@@ -126,6 +148,28 @@
   </entry>
   
   <entry>
+    <title>4K 8K HD Photo Resources Website</title>
+    <link href="http://lilifengcode.github.io/post/4a999914.html"/>
+    <id>http://lilifengcode.github.io/post/4a999914.html</id>
+    <published>2019-04-17T15:49:25.000Z</published>
+    <updated>2019-06-29T13:44:49.532Z</updated>
+    
+    <content type="html"><![CDATA[<p> <img src="https://s2.ax1x.com/2019/06/29/ZlQSXt.jpg" alt="ZlQSXt.jpg"></p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>没啥说的…</p><p>搞点8K图片，放在自己得博客上或者当壁纸</p><h2 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h2><ul><li><a href="https://wall.alphacoders.com/" target="_blank" rel="noopener">https://wall.alphacoders.com/</a></li></ul><p><img src="https://s2.ax1x.com/2019/06/28/ZM7AVs.png" alt="ZM7AVs.png"></p><ul><li><a href="https://uhdpixel.com/" target="_blank" rel="noopener">https://uhdpixel.com/</a></li></ul><p><img src="https://s2.ax1x.com/2019/06/28/ZM7n2T.png" alt="ZM7n2T.png"></p><ul><li><a href="http://pic.netbian.com/" target="_blank" rel="noopener">http://pic.netbian.com/</a></li></ul><p><img src="https://s2.ax1x.com/2019/06/28/ZM7dMD.png" alt="ZM7dMD.png"></p><ul><li><a href="https://pixabay.com" target="_blank" rel="noopener">https://pixabay.com</a></li></ul><p><img src="https://s2.ax1x.com/2019/06/28/ZMH9F1.png" alt="ZMH9F1.png"></p><ul><li><a href="http://www.bizhiku.net/" target="_blank" rel="noopener">http://www.bizhiku.net/</a></li></ul><p><img src="https://s2.ax1x.com/2019/06/28/ZMHkQO.png" alt="ZMHkQO.png"></p><p> 注：除了彼岸是会员制，其他都可以直接下载的</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; &lt;img src=&quot;https://s2.ax1x.com/2019/06/29/ZlQSXt.jpg&quot; alt=&quot;ZlQSXt.jpg&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>web安全漏洞-任意文件下载漏洞</title>
     <link href="http://lilifengcode.github.io/post/f300c807.html"/>
     <id>http://lilifengcode.github.io/post/f300c807.html</id>
@@ -192,11 +236,11 @@
   </entry>
   
   <entry>
-    <title>tomcat渗透测试</title>
+    <title>Tomcat 渗透测试</title>
     <link href="http://lilifengcode.github.io/post/ee65faca.html"/>
     <id>http://lilifengcode.github.io/post/ee65faca.html</id>
     <published>2019-04-15T15:04:08.000Z</published>
-    <updated>2019-06-28T08:25:01.159Z</updated>
+    <updated>2019-06-28T11:08:37.086Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://s2.ax1x.com/2019/04/15/AvkwMF.md.jpg" alt></p><h2 id="Tomcat-burpsuite爆破"><a href="#Tomcat-burpsuite爆破" class="headerlink" title="Tomcat burpsuite爆破"></a>Tomcat burpsuite爆破</h2><ol><li><p>在渗透测试中，我们经常遇到tomcat后台被默认部署在外部的情况，<br><a href="http://192.168.6.16:8080/" target="_blank" rel="noopener">http://192.168.6.16:8080/</a>   【本地搭建—这是废话—我怕又被官方封了】</p><p><img src="https://s2.ax1x.com/2019/04/15/AvkodA.png" alt></p></li><li><p>在这种情况下，我们都会选择去爆破来进入后台部署shell。<br>先抓取一下我们的登录包：</p><p><img src="https://s2.ax1x.com/2019/04/15/AvkqRf.png" alt></p></li><li><p>输出用户名tomcat 密码tomcat,打开burpsuite 抓包</p><p><img src="https://s2.ax1x.com/2019/04/15/AvkzZj.jpg" alt></p></li><li><p>解码看看，发现用户名是以tomcat:tomcat方式用base64加密了</p><p><img src="https://s2.ax1x.com/2019/04/15/AvAPJ0.png" alt></p></li><li><p>接下来，我们演示如何用burpsuite进行爆破</p><p>首先将数据包发送到Intruder模块，添加一个变量：</p><p><img src="https://s2.ax1x.com/2019/04/15/AvAmw9.png" alt></p></li><li><p>在设置Payload的时候要使用自定义迭代器：</p><p><img src="https://s2.ax1x.com/2019/04/15/AvA3QO.png" alt></p></li><li><p>由于登录令牌都是base64加密的，我们需要 [用户名]:[密码]这样的格式进行base64-encde才可以发送出去</p></li><li><p>设置三个迭代payload分别代表：用户名  、   :       、  密码   。<br>第一位设置用户名这类的字典</p><p><img src="https://s2.ax1x.com/2019/04/15/AvAYeH.png" alt></p></li><li><p>第二位设置  :</p></li></ol><p><img src="https://s2.ax1x.com/2019/04/15/AvA7m4.png" alt></p><ol start="10"><li><p>第三位设置密码</p><p><img src="https://s2.ax1x.com/2019/04/15/AvAH0J.png" alt></p></li><li><p>然后设置一个编码器，选择base64这个函数：</p></li></ol><p><img src="https://s2.ax1x.com/2019/04/15/AvAOt1.png" alt></p><p><img src="https://s2.ax1x.com/2019/04/15/AvAXfx.png" alt></p><p>12.接下来再将url编码去掉，因为在base64密文里=会被编码</p><p><img src="https://s2.ax1x.com/2019/04/15/AvEP7d.png" alt></p><ol start="13"><li><p>爆破【上面有个小错误，为了长记性就没修改，添加变量的时候把basic加上了】</p><p><img src="https://s2.ax1x.com/2019/04/15/AvEktI.png" alt></p></li></ol>]]></content>
     
@@ -399,48 +443,6 @@
       
       
         &lt;h1 id=&quot;kali更新源-2018-7月&quot;&gt;&lt;a href=&quot;#kali更新源-2018-7月&quot; class=&quot;headerlink&quot; title=&quot;kali更新源 2018.7月&quot;&gt;&lt;/a&gt;kali更新源 2018.7月&lt;/h1&gt;&lt;p&gt;输入leafpad /etc/apt
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Coding List</title>
-    <link href="http://lilifengcode.github.io/post/ed55a3.html"/>
-    <id>http://lilifengcode.github.io/post/ed55a3.html</id>
-    <published>2018-03-07T07:15:17.000Z</published>
-    <updated>2019-06-28T08:25:01.160Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Coding-List"><a href="#Coding-List" class="headerlink" title="Coding List"></a>Coding List</h1><h2 id="不可逆编码方式"><a href="#不可逆编码方式" class="headerlink" title="不可逆编码方式"></a>不可逆编码方式</h2><ol><li><p>MD4</p><p>  MD4是麻省理工学院教授Ronald Rivest于1990年设计的一种信息摘要算法。它是一种用来测试信息完整性的密码散列函数的实行。其摘要长度为128位，一般128位长的MD4散列被表示为32位的十六进制数字。这个算法影响了后来的算法如MD5、SHA 家族和RIPEMD等。</p><p>  MD4(123)=C58CDA49F00748A3BC0FCFA511D516CB</p></li></ol><ol start="2"><li><p>MD5</p><p>  MD5即Message-Digest Algorithm 5（信息-摘要算法5），用于确保信息传输完整一致。是计算机广泛使用的杂凑算法之一（又译摘要算法、哈希算法），MD5的作用是让大容量信息在用数字签名软件签署私人密钥前被”压缩”成一种保密的格式（就是把一个任意长度的字节串变换成一定长的十六进制数字串）。<br>  对MD5算法简要的叙述可以为：MD5以512位分组来处理输入的信息，且每一分组又被划分为16个32位子分组，经过了一系列的处理后，算法的输出由四个32位分组组成，将这四个32位分组级联后将生成一个128位散列值。<br>  MD5加密后所得到的通常是32位的编码，而在不少地方会用到16位的编码，16位加密就是从32位MD5散列中把中间16位提取出来！其实破解16位MD5散列要比破解32位MD5散列还慢，因为他多了一个步骤,就是使用32位加密后再把中间16位提取出来, 然后再进行对比，而破解32位的则不需要,加密后直接对比就可以了 。</p><p>  16位：MD5(123)=AC59075B964B0715</p><p>  32位：MD5(123)=202CB962AC59075B964B07152D234B70</p></li></ol><ol start="3"><li><p>MD6  (了解)</p><p>  MD6是一种算法。继MD5被攻破后，在Crypto2008上， Rivest提出了MD6算法，该算法的Block size为512 bytes(MD5的Block Size是512 bits), Chaining value长度为1024 bits, 算法增加了并行 机制，适合于多核CPU。</p></li><li><p>SHA1</p><p>  安全哈希算法（Secure Hash Algorithm）主要适用于数字签名标准 （Digital Signature Standard DSS）里面定义的数字签名算法（Digital Signature Algorithm DSA）。对于长度小于2^64位的消息，SHA1会产生一个160位的消息摘要。当接收到消息的时候，这个消息摘要可以用来验证数据的完整性。在传输的过程中，数据很可能会发生变化，那么这时候就会产生不同的消息摘要。 SHA1有如下特性：不可以从消息摘要中复原信息；两个不同的消息不会产生同样的消息摘要,(但会有1x10 ^ 48分之一的机率出现相同的消息摘要,一般使用时忽略)。</p><p>   SH1(123)=40bd001563085fc35165329ea1ff5c5ecbdbbeef</p></li><li><p>SHA2</p><p>   SHA-224、SHA-256、SHA-384，和SHA-512并称为SHA-2。新的散列函数并没有接受像SHA-1一样的公众密码社区做详细的检验，所以它们的密码安全性还不被大家广泛的信任。虽然至今尚未出现对SHA-2有效的攻击，它的算法跟SHA-1基本上仍然相似；因此有些人开始发展其他替代的散列算法。</p><p>   SHA224(123)= 78d8045d684abd2eece923758f3cd781489df3a48e1278982466017f</p><p>   SHA256(123)= a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3</p><p>   SHA384(123)= 9a0a82f0c0cf31470d7affede3406cc9aa8410671520b727044eda15b4c25532a9b5cd8aaf9cec4919d76255b6bfb00f</p><p>   SHA(123)= 3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2</p></li><li><p>SHA3</p><p>   由于近年来对传统常用Hash 函数如MD4、MD5、SHA0、SHA1、RIPENMD 等的成功攻击，美国国家标准技术研究所（NIST）在2005年、2006年分别举行了2届密码Hash 研讨会；同时于2007年正式宣布在全球范围内征集新的下一代密码Hash算法，举行SHA-3竞赛•新的Hash算法将被称为SHA-3，并且作为新的安全Hash标准，增强现有的FIPS 180-2标准。算法提交已于2008年10月结束，NIST 将分别于2009年和2010年举行2轮会议，通过2轮的筛选选出进入最终轮（final round）的算法，最后将在2012年公布获胜算法。公开竞赛的整个进程仿照高级加密标准AES 的征集过程。2012年10月2日，Keccak被选为NIST竞赛的胜利者， 成为SHA-3.。<br>   SHA-3，之前名为Keccak算法，是一个加密杂凑算法。SHA-3并不是要取代SHA-2，因为SHA-2目前并没有出现明显的弱点。由于对MD5出现成功的破解，以及对SHA-0和SHA-1出现理论上破解的方法，NIST感觉需要一个与之前算法不同的，可替换的加密杂凑算法，也就是现在的SHA-3。</p></li><li><p>RIPEMD-160哈希加密算法</p><p>   RIPEMD-160 是一个 160 位加密哈希函数。它旨在用于替代 128 位哈希函数 MD4、MD5 和 RIPEMD。RIPEMD 是在 EU 项目 RIPE（RACE Integrity Primitives Evaluation，1988-1992）的框架中开发的。<br>   RIPEMD（123）=e3431a8e0adbf96fd140103dc6f63a3f8fa343ab</p><h2 id="可逆编码方式"><a href="#可逆编码方式" class="headerlink" title="可逆编码方式"></a>可逆编码方式</h2></li><li><p>url编码</p><pre><code>url编码是一种浏览器用来打包表单输入的格式。浏览器从表单中获取所有的name和其中的值 ，将它们以name/value参数编码（移去那些不能传送的字符，将数据排行等等）作为URL的一部分或者分离地发给服务器。http://www.xxx.com/index.php?parameter=123&amp;code=delhttp%3a%2f%2fwww.xxx.com%2findex.php%3fparameter%3d123%26code%3ddel</code></pre></li><li><p>ASCll编码</p><p>   最早的计算机在设计时采用8个比特（bit）作为一个字节（byte），所以，一个字节能表示的最大的整数就是255（二进制11111111=十进制255），0 - 255被用来表示大小写英文字母、数字和一些符号，这个编码表被称为ASCII编码，比如大写字母A的编码是65，小写字母z的编码是122。</p></li></ol><p><img src="https://s2.ax1x.com/2019/03/07/kxMawR.png" alt></p><ol start="3"><li><p>unicode编码：</p><p>  Unicode 给所有的字符指定了一个数字用来表示该字符，Unicode通常用两个字节表示一个字符，原有的英文编码从单字节变成双字节，只需要把高字节全部填为0就可以。</p></li></ol><p><img src="https://s2.ax1x.com/2019/03/07/kxMJlF.png" alt></p><p><img src="https://s2.ax1x.com/2019/03/07/kxMUm9.png" alt></p><ol start="4"><li><p>UTF-8编码：</p><p>  UTF-8编码规则：如果只有一个字节则其最高二进制位为0；如果是多字节，其第一个字节从最高位开始，连续的二进制位值为1的个数决定了其编码的字节数，其余各字节均以10开头。UTF-8转换表表示如下：</p><p><img src="https://s2.ax1x.com/2019/03/07/kxMtOJ.png" alt></p></li></ol><ol start="5"><li><p>Base64编码</p><p>  Base64是网络上最常见的用于传输8Bit字节码的编码方式之一，Base64就是一种基于64个可打印字符来表示二进制数据的方法。可查看RFC2045～RFC2049，上面有MIME的详细规范。</p><p>  Base64编码是从二进制到字符的过程，可用于在HTTP环境下传递较长的标识信息。例如，在Java Persistence系统Hibernate中，就采用了Base64来将一个较长的唯一标识符（一般为128-bit的UUID）编码为一个字符串，用作HTTP表单和HTTP GET URL中的参数。在其他应用程序中，也常常需要把二进制数据编码为适合放在URL（包括隐藏表单域）中的形式。此时，采用Base64编码具有不可读性，需要解码后才能阅读。</p></li></ol><ol start="6"><li><p>计算机单位：</p><p> 位：bit，是电子计算机中最小的数据单位。每一位的状态只能是0或1。</p><p> 字节：Byte，8个二进制位构成1个”字节(Byte，可简写为B)”，它是存储空间的基本计量单位。1个字节可以储存1个英文字母或者半个汉字，换句话说，1个汉字占据2个字节的存储空间。</p><p> 字：”字”由若干个字节构成，字的位数叫做字长，不同档次的机器有不同的字长。例如一台8位机，它的1个字就等于1个字节，字长为8位。如果是一台16位机，那么，它的1个字就由2个字节构成，字长为16位。字是计算机进行数据处理和运算的单位。</p><p> KB：在一般的计量单位中，通常K表示1000。只是这时K表示1024，也就是2的10次 方。1KB表示1K个Byte，也就是1024个字节。1KB=1024B</p><p> 1KB=1024B=210B<br> 1MB=1024KB=1024<em>1024B=220B<br> 1GB=1024MB=1024</em>2014KB=1024<em>1024</em>1024B=230B<br> 1TB=1024GB=240B</p></li></ol><hr><pre><code>` 时刻提醒自己的，基础是基石 `</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Coding-List&quot;&gt;&lt;a href=&quot;#Coding-List&quot; class=&quot;headerlink&quot; title=&quot;Coding List&quot;&gt;&lt;/a&gt;Coding List&lt;/h1&gt;&lt;h2 id=&quot;不可逆编码方式&quot;&gt;&lt;a href=&quot;#不可逆编码方式&quot; c
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo Command</title>
-    <link href="http://lilifengcode.github.io/post/2f10d862.html"/>
-    <id>http://lilifengcode.github.io/post/2f10d862.html</id>
-    <published>2018-01-14T04:52:33.000Z</published>
-    <updated>2019-06-28T08:25:01.143Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
       
     
     </summary>

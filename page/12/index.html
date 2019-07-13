@@ -53,7 +53,7 @@
 
     
       
-        <article id="post-Python" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+        <article id="post-浅谈DNS" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
     
@@ -61,7 +61,7 @@
         
   
     <h2 itemprop="name">
-      <a class="article-title" href="/post/56e84abc.html">Python Skill</a>
+      <a class="article-title" href="/post/c22bb9af.html">浅谈DNS</a>
     </h2>
   
 
@@ -70,8 +70,8 @@
 
     
       <div class="article-meta">
-        <a href="/post/56e84abc.html" class="article-date">
-  <time datetime="2019-04-12T14:53:04.000Z" itemprop="datePublished">2019-04-12</time>
+        <a href="/post/c22bb9af.html" class="article-date">
+  <time datetime="2019-04-15T11:52:37.000Z" itemprop="datePublished">2019-04-15</time>
 </a>
         
       </div>
@@ -83,21 +83,53 @@
       
 
       
-        <hr>
-<h2 id="使用队列-多线程方法"><a href="#使用队列-多线程方法" class="headerlink" title="使用队列 多线程方法"></a>使用队列 多线程方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">sys.path.append(&quot;..&quot;)</span><br><span class="line"></span><br><span class="line">import threading,socket,queue</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line">lock = threading.Lock() # 线程锁</span><br><span class="line"></span><br><span class="line"># 扫描端口队列</span><br><span class="line">def GetQueue(host):</span><br><span class="line">    PortQueue = queue.Queue()</span><br><span class="line">    for port in range(1,65535):</span><br><span class="line">        PortQueue.put((host,port))</span><br><span class="line">    return PortQueue</span><br><span class="line"></span><br><span class="line">class ScanThread(threading.Thread):</span><br><span class="line">    def __init__(self,SingleQueue,outip):</span><br><span class="line">        threading.Thread.__init__(self)</span><br><span class="line">        self.daemon = True</span><br><span class="line">        # self.setDaemon(True)</span><br><span class="line">        self.SingleQueue = SingleQueue</span><br><span class="line">        self.outip = outip</span><br><span class="line">    def ping(self,scanIP,port):</span><br><span class="line">        global OpenPort,Lock</span><br><span class="line">        sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">        sock.settimeout(1)</span><br><span class="line">        address = (scanIP,port)</span><br><span class="line">        try:</span><br><span class="line">            sock.connect(address)</span><br><span class="line">        except:</span><br><span class="line">            sock.close()</span><br><span class="line">            return False</span><br><span class="line">        sock.close()</span><br><span class="line">        print(scanIP, port)</span><br><span class="line">        if lock.acquire():</span><br><span class="line">            lock.release()</span><br><span class="line">        return True</span><br><span class="line">    def run(self):</span><br><span class="line">        while not self.SingleQueue.empty():</span><br><span class="line">            # print(self.SingleQueue.get())</span><br><span class="line">            host,port = self.SingleQueue.get()</span><br><span class="line">            self.ping(host,port)</span><br><span class="line"></span><br><span class="line">class Work():</span><br><span class="line">    def __init__(self,scan_id = &apos;&apos;,scan_target=&apos;&apos;,scan_type = &apos;&apos;,scan_args=&apos;&apos;,back_fn=None):</span><br><span class="line">        self.scan_id = scan_id</span><br><span class="line">        self.target = scan_target</span><br><span class="line">        self.scan_type = scan_type</span><br><span class="line">        self.args = scan_args</span><br><span class="line">        self.back_fn = back_fn</span><br><span class="line">        self.result= []</span><br><span class="line">    def run(self):</span><br><span class="line">        ThreadList = []</span><br><span class="line">        SingLeQueue = GetQueue(self.target)</span><br><span class="line">        resultQueue = queue.Queue()</span><br><span class="line">        for i in range(0,200):</span><br><span class="line">            t = ScanThread(SingLeQueue,resultQueue)</span><br><span class="line">            ThreadList.append(t)</span><br><span class="line">        for t in ThreadList:</span><br><span class="line">            t.start()</span><br><span class="line">        for t in ThreadList:</span><br><span class="line">            t.join()</span><br><span class="line">start_time = time.time()</span><br><span class="line">t = Work(scan_target = &quot;111.7.163.233&quot;)</span><br><span class="line">t.run()</span><br><span class="line">print(&apos;%d second&apos; % (time.time() - start_time))</span><br></pre></td></tr></table></figure>
-
-<p>执行完成63S</p>
-<h2 id="使用协程的方式"><a href="#使用协程的方式" class="headerlink" title="使用协程的方式"></a>使用协程的方式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import gevent</span><br><span class="line">from gevent import monkey</span><br><span class="line">from gevent.pool import Pool</span><br><span class="line">monkey.patch_all()</span><br><span class="line">import socket,time</span><br><span class="line"></span><br><span class="line">class work():</span><br><span class="line">    def __init__(self,scan_target = &quot;&quot;):</span><br><span class="line">        self.pool = Pool(200)</span><br><span class="line">        self.timeout=0.1</span><br><span class="line">        self.target = scan_target</span><br><span class="line">    def port_scan(self,port):</span><br><span class="line">        sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">        sock.settimeout(self.timeout)</span><br><span class="line">        try:</span><br><span class="line">            sock.connect((self.target,port))</span><br><span class="line">            print(self.target,&quot;:&quot;,port)</span><br><span class="line">        except:</span><br><span class="line">            sock.close()</span><br><span class="line">    def run(self):</span><br><span class="line">        res = []</span><br><span class="line">        for port in range(1,65535):</span><br><span class="line">            res.append(port)</span><br><span class="line">        self.pool.map(self.port_scan,res)</span><br><span class="line"></span><br><span class="line">start_time = time.time()</span><br><span class="line">t = work(&apos;127.0.0.1&apos;)</span><br><span class="line">t.run()</span><br><span class="line">print(&apos;%d second&apos; % (time.time() - start_time))</span><br></pre></td></tr></table></figure>
-
-<p>扫描完成需155S</p>
-<h2 id="Python-简单的爬取网站状态码"><a href="#Python-简单的爬取网站状态码" class="headerlink" title="Python 简单的爬取网站状态码"></a>Python 简单的爬取网站状态码</h2><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import re</span><br><span class="line">import time</span><br><span class="line">import threadpool</span><br><span class="line">import traceback</span><br><span class="line">code_200 = []</span><br><span class="line">code_not200 = []</span><br><span class="line">_REGEX_ = &apos;&lt;title&gt;(.*)&lt;/title&gt;&apos;</span><br><span class="line">def getTitle(url):</span><br><span class="line">    try:</span><br><span class="line">        response = requests.get(url)</span><br><span class="line">        pattern = re.compile(_REGEX_, flags=re.IGNORECASE)</span><br><span class="line">        try:</span><br><span class="line">            title = re.findall(pattern, response.text)[0]</span><br><span class="line">        except IndexError:</span><br><span class="line">            title = &apos;无标题&apos;</span><br><span class="line">        if response.status_code == 200:</span><br><span class="line">            code_200.append(&#123;&apos;url&apos;:url,&apos;title&apos;:title,&quot;status_code&quot;:response.status_code&#125;)</span><br><span class="line">            print(&#123;&apos;url&apos;:url,&apos;title&apos;:title,&quot;status_code&quot;:response.status_code&#125;)</span><br><span class="line">            return</span><br><span class="line">        else:</span><br><span class="line">            code_not200.append(&#123;&apos;url&apos;:url,&apos;title&apos;:title,&quot;status_code&quot;:response.status_code&#125;)</span><br><span class="line">            print(&#123;&apos;url&apos;: url, &apos;title&apos;: title, &quot;status_code&quot;: response.status_code&#125;)</span><br><span class="line">            return</span><br><span class="line">    except Exception as e:</span><br><span class="line">        traceback.print_exc()</span><br><span class="line">        return 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    domain = []</span><br><span class="line">    with open(&apos;test5.txt&apos;,&apos;r&apos;) as f:</span><br><span class="line">        for i in f.readlines():</span><br><span class="line">            domain.append(i.strip())</span><br><span class="line">        f.close()</span><br><span class="line">    print(domain)</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    pool = threadpool.ThreadPool(100)</span><br><span class="line">    requests_1 = threadpool.makeRequests(getTitle, domain)</span><br><span class="line">    [pool.putRequest(req) for req in requests_1]</span><br><span class="line">    pool.wait()</span><br><span class="line">    with open(&apos;test6.txt&apos;,&apos;w+&apos;,encoding=&apos;UTF-8&apos;) as f:</span><br><span class="line">        for i in code_200:</span><br><span class="line">            f.write(str(i) + &apos;\n&apos;)</span><br><span class="line">        for i in code_not200:</span><br><span class="line">            f.write(str(i) + &apos;\n&apos;)</span><br><span class="line">    print(&apos;%d second&apos; % (time.time() - start_time))</span><br></pre></td></tr></table></figure>
-
+        <h1 id="浅谈DNS"><a href="#浅谈DNS" class="headerlink" title="浅谈DNS"></a>浅谈DNS</h1><h2 id="0X00-什么是DNS"><a href="#0X00-什么是DNS" class="headerlink" title="0X00 什么是DNS"></a>0X00 什么是DNS</h2><p>DNS（Domain Name System，域名系统），万维网上作为域名和IP地址相互映射的一个分布式数据库，能够使用户更方便的访问互联网，而不用去记住能够被机器直接读取的IP数串。通过域名，最终得到该域名对应的IP地址的过程叫做域名解析（或主机名解析）。<br>在整个互联网体系中，约定俗成的用于标识网络上设备的地址是IP，然而我们输入的是DNS，因为域名更方便人们记忆，不然那么多网站，人怎么可能记住所有的IP地址</p>
+<p><strong>简单来说，如果没有DNS，你访问网站就需要，记住网站的IP地址    【123.XXX.XXX.XXX】，进而通过IP地址来访问网站,我就问你能记住多少！浪费脑细 胞！</strong></p>
+<p>DNS协议运行在<a href="https://baike.baidu.com/item/UDP" target="_blank" rel="noopener">UDP</a>协议之上，使用端口号53</p>
+<h2 id="0X01-DNS查询方式"><a href="#0X01-DNS查询方式" class="headerlink" title="0X01 DNS查询方式"></a>0X01 DNS查询方式</h2><ol>
+<li>递归查询: 一般客户机和首选DNS服务器(宽带连接是设置的默认DNS)之间属递归查询，即当客户机向DNS服务器发出请求后,若DNS服务器本身不能解析，则会向另外的DNS服务器发出查询请求，得到最终结果后转交给客户机</li>
+<li>迭代查询(反复查询): 一般DNS服务器之间属迭代查询，如：若DNS2不能响应DNS1的请求，则它会将DNS3的IP给DNS2，以便其再向DNS3发出请求</li>
+</ol>
+<p><img src="https://s2.ax1x.com/2019/04/15/AjJq6H.png" alt="AjJq6H.png"></p>
+<h2 id="0X02-DNS解析过程"><a href="#0X02-DNS解析过程" class="headerlink" title="0X02 DNS解析过程"></a>0X02 DNS解析过程</h2><ol>
+<li>浏览器缓存：浏览器会按照一定的频率缓存DNS记录。</li>
+<li>操作系统缓存：如果浏览器缓存中找不到需要的DNS记录，那就去操作系统中找。　　</li>
+<li>路由缓存：路由器也有DNS缓存。</li>
+<li>ISP的DNS服务器：ISP是互联网服务提供商(Internet Service Provider)的简称，ISP有专门的DNS服务器应对DNS查询请求。</li>
+<li>根服务器：ISP的DNS服务器还找不到的话，它就会向根服务器发出请求，进行递归查询（DNS服务器先问根域名服务器.com域名服务器的IP地址，然后再问.com域名服务器，依次类推）。</li>
+</ol>
+<p><img src="https://s2.ax1x.com/2019/04/15/AjYGH1.png" alt="AjYGH1.png"></p>
+<h2 id="0X03-DNS记录类型"><a href="#0X03-DNS记录类型" class="headerlink" title="0X03 DNS记录类型"></a>0X03 DNS记录类型</h2><ol>
+<li>主机记录(A记录)<br>RFC 1035定义，A记录是用于名称解析的重要记录，它将特定的主机名映射到对应主机的IP地址上。过A记录，大家可以设置自己的不同域名转到不同的IP上去，如：<br>1) <a href="http://www.dns.la" target="_blank" rel="noopener">www.dns.la</a> 转到IP 116.255.202.1<br>2) web.dns.la 转到IP 116.255.202.11<br>3) mail.dns.la 转到IP 116.255.202.111</li>
+<li>别名记录(CNAME记录)<br>RFC 1035定义，CNAME记录用于将某个别名指向到某个A记录上，这样就不需要再为某个新名字另外创建一条新的A记录。对于CNAME的原理要注意和URL转发进行区分:<br>1) url转发可以转发到某一个目录下，甚至某一个文件上<br>2) 而cname是不可以，这就是url转发和cname的主要区别所在</li>
+<li>MX记录(Mail Exchange)<br>邮件交换记录，用户可以将该域名下的邮件服务器指向到自己的mail server上，然后即可自行操作控制所有的邮箱设置。要注意的是邮箱DNS解析和HTTP DNS解析是独立的，如果你设置A记录<br>  是指向123.12.123.123，而MX记录你设置是指向222.22.222.222，那么你的DNS服务器接收到别人的邮件路 由请求时就将会将它的请求解释到222.22.222.222上去！而别人访问你的网页<br>  的时候仍然是访问123.12.123.123。</li>
+<li>NS(Name Server)<br>域名服务器记录，用来指定该域名由哪个DNS服务器来进行解析，可以把一个域名的不同二级域名分别指向到不同的DNS系统来解析</li>
+<li>IPv6主机语录(AAAA记录)<br>RFC 3596定义，与A记录对应，用于将特定的主机名映射到一个主机的IPv6地址。</li>
+<li>服务位置记录(SRV记录)<br>RFC 2782定义，用于定义提供特定服务的服务器的位置，如主机(hostname)，端口(port number)等。</li>
+<li>NAPTR记录<br>RFC 3403定义，它提供了正则表达式方式去映射一个域名。NAPTR记录非常著名的一个应用是用于ENUM查询。</li>
+</ol>
+<h2 id="0X04-DNS搜集信息工具"><a href="#0X04-DNS搜集信息工具" class="headerlink" title="0X04 DNS搜集信息工具"></a>0X04 DNS搜集信息工具</h2><h3 id="dnsrecon"><a href="#dnsrecon" class="headerlink" title="dnsrecon"></a>dnsrecon</h3><ul>
+<li><p>命令  dnsrecon -t std -d <a href="http://www.ichunqiu.com" target="_blank" rel="noopener">www.ichunqiu.com</a></p>
+<p><img src="https://s2.ax1x.com/2019/04/15/AjYHU0.png" alt="AjYHU0.png"></p>
+<p>这里可以看出**使用了创宇盾，加速乐还有一条A记录</p>
+</li>
+<li><p>域传送漏洞的验证</p>
+<p>命令  dnsrecon -t std -d <a href="http://www.ichunqiu.com" target="_blank" rel="noopener">www.ichunqiu.com</a> -a</p>
+<p><img src="https://s2.ax1x.com/2019/04/15/AjtSbR.png" alt="AjtSbR.png"></p>
+<h3 id="dnswalk"><a href="#dnswalk" class="headerlink" title="dnswalk"></a>dnswalk</h3><h3 id="dnstracer"><a href="#dnstracer" class="headerlink" title="dnstracer"></a>dnstracer</h3></li>
+</ul>
+<ol>
+<li><p>向指定域名服务器发送非递归域名请求。非递归请求的意思是，如果域名服务器知道，那么它会返回请求数据。如果域名服务器不知道，它会返回授权域的域名服务器或返回根域名服务器的地址。</p>
+</li>
+<li><p>参数含义-c: 不允许使用本地缓存,默认允许 -C: 启用否定缓存，默认禁用-o: 启用收到响应的概述，默认禁用-q   <querytype>: 设置请求的DNS查询记录类型, 默认为A记录-r <retries>: 请求重试次数, 默认为  3 次-s <server>: 设置一个DNS服务器，默认为本地-t <maximum timeout>: 超时时间-v: 查看详细信息-S <ip address>: 伪造一个源地址.</ip></maximum></server></retries></querytype></p>
+<p><img src="https://s2.ax1x.com/2019/04/15/AjNnlF.png" alt="AjNnlF.png"></p>
+</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lilifengcode.github.io/post/56e84abc.html" data-id="cjxfz1rsx00050ot783ntl1bo"
+      <a data-url="http://lilifengcode.github.io/post/c22bb9af.html" data-id="cjy16jsog000ghst7do75zv3x"
          class="article-share-link">分享</a>
       
     </footer>
@@ -118,7 +150,7 @@
   
     <nav class="page-nav">
       
-      <a class="extend prev" rel="prev" href="/page/11/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/13/">下一页</a>
+      <a class="extend prev" rel="prev" href="/page/11/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/13/">下一页</a>
     </nav>
   
 </section>
