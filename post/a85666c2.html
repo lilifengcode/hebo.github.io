@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    windows应急响应方案 |
+    
+    裁决的博客</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-windows应急响应方案" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      windows应急响应方案
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/post/a85666c2.html" class="article-date">
+  <time datetime="2019-03-07T01:58:59.000Z" itemprop="datePublished">2019-03-07</time>
+</a>
+        
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h1 id="windows-应急处理方案"><a href="#windows-应急处理方案" class="headerlink" title="windows 应急处理方案"></a>windows 应急处理方案</h1><h2 id="0x01-什么是应急响应"><a href="#0x01-什么是应急响应" class="headerlink" title="0x01  什么是应急响应"></a>0x01  什么是应急响应</h2><p>“<a href="https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/9533127?fr=aladdin" title="应急响应" target="_blank" rel="noopener">应急响应</a>”对应的英文是“Incident Response”或“Emergency Response”等，通常是指一个组织为了应对各种意外事件的发生所做的准备以及在事件发生后所采取的措施。</p>
+<p><strong>Ⅰ.对象</strong></p>
+<p>计算机网络安全事件应急响应的对象是指针对计算机或网络所存储、传输、处理的信息的安全事件，事件的主体可能来自自然界、系统自身故障、组织内部或外部的人、计算机病毒或蠕虫等。按照计算机信息系统安全的三个目标，可以把安全事件定义为破坏信息或信息处理系统CIA的行为。比如：</p>
+<p>1．破坏保密性的安全事件：比如入侵系统并读取信息、搭线窃听、远程探测网络拓扑结构和计算机系统配置等</p>
+<p>2．破坏完整性的安全事件：比如入侵系统并篡改数据、劫持网络连接并篡改或插入数据、安装特洛伊木马（如BackOrifice2K）、计算机病毒（修改文件或引导区）等</p>
+<p>3．破坏可用性(战时最可能出现的网络攻击)的安全事件：比如系统故障、拒绝服务攻击、计算机蠕虫（以消耗系统资源或网络带宽为目的）等。但是越来越多的人意识到，CIA界定的范围太小了，比如以下事件通常也是应急响应的对象：</p>
+<p>4．扫描：包括地址扫描和端口扫描等，为了侵入系统寻找系统漏洞。</p>
+<p>5．抵赖：指一个实体否认自己曾经执行过的某种操作，比如在电子商务中交易方之一否认自己曾经定购过某种商品，或者商家否认自己曾经接受过订单。</p>
+<p>6．垃圾邮件骚扰：垃圾邮件是指接收者没有订阅却被强行塞入信箱的广告、政治宣传等邮件，不仅耗费大量的网络与存储资源，也浪费了接收者的时间。</p>
+<p>7．传播色情内容：尽管不同的地区和国家政策不同，但是多数国家对于色情信息的传播是限制的，特别是对于青少年儿童的不良影响是各国都极力反对的。</p>
+<p>8．愚弄和欺诈：是指散发虚假信息造成的事件，比如曾经发生过几个组织发布应急通告，声称出现了一种可怕的病毒“Virtual Card for You”，导致大量惊惶失措的用户删除了硬盘中很重要的数据，导致系统无法启动。</p>
+<p><strong>Ⅱ.主要意义</strong></p>
+<p>应急响应的活动应该主要包括两个方面：</p>
+<p>第一、未雨绸缪，即在事件发生前事先做好准备，比如风险评估、制定安全计划、安全意识的培训、以发布安全通告的方式进行的预警、以及各种防范措施</p>
+<p>第二、亡羊补牢，即在事件发生后采取的措施，其目的在于把事件造成的损失降到最小。这些行动措施可能来自于人，也可能来自系统，不如发现事件发生后，系统备份、病毒检测、后门检测、清除病毒或后门、隔离、系统恢复、调查与追踪、入侵者取证等一系列操作。</p>
+<p>以上两个方面的工作是相互补充的。首先，事前的计划和准备为事件发生后的响应动作提供了指导框架，否则，响应动作将陷入混乱，而这些毫无章法的响应动作有可能造成比事件本身更大的损失；其次，事后的响应可能发现事前计划的不足，吸取教训，从而进一步完善安全计划。因此，这两个方面应该形成一种正反馈的机制，逐步强化组织的安全防范体系。</p>
+<h2 id="0x02-应急响应事件分类"><a href="#0x02-应急响应事件分类" class="headerlink" title="0x02 应急响应事件分类"></a>0x02 应急响应事件分类</h2><ol>
+<li><p>常见的应急响应事件分类：</p>
+<p> web入侵：网页挂马、主页篡改、Webshell</p>
+<p> 系统入侵：病毒木马蠕虫、勒索软件、远控后门、rdp\ssh爆破</p>
+<p> 网络攻击：DDOS攻击、DNS劫持、ARP欺骗</p>
+<p> 信息泄露：脱裤、数据库弱口令</p>
+<p> <strong>ps:还有一种，叫自己人的渗透！！！</strong> </p>
+</li>
+</ol>
+<h2 id="0x03-排查流程"><a href="#0x03-排查流程" class="headerlink" title="0x03 排查流程"></a>0x03 排查流程</h2><font size="4"> 
+
+<p>注:业内通常使用的PDCERF方法学（最早由 1987 年美国宾夕法尼亚匹兹堡软件工程研究所在关于应急响应的邀请工作会议上提出），将应急响应分成准备（Preparation）、检测（Detection）、抑制（Containment）、根除（Eradication）、恢复（Recovery）、跟踪（Follow-up）6个阶段的工作，并根据网络安全应急响应总体策略对每个阶段定义适当的目的，明确响应顺序和过程。</p>
+<p>​ 准备阶段——&gt;检测阶段——&gt;抑制阶段——&gt;根除阶段——&gt;恢复阶段——&gt;跟踪总结</p>
+ </font>
+
+<p><em>下图自画，非PDCERF模型</em></p>
+<p><img src="https://s2.ax1x.com/2019/03/06/kvV70f.png" alt="此图自画，非PDCERF模型"></p>
+<pre><code>文件分析
+
+a) 文件日期、新增文件、可疑/异常文件、最近使用文件、浏览器下载文件
+
+b) Webshell 排查与分析
+
+c) 核心应用关联目录文件分析
+
+端口分析
+
+a)敏感端口开放问题，3389、139、135等
+
+进程分析
+
+a) 当前活动进程-可疑进程 &amp; 远程连接
+
+b) 启动进程&amp;计划任务
+
+c) 进程工具分析
+
+i. Windows:Pchunter
+
+ii. Linux: Chkrootkit&amp;Rkhunter
+
+系统信息
+
+a) 环境变量
+
+b) 帐号信息
+
+c) History
+
+d) 系统配置文件
+
+日志分析
+
+a) 操作系统日志
+
+i. Windows: 事件查看器（eventvwr）
+
+ii. Linux: /var/log/
+
+b) 应用日志分析
+
+i. Access.log
+
+ii. Error.log</code></pre><h2 id="0x04-常规排查流程"><a href="#0x04-常规排查流程" class="headerlink" title="0x04 常规排查流程"></a>0x04 常规排查流程</h2><ol>
+<li><p>检查系统账号安全</p>
+<p>  a)查看服务器是否有弱口令</p>
+<p>  b）查看服务器是否存在可疑账号、新增账号</p>
+<p>  检查方法：<br>  打开 cmd 窗口，输入lusrmgr.msc命令，查看是否有新增/可疑的账号，如有管理员群组的（Administrators）里的新增账户，如有，请立即禁用或删除掉</p>
+</li>
+</ol>
+<pre><code>c)查看服务器是否存在隐藏账号、克隆账号
+
+检查方法：
+打开注册表 ，查看管理员对应键值。
+使用 D 盾 _web 查杀工具，集成了对克隆账号检测的功能
+
+ ![](https://s2.ax1x.com/2019/03/06/kv3ise.png)</code></pre><ol start="2">
+<li><p>检查异常端口</p>
+<p> a)netstat -ano 查看目前的网络连接，定位可疑的 ESTABLISHED</p>
+<p> <img src="https://s2.ax1x.com/2019/03/06/kv3fyD.png" alt></p>
+<p> b)根据 netstat 定位出的 pid，再通过 tasklist 命令进行进程定位 tasklist  | findstr “PID”</p>
+<p> <img src="https://s2.ax1x.com/2019/03/06/kv3Ol8.png" alt></p>
+</li>
+<li><p>进程</p>
+</li>
+</ol>
+<pre><code>a)开始--运行--输入 msinfo32，依次点击“软件环境→正在运行任务”就可以查看到进程的详细信息，比如进程路径、进程 ID、文件创建日期、启动时间等。
+
+![](https://s2.ax1x.com/2019/03/06/kv8ukR.png)
+
+b)打开 D 盾 _web 查杀工具，进程查看，关注没有签名信息的进程。
+
+ ![](https://s2.ax1x.com/2019/03/06/kv8RNn.png)
+
+c)通过微软官方提供的 Process Explorer 等工具进行排查 。
+
+d)查看可疑的进程及其子进程。可以通过观察以下内容：
+
+没有签名验证信息的进程
+
+没有描述信息的进程
+
+进程的属主
+
+进程的路径是否合法
+
+CPU 或内存资源占用长时间过高的进程</code></pre><ol start="4">
+<li><p>检查启动项</p>
+<p> a)登录服务器，单击【开始】&gt;【所有程序】&gt;【启动】，默认情况下此目录在是一个空目录，确认是否有非业务程序在该目录下。</p>
+<p> b)单击开始菜单 &gt;【运行】，输入 msconfig，查看是否存在命名异常的启动项目，是则取消勾选命名异常的启动项目，并到命令中显示的路径删除文件。</p>
+<p> c)单击【开始】&gt;【运行】，输入 regedit，打开注册表，查看开机启动项是否正常，特别注意如下三个注册表项：</p>
+<p> HKEY_CURRENT_USERsoftwaremicorsoftwindowscurrentversionrun</p>
+<p> HKEY_LOCAL_MACHINESoftwareMicrosoftWindowsCurrentVersionRun</p>
+<p> HKEY_LOCAL_MACHINESoftwareMicrosoftWindowsCurrentVersionRunonce</p>
+<p> 检查右侧是否有启动异常的项目，如有请删除，并建议安装杀毒软件进行病毒查杀，清除残留病毒或木马。</p>
+<p> d)利用安全软件查看启动项、开机时间管理等。</p>
+<p> e)组策略，运行 gpedit.msc。</p>
+</li>
+<li><p>检查计划任务</p>
+</li>
+</ol>
+<pre><code>a)单击【开始】&gt;【设置】&gt;【控制面板】&gt;【任务计划】，查看计划任务属性，便可以发现木马文件的路径。
+
+b)单击【开始】&gt;【运行】；输入 cmd，然后输入at，检查计算机与网络上的其它计算机之间的会话或计划任务，如有，则确认是否为正常连接</code></pre><ol start="6">
+<li>服务自启动</li>
+</ol>
+<pre><code>单击【开始】&gt;【运行】，输入 services.msc，注意服务状态和启动类型，检查是否有异常服务。</code></pre><ol start="7">
+<li>检查系统相关信息<br> 查看系统版本以及补丁信息<br> 单击【开始】&gt;【运行】，输入 systeminfo，查看系统信息</li>
+</ol>
+<ol start="8">
+<li><p>日志分析</p>
+<p> a)前提：开启审核策略，若日后系统出现故障、安全事故则可以查看系统的日志文件，排除故障，追查入侵者的信息等。</p>
+<p> b)Win+R 打开运行，输入“eventvwr.msc”，回车运行，打开“事件查看器”。</p>
+<p> C)导出应用程序日志、安全日志、系统日志，利用 Log Parser 进行分析。</p>
+</li>
+</ol>
+<pre><code>WEB 访问日志：
+
+a）找到中间件的 web 日志，打包到本地方便进行分析。</code></pre><h2 id="0x05-综合排查工具"><a href="#0x05-综合排查工具" class="headerlink" title="0x05 综合排查工具"></a>0x05 综合排查工具</h2><ol>
+<li>火绒剑</li>
+</ol>
+<p><img src="https://s2.ax1x.com/2019/03/06/kvso7t.md.png" alt></p>
+<ol start="2">
+<li>猎隼</li>
+</ol>
+<p><img src="https://s2.ax1x.com/2019/03/06/kv6laq.md.png" alt></p>
+<ol start="3">
+<li>文件监视器</li>
+</ol>
+<p><img src="https://s2.ax1x.com/2019/03/06/kvsI0I.png" alt></p>
+<h2 id="PS"><a href="#PS" class="headerlink" title="PS"></a>PS</h2><pre><code>其实无非就是“打补丁、升级，再厉害我拔网线，再厉害我拆硬盘还原快照，莫得怕它，盘它就完了</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://lilifengcode.github.io/post/a85666c2.html" data-id="cjy9tac6h000ljwt7c882xerg"
+         class="article-share-link">分享</a>
+      
+    </footer>
+    </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/post/824a1d66.html" class="article-nav-link">
+        <strong class="article-nav-caption">前一篇</strong>
+        <div class="article-nav-title">
+          
+            渗透测试实战报告
+          
+        </div>
+      </a>
+    
+    
+      <a href="/post/ccb9f6f.html" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">github渗透测试项目</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+  
+
+</article>
+
+
+
+</section>
+  <footer class="footer">
+  
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2019 裁决的博客</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="裁决的博客"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery/caijuedebug.jpg">相册</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+      <li class="nav-item">
+          <div class="totop" id="totop">
+    <i class="fe fe-rocket"></i>
+</div>
+      </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+<script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>

