@@ -11,11 +11,7 @@
     
     裁决的博客</title>
   
-    <link rel="shortcut icon" href="/favicon.ico">
-  
   <link rel="stylesheet" href="/css/style.css">
-  
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
   
   <script src="/js/pace.min.js"></script>
 </head>
@@ -141,17 +137,15 @@
       <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
     </ul>
   </div>
-  {% if theme.footer.counter %}
-    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-    <span id="busuanzi_container_site_pv">�ܷ�����<span id="busuanzi_value_site_pv"></span>��</span>
-    <span class="post-meta-divider">|</span>
-    <span id="busuanzi_container_site_uv">�ܷÿ�<span id="busuanzi_value_site_uv"></span>��</span>
-    <span class="post-meta-divider">|</span>
-
-     {% endif %}
-
-
+  <��if��theme.busuanzi && theme.busuanzi.enable��{��>
+        <�� - ������ͳ�� - >
+        <span id =��busuanzi_container_site_pv��>
+                ��վ�ܷ�����<span id =��busuanzi_value_site_pv��> </ span>��</ span>
+        <span class =��post-meta-divider��> | </ span>
+        <span id =��busuanzi_container_site_uv��style ='display��none'>
+                ��վ�ÿ���<span id =��busuanzi_value_site_uv��> </ span>��</ span>
+        <script async src =��// busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js��> </ script>
+   <��}��>
 </footer>
 
 </main>
@@ -160,32 +154,12 @@
 
 <nav class="navbar">
   
-    <div class="logo">
-      <a href="/"><img src="/images/hexo.svg" alt="裁决的博客"></a>
-    </div>
-  
   <ul class="nav nav-main">
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/">主页</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/archives">归档</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/gallery/caijuedebug.jpg">相册</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/about">关于</a>
-      </li>
     
     <li class="nav-item">
       <a class="nav-item-link nav-item-search" title="搜索">
         <i class="fe fe-search"></i>
-        搜索
+        
       </a>
     </li>
   </ul>
@@ -199,10 +173,6 @@
 </div>
       </li>
     <li class="nav-item">
-      
-        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-          <i class="fe fe-feed"></i>
-        </a>
       
     </li>
   </ul>
@@ -219,8 +189,6 @@
 <script src="/js/lazyload.min.js"></script>
 <script src="/js/busuanzi-2.3.pure.min.js"></script>
 
-
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
 
