@@ -53,7 +53,7 @@
 
     
       
-        <article id="post-About Kali linux Penetration Test" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+        <article id="post-web安全漏洞-任意文件下载漏洞" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
     
@@ -61,7 +61,7 @@
         
   
     <h2 itemprop="name">
-      <a class="article-title" href="/post/8dab69ed.html">About Kali linux Penetration Test</a>
+      <a class="article-title" href="/post/f300c807.html">web安全漏洞-任意文件下载漏洞</a>
     </h2>
   
 
@@ -70,8 +70,8 @@
 
     
       <div class="article-meta">
-        <a href="/post/8dab69ed.html" class="article-date">
-  <time datetime="2019-04-17T13:54:28.000Z" itemprop="datePublished">2019-04-17</time>
+        <a href="/post/f300c807.html" class="article-date">
+  <time datetime="2019-04-17T13:55:00.000Z" itemprop="datePublished">2019-04-17</time>
 </a>
         
       </div>
@@ -83,236 +83,96 @@
       
 
       
-        <p><img src="http://imglf3.nosdn0.126.net/img/d0pJMFNGSnJ5LzQ5dW85VzhtSmJ3NmxobE1DTHA2QjE0TlJ5OTlVd0FiM2VkTkhsWTM3UFBnPT0.jpg" alt></p>
-<h2 id="域名注册信息"><a href="#域名注册信息" class="headerlink" title="域名注册信息"></a>域名注册信息</h2><ol>
-<li>whois  </li>
-</ol>
-<p>用法： whois  <a href="http://www.xxxx.com" target="_blank" rel="noopener">www.xxxx.com</a></p>
-<p><img src="http://imglf4.nosdn.127.net/img/d0pJMFNGSnJ5LzZDeXAyQ1hMRzI5L3I1a2JiQmRRUm1RZTVXMVYvUk1jNXd6UDFhUmdTb01RPT0.jpg?imageView" alt></p>
-<ol start="2">
-<li>dig</li>
-</ol>
-<p>用法： dig <a href="http://www.xxxx.com/123.123.123" target="_blank" rel="noopener">www.xxxx.com/123.123.123</a>.*</p>
-<p><img src="http://imglf4.nosdn.127.net/img/d0pJMFNGSnJ5LzZqNmh4SEZvSDJ1NHBsdVkwdUZ5SmVuVjFhR3hUQzloS00zZlNzak5VSTB3PT0.jpg?imageView" alt></p>
-<h2 id="DNS查询-dnsrecon"><a href="#DNS查询-dnsrecon" class="headerlink" title="DNS查询  dnsrecon"></a>DNS查询  dnsrecon</h2><p>这是我最喜欢的一款DNS查询工具，具体可以看我以前文章。</p>
-<h2 id="情报收集-Recon-NG"><a href="#情报收集-Recon-NG" class="headerlink" title="情报收集   Recon-NG"></a>情报收集   Recon-NG</h2><ol>
-<li>用法：root@kali:~# recon-ng</li>
-</ol>
-<p><img src="http://imglf5.nosdn.127.net/img/d0pJMFNGSnJ5LzUyVUxNSldrNjJUYkQwdFBwZkRKOFdIRUJ0anMrOTRNL2I2SzJ0MllTOTJRPT0.jpg?imageView" alt></p>
-<p><strong>启动的时候报错显示红色【！】请参考链接—</strong><a href="http://www.freebuf.com/sectool/102256.html" target="_blank" rel="noopener"><strong>FREEBUF</strong></a></p>
-<ol start="2">
-<li>用法：[recon-ng][default] &gt; help</li>
-</ol>
-<p><img src="http://imglf6.nosdn.127.net/img/d0pJMFNGSnJ5LzUyVUxNSldrNjJUU05BSnVuV2tVN01QcHFJbU5CR1RFb2E1MnN3UEFEa1BRPT0.jpg?imageView" alt></p>
-<p>add             将记录添加到数据库中</p>
-<p>back            退出当前回话</p>
-<p>delete          从数据库中删除记录</p>
-<p>exit            退出框架</p>
-<p>help           显示帮助</p>
-<p>keys            管理框架API键</p>
-<p>load            加载指定模块</p>
-<p>pdb             打开 Python 的 Debug 回话</p>
-<p>query           查询数据库</p>
-<p>record          Records commands to a resource filereload          重新加载所有模块</p>
-<p>resource       Executes commands from a resource filesearch          搜索可用的模块</p>
-<p>set                设置模块的选择</p>
-<p>shell              执行shell命令</p>
-<p>show             显示各种框架项目</p>
-<p>snapshots     管理工作区快照</p>
-<p>spool            Spools output to a file</p>
-<p>unset            附件模块选择</p>
-<p>use               加载指定的模块</p>
-<p>workspaces   管理工作区</p>
-<p><strong>用法：show modules</strong>  </p>
-<p><img src="http://imglf4.nosdn.127.net/img/d0pJMFNGSnJ5LzZPUUpDVFN2d0Flc2paQk1YWG83c3VOSW5YR0JLMzlEVmJWOHcyemFHQjNBPT0.jpg?imageView" alt></p>
-<p>Recon-ng约有80个recon模块，2个发现模块，2个exp利用模块，7个报告模块和2个导入模块：</p>
-<blockquote>
-<p>cache_snoop – DNS缓存录制</p>
-<p>interesting_files – 敏感文件探测</p>
-<p>command_injector – 远程命令注入shell接口</p>
-<p>xpath_bruter – Xpath注入爆破</p>
-<p>csv_file – 高级csv文件导入</p>
-<p>list – List文件导入</p>
-<p>point_usage – Jigsaw – 统计信息提取用法</p>
-<p>purchase_contact – Jigsaw – 简单的联系查询</p>
-<p>search_contacts – Jigsaw联系枚举</p>
-<p>jigsaw_auth – Jigsaw认证联系枚举</p>
-<p>linkedin_auth – LinkedIn认证联系枚举</p>
-<p>github_miner – Github资源挖掘</p>
-<p>whois_miner – Whois数据挖掘</p>
-<p>bing_linkedin – Bing Linkedin信息采集</p>
-<p>email_validator – SalesMaple邮箱验证</p>
-<p>mailtester – MailTester邮箱验证</p>
-<p>mangle – 联系分离</p>
-<p>unmangle –联系反分离</p>
-<p>hibp_breach –Breach搜索</p>
-<p>hibp_paste – Paste搜索</p>
-<p>pwnedlist – PwnedList验证</p>
-<p>migrate_contacts – 域名数据迁移联系</p>
-<p>facebook_directory – Facebook目录爬行</p>
-<p>fullcontact – FullContact联系枚举</p>
-<p>adobe – Adobe Hash破解</p>
-<p>bozocrack – PyBozoCrack Hash 查询</p>
-<p>hashes_org – Hashes.org Hash查询</p>
-<p>leakdb – leakdb Hash查询</p>
-<p>metacrawler – 元数据提取</p>
-<p>pgp_search – PGP Key Owner查询</p>
-<p>salesmaple – SalesMaple联系获取</p>
-<p>whois_pocs – Whois POC获取</p>
-<p>account_creds – PwnedList – 账户认证信息获取</p>
-<p>api_usage – PwnedList – API使用信息</p>
-<p>domain_creds – PwnedList – Pwned域名认证获取</p>
-<p>domain_ispwned – PwnedList – Pwned域名统计获取</p>
-<p>leak_lookup – PwnedList – 泄露信息查询</p>
-<p>leaks_dump – PwnedList –泄露信息获取</p>
-<p>brute_suffix – DNS公共后缀爆破</p>
-<p>baidu_site – Baidu主机名枚举</p>
-<p>bing_domain_api – Bing API主机名枚举</p>
-<p>bing_domain_web – Bing主机名枚举</p>
-<p>brute_hosts – DNS主机名爆破</p>
-<p>builtwith – BuiltWith枚举</p>
-<p>google_site_api – Google CSE主机名枚举</p>
-<p>google_site_web – Google主机名枚举</p>
-<p>netcraft – Netcraft主机名枚举</p>
-<p>shodan_hostname – Shodan主机名枚举</p>
-<p>ssl_san – SSL SAN查询</p>
-<p>vpnhunter – VPNHunter查询</p>
-<p>yahoo_domain – Yahoo主机名枚举</p>
-<p>zone_transfer – DNS域文件收集</p>
-<p>ghdb – Google Hacking数据库</p>
-<p>punkspider – PunkSPIDER漏洞探测</p>
-<p>xssed – XSSed域名查询</p>
-<p>xssposed – XSSposed域名查询</p>
-<p>migrate_hosts – 域名数据迁移host</p>
-<p>bing_ip – Bing API旁站查询</p>
-<p>freegeoip –FreeGeoIP ip定位查询</p>
-<p>ip_neighbor – My-IP-Neighbors.com查询</p>
-<p>ipinfodb – IPInfoDB GeoIP查询</p>
-<p>resolve – 主机名解析器</p>
-<p>reverse_resolve – 反解析</p>
-<p>ssltools – SSLTools.com主机名查询</p>
-<p>geocode – 地理位置编码</p>
-<p>reverse_geocode – 反地理位置编码</p>
-<p>flickr – Flickr地理位置查询</p>
-<p>instagram – Instagram地理位置查询</p>
-<p>picasa – Picasa地理位置查询</p>
-<p>shodan – Shodan地理位置查询</p>
-<p>twitter – Twitter地理位置查询</p>
-<p>whois_orgs – Whois公司信息收集</p>
-<p>reverse_resolve – 反解析</p>
-<p>shodan_net – Shodan网络枚举</p>
-<p>census_2012 – Internet Census 2012 查询</p>
-<p>sonar_cio – Project Sonar查询</p>
-<p>migrate_ports – 主机端口数据迁移</p>
-<p>dev_diver – Dev Diver Repository检查</p>
-<p>linkedin – Linkedin联系获取</p>
-<p>linkedin_crawl – Linkedin信息抓取</p>
-<p>namechk – NameChk.com用户名验证</p>
-<p>profiler – OSINT HUMINT信息收集</p>
-<p>twitter – Twitter操作</p>
-<p>github_repos – Github代码枚举</p>
-<p>gists_search – Github Gist搜索</p>
-<p>github_dorks – Github Dork分析</p>
-<p>csv – CSV文件生成</p>
-<p>html – HTML报告生成</p>
-<p>json – JSON报告生成</p>
-<p>list – List生成</p>
-<p>pushpin – PushPin报告生成</p>
-<p>xlsx – XLSX文件创建</p>
-<p>xml – XML报告生成</p>
-</blockquote>
-<ol start="3">
-<li>showschema        显示数据库中的数据结构</li>
-</ol>
-<p><img src="http://imglf3.nosdn.127.net/img/d0pJMFNGSnJ5LzVPTDYwcFhMWHVNc0FUcDVEeEYxQnBCR3NPK2dyc2ZVeTN1a0d3ZDNqMGtnPT0.jpg?imageView" alt></p>
-<p><strong>双击tab键       #显示模块，可用search 寻找模块 使用show options/info先看一下参数</strong></p>
-<ol start="4">
-<li>use recon/domains-hosts/google_site_api</li>
-</ol>
-<p><img src="http://imglf3.nosdn.127.net/img/d0pJMFNGSnJ5LzRFRUhCNUVrQkhleHE5NG1qZXRHQmZqMEw4UE1qNUZkWHNGYUlZNUovY0l3PT0.jpg?imageView" alt></p>
-<ol start="5">
-<li>show options</li>
-</ol>
-<p><img src="http://imglf5.nosdn.127.net/img/d0pJMFNGSnJ5LzU3eVo1cDFIdGplWmpoVktZaVg0NFIxMXllZmlaOFROYjN5TmNzdVZJdnpnPT0.jpg?imageView" alt></p>
-<ol start="6">
-<li>指定域  set SOURCE <code>&lt;strong&gt; sina.com &lt;/strong&gt;</code></li>
-</ol>
-<p><img src="http://imglf6.nosdn.127.net/img/d0pJMFNGSnJ5LzZDWVcyUmFlSWxFNzlYdlBQMC9jc3NISWdhMkx1UGV3b0V0ZWxhZGFFYzJBPT0.jpg?imageView" alt></p>
-<ol start="7">
-<li>run</li>
-</ol>
-<p><img src="http://imglf6.nosdn.127.net/img/d0pJMFNGSnJ5LzR2OWZwaUFIeUc4bEwyd01MRU5JMnRXVTNhZmdwQmRpME91eGJwbDFRY0hnPT0.jpg?imageView" alt></p>
-<p>我这没有加key,具体可以查看官方文档</p>
-<p>查看key  ,可以输入keys  list </p>
-<p><img src="http://imglf3.nosdn.127.net/img/d0pJMFNGSnJ5LzQ5VkQ1SzBpRndMOVM0d3lUUnNDV1lpYmY1aHdMZjQ2MHpHMmM1M2J5L1FnPT0.jpg?imageView" alt></p>
-<h2 id="端口扫描，服务识别，OS识别，漏洞扫描"><a href="#端口扫描，服务识别，OS识别，漏洞扫描" class="headerlink" title="端口扫描，服务识别，OS识别，漏洞扫描"></a>端口扫描，服务识别，OS识别，漏洞扫描</h2><h3 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h3><p>带服务识别和操作系统指纹识别的TCP/IP主机和端口扫描工具<br><img src="http://imglf5.nosdn.127.net/img/d0pJMFNGSnJ5LzZUdU5IQVVpUlNoUEZDUzdkOVdiZXl1MmhNNzl4TUZURzE5RXFvMzhGYUZ3PT0.gif?imageView" alt></p>
-<h4 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h4><ul>
-<li>扫描前1000号TCP端口</li>
+        <p><img src="http://imglf4.nosdn0.126.net/img/d0pJMFNGSnJ5LzdrekNMM0dHSW1KWWI1RE1FUEtqL29PQWlMOU5UNll5dVQzK2J2azRHR3NnPT0.jpg" alt></p>
+<h1 id="web安全漏洞-任意文件下载漏洞"><a href="#web安全漏洞-任意文件下载漏洞" class="headerlink" title="web安全漏洞-任意文件下载漏洞"></a>web安全漏洞-任意文件下载漏洞</h1><p><strong>php代码</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>    </span><br><span class="line">$filename = $_GET[<span class="string">'filename'</span>];    </span><br><span class="line"><span class="keyword">echo</span> <span class="string">'&lt;h1&gt;开始下载文件！&lt;/h1&gt;&lt;br /&gt;&lt;br /&gt;'</span>; </span><br><span class="line"><span class="keyword">echo</span> file_get_contents($filename); </span><br><span class="line">header(<span class="string">'Content-Type: imgage/jpeg'</span>);       </span><br><span class="line">header(<span class="string">'Content-Disposition: attachment; filename='</span>.$filename);    <span class="comment">//Content-Disposition 响应头，设置文件在浏览器打开还是下载</span></span><br><span class="line">header(<span class="string">'Content-Lengh: '</span>.filesize($filename));</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="window环境演示"><a href="#window环境演示" class="headerlink" title="window环境演示"></a>window环境演示</h2><p>环境介绍</p>
+<p>C盘根目录-存放了flag.txt</p>
+<p>www目录-有phpinfo.php</p>
+<p>将上面代码，运行，访问，burpsuite抓包</p>
+<p><img src="http://imglf6.nosdn.127.net/img/d0pJMFNGSnJ5LzROZDZxcHJvSytNZTEyUlAzSFRxUHppZEhaU2ZlNWE2RSs1QTkzdjFZTXdBPT0.png?imageView" alt></p>
+<h2 id="linux环境演示"><a href="#linux环境演示" class="headerlink" title="linux环境演示"></a>linux环境演示</h2><p>演示环境为bee蜂箱</p>
+<p>首先打开虚拟机，查看环境IP</p>
+<p><img src="http://imglf3.nosdn.127.net/img/d0pJMFNGSnJ5LzRvN1BDb3pQQWptcmRrd0xIdUNUZmZKaW5zcXJmcG03V1kwaXZRclBkNUtBPT0.png?imageView" alt></p>
+<p>本地浏览器访问</p>
+<p><img src="http://imglf5.nosdn.127.net/img/d0pJMFNGSnJ5LzdoSXJzeHNCQTcxOEVvTUhGZWxNMTd3SjRkWjkrT25hcjJQUlZnaGRZWVd3PT0.png?imageView" alt></p>
+<p>burpsuite抓包</p>
+<p><img src="http://imglf3.nosdn.127.net/img/d0pJMFNGSnJ5LzZUVnZwRVRWbG1jK1NSdjY5VENKaG9LamdrcVR3TnYzZHRxemdlcUgzM0h3PT0.png?imageView" alt></p>
+<h2 id="漏洞检测"><a href="#漏洞检测" class="headerlink" title="漏洞检测"></a>漏洞检测</h2><p><strong>*<em>.php?file=/etc/passwd<br>*</em></strong>.php?file=../../../../../../../../etc/passwd<br>****.php?file=../../../../../../../../etc/passwd%00</p>
+<h2 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h2><ul>
+<li>禁用../的使用</li>
+<li>使用open_basedir将下载文件限定为一个指定目录里</li>
+<li>正则严格判断用户输入参数的格式</li>
 </ul>
-<p>nmap 192.168.100.2</p>
-<ul>
-<li>Ping批量扫描本地主机</li>
+<h2 id="漏洞探测-google语法"><a href="#漏洞探测-google语法" class="headerlink" title="漏洞探测-google语法"></a>漏洞探测-google语法</h2><ul>
+<li>inrul:”readfile.php?file=“</li>
 </ul>
-<p>nmap –sP 192.168.100.0-9</p>
-<ul>
-<li>扫描80,443端口</li>
+<h2 id="可探测敏感信息"><a href="#可探测敏感信息" class="headerlink" title="可探测敏感信息"></a>可探测敏感信息</h2><ul>
+<li>Linux：</li>
 </ul>
-<p>nmap -p 80,443 192.168.100.2</p>
 <ul>
-<li>扫描前1000号TCP端口，OS指纹，服务，然后运行一个NSE脚本</li>
-</ul>
-<p>sudo nmap -A 192.168.100.2</p>
-<ul>
-<li>扫描全部65535个TCP端口，OS指纹，服务，然后运行一个NSE脚本</li>
-</ul>
-<p>sudo nmap –A –p- 192.168.100.2</p>
-<ul>
-<li>扫描前1000号UDP端口</li>
-</ul>
-<p>nmap -sU 192.168.100.2</p>
-<ul>
-<li>扫描所有65535个UDP端口</li>
-</ul>
-<p>nmap -sU –p- 192.168.100.2</p>
-<h4 id="脚本扫描"><a href="#脚本扫描" class="headerlink" title="脚本扫描"></a>脚本扫描</h4><p>nmap脚本主要分为以下几类，在扫描时可根据需要设置–script=类别这种方式进行比较笼统的扫描：</p>
-<p>auth: 负责处理鉴权证书（绕开鉴权）的脚本<br>broadcast: 在局域网内探查更多服务开启状况，如dhcp/dns/sqlserver等服务<br>brute: 提供暴力破解方式，针对常见的应用如http/snmp等<br>default: 使用-sC或-A选项扫描时候默认的脚本，提供基本脚本扫描能力<br>discovery: 对网络进行更多的信息，如SMB枚举、SNMP查询等<br>dos: 用于进行拒绝服务攻击<br>exploit: 利用已知的漏洞入侵系统<br>external: 利用第三方的数据库或资源，例如进行whois解析<br>fuzzer: 模糊测试的脚本，发送异常的包到目标机，探测出潜在漏洞 intrusive: 入侵性的脚本，此类脚本可能引发对方的IDS/IPS的记录或屏蔽<br>malware: 探测目标机是否感染了病毒、开启了后门等信息<br>safe: 此类与intrusive相反，属于安全性脚本<br>version: 负责增强服务与版本扫描（Version Detection）功能的脚本<br>vuln: 负责检查目标机是否有常见的漏洞（Vulnerability），如是否有MS08_067</p>
-<ul>
-<li>nmap –script=auth 192.168.2.129</li>
-</ul>
-<p>​    负责处理鉴权证书（绕开鉴权）的脚本,也可以作为检测部分应用弱口令</p>
-<ul>
-<li><p>nmap –script=brute 192.168.2.129</p>
-<p>提供暴力破解的方式  可对数据库，smb，snmp等进行简单密码的暴力猜解</p>
+<li><p>​    /root/.ssh/authorized_keys</p>
 </li>
-<li><p>nmap –script=default 192.168.2.129</p>
-<p>默认的脚本扫描，主要是搜集各种应用服务的信息，收集到后，可再针对具体服务进行攻击</p>
+<li><p>​    /root/.ssh/id_rsa</p>
 </li>
-<li><p>nmap –script=vuln 192.168.2.129<br>检查是否存在常见漏洞</p>
+<li><p>​    /root/.ssh/id_ras.keystore</p>
 </li>
-<li><p>nmap -n -p445 –script=broadcast 192.168.2.129</p>
-<p>在局域网内探查更多服务开启状况</p>
+<li><p>​    /root/.ssh/known_hosts</p>
+</li>
+<li><p>​    /etc/httpd/conf/httpd.conf</p>
+</li>
+<li><p>​    /root/.bash_history</p>
+</li>
+<li><p>​    /root/.mysql_history</p>
+</li>
+<li><p>​    /proc/self/fd/fd[0-9]*(文件标识符)</p>
+</li>
+<li><p>​    /proc/mounts</p>
+</li>
+<li><p>​    /porc/config.gz</p>
+</li>
+<li><p>​    /etc/passwd</p>
+</li>
+<li><p>​    /etc/shadow</p>
+</li>
+<li><p>​    /etc/my.cnf</p>
 </li>
 </ul>
-<h3 id="Nikto"><a href="#Nikto" class="headerlink" title="Nikto"></a>Nikto</h3><p>有指纹识别功能的Web服务漏洞扫描器</p>
 <ul>
-<li>Nikto -list-plugins #查看插件<br><img src="http://imglf6.nosdn.127.net/img/d0pJMFNGSnJ5Lzd5Qm9rUWt5V0tSaDFkS1pVQWpQZHVsQytkVkZuWFdQRnVsSmVIZ3RSMDVnPT0.gif?imageView" alt></li>
-<li>Nikto -host <a href="http://1.1.1.1" target="_blank" rel="noopener">http://1.1.1.1</a> #扫描目标：域名方式<br><img src="http://imglf4.nosdn.127.net/img/d0pJMFNGSnJ5LzQxNnpHWlI3azB4VitmNi9DQ0pkRUNkUE9YSWEvMTE2SkFXT0FqYUkxTUl3PT0.gif?imageView" alt></li>
-<li>Nikto -host <a href="http://1.1.1.1" target="_blank" rel="noopener">http://1.1.1.1</a> -output #扫描并输出结果</li>
-<li>Nikto -host 1.1.1.1 -port 80 #扫描目标：ip地址加端口</li>
+<li>Windows：</li>
 </ul>
-<p><img src="http://imglf5.nosdn.127.net/img/d0pJMFNGSnJ5LzRKdGF2d0g1Q29VSVNEeFBKMk1NNHlMNUp0c2tYaDVoWU9LUkRuMkxUeXNBPT0.gif?imageView" alt></p>
 <ul>
-<li>Nikto -host <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> -port 443 -ssl #扫描https网站</li>
+<li><p>​    C:\Program Files\mysql\my.ini </p>
+</li>
+<li><p>​    C:\Program Files\mysql\data\mysql\user.MYD  </p>
+</li>
+<li><p>​    C:\Windows\php.ini </p>
+</li>
+<li><p>​    C:\Windows\my.ini  </p>
+</li>
+<li><p>​    C:\boot.ini  </p>
+</li>
+<li><p>​    C:\Windows\System32\inetsrv\MetaBase.xml  </p>
+</li>
+<li><p>​    C:\Windows\repair\sam  //存储系统初次安装的密码</p>
+</li>
 </ul>
-<p><img src="http://imglf6.nosdn.127.net/img/d0pJMFNGSnJ5LzdTT3ZuTy9XdUdRNmJDaGxSemVmQ3JhbGZsNTdhcVE2cENLcWltK0JvRU9nPT0.gif?imageView" alt></p>
-<ul>
-<li>Nikto -host 文件名.txt #批量扫描目标</li>
+<h2 id="代码审计挖掘经验"><a href="#代码审计挖掘经验" class="headerlink" title="代码审计挖掘经验"></a>代码审计挖掘经验</h2><ul>
+<li><p>查看网站，相应功能点—-查找相应代码文件</p>
+</li>
+<li><p>搜索文件读取得函数</p>
+<p>file_get_contents(),fopen（），readfile(),fread(),fgets()等。</p>
+</li>
+<li><p>文件包含函数include</p>
+</li>
 </ul>
+<p>  <strong><em>经典举例—-phpcms  v9 任意文件读取漏洞</em></strong></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lilifengcode.github.io/post/8dab69ed.html" data-id="cjy9usdpw000js4t7h6ypl6ox"
+      <a data-url="http://lilifengcode.github.io/post/f300c807.html" data-id="ck00epk1p000g3ot7zn4d68os"
          class="article-share-link">分享</a>
       
     </footer>
@@ -333,7 +193,7 @@
   
     <nav class="page-nav">
       
-      <a class="extend prev" rel="prev" href="/page/8/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/10/">下一页</a>
+      <a class="extend prev" rel="prev" href="/page/8/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/10/">下一页</a>
     </nav>
   
 </section>

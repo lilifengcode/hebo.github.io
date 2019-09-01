@@ -53,7 +53,7 @@
 
     
       
-        <article id="post-tomcat渗透测试" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+        <article id="post-windows 渗透测试必备命令" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
     
@@ -61,7 +61,7 @@
         
   
     <h2 itemprop="name">
-      <a class="article-title" href="/post/ee65faca.html">Tomcat 渗透测试</a>
+      <a class="article-title" href="/post/7fef8ea1.html">windows 渗透测试必备命令</a>
     </h2>
   
 
@@ -70,8 +70,8 @@
 
     
       <div class="article-meta">
-        <a href="/post/ee65faca.html" class="article-date">
-  <time datetime="2019-04-15T15:04:08.000Z" itemprop="datePublished">2019-04-15</time>
+        <a href="/post/7fef8ea1.html" class="article-date">
+  <time datetime="2019-04-17T13:00:19.000Z" itemprop="datePublished">2019-04-17</time>
 </a>
         
       </div>
@@ -83,57 +83,13 @@
       
 
       
-        <p><img src="https://s2.ax1x.com/2019/04/15/AvkwMF.md.jpg" alt></p>
-<h2 id="Tomcat-burpsuite爆破"><a href="#Tomcat-burpsuite爆破" class="headerlink" title="Tomcat burpsuite爆破"></a>Tomcat burpsuite爆破</h2><ol>
-<li><p>在渗透测试中，我们经常遇到tomcat后台被默认部署在外部的情况，<br><a href="http://192.168.6.16:8080/" target="_blank" rel="noopener">http://192.168.6.16:8080/</a>   【本地搭建—这是废话—我怕又被官方封了】</p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvkodA.png" alt></p>
-</li>
-<li><p>在这种情况下，我们都会选择去爆破来进入后台部署shell。<br>先抓取一下我们的登录包：</p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvkqRf.png" alt></p>
-</li>
-<li><p>输出用户名tomcat 密码tomcat,打开burpsuite 抓包</p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvkzZj.jpg" alt></p>
-</li>
-<li><p>解码看看，发现用户名是以tomcat:tomcat方式用base64加密了</p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvAPJ0.png" alt></p>
-</li>
-<li><p>接下来，我们演示如何用burpsuite进行爆破</p>
-<p>首先将数据包发送到Intruder模块，添加一个变量：</p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvAmw9.png" alt></p>
-</li>
-<li><p>在设置Payload的时候要使用自定义迭代器：</p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvA3QO.png" alt></p>
-</li>
-<li><p>由于登录令牌都是base64加密的，我们需要 [用户名]:[密码]这样的格式进行base64-encde才可以发送出去</p>
-</li>
-<li><p>设置三个迭代payload分别代表：用户名  、   :       、  密码   。<br>第一位设置用户名这类的字典</p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvAYeH.png" alt></p>
-</li>
-<li><p>第二位设置  :</p>
-</li>
-</ol>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvA7m4.png" alt></p>
-<ol start="10">
-<li><p>第三位设置密码</p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvAH0J.png" alt></p>
-</li>
-<li><p>然后设置一个编码器，选择base64这个函数：</p>
-</li>
-</ol>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvAOt1.png" alt></p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvAXfx.png" alt></p>
-<p>12.接下来再将url编码去掉，因为在base64密文里=会被编码</p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvEP7d.png" alt></p>
-<ol start="13">
-<li><p>爆破【上面有个小错误，为了长记性就没修改，添加变量的时候把basic加上了】</p>
-<p><img src="https://s2.ax1x.com/2019/04/15/AvEktI.png" alt></p>
-</li>
-</ol>
+        <p><img src="https://s2.ax1x.com/2019/04/17/AzoxDU.md.jpg" alt></p>
+<h1 id="windows-渗透测试必备命令"><a href="#windows-渗透测试必备命令" class="headerlink" title="windows 渗透测试必备命令"></a>windows 渗透测试必备命令</h1><p><img src="https://s2.ax1x.com/2019/04/17/Az5bZQ.jpg" alt></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lilifengcode.github.io/post/ee65faca.html" data-id="cjy9usdo4000es4t7x28lpqoa"
+      <a data-url="http://lilifengcode.github.io/post/7fef8ea1.html" data-id="ck00epk1x000h3ot7b346ct5n"
          class="article-share-link">分享</a>
       
     </footer>
@@ -154,7 +110,7 @@
   
     <nav class="page-nav">
       
-      <a class="extend prev" rel="prev" href="/page/10/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/12/">下一页</a>
+      <a class="extend prev" rel="prev" href="/page/10/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/12/">下一页</a>
     </nav>
   
 </section>
