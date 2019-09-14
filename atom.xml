@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lilifengcode.github.io/"/>
-  <updated>2019-09-01T03:18:59.925Z</updated>
+  <updated>2019-09-01T03:19:50.416Z</updated>
   <id>http://lilifengcode.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://lilifengcode.github.io/post/0.html"/>
     <id>http://lilifengcode.github.io/post/0.html</id>
     <published>2019-08-29T13:51:02.383Z</published>
-    <updated>2019-09-01T03:18:59.925Z</updated>
+    <updated>2019-09-01T03:19:50.416Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Burpsuite-BurpBounty"><a href="#Burpsuite-BurpBounty" class="headerlink" title="Burpsuite-BurpBounty"></a>Burpsuite-BurpBounty</h1><p><img src="https://s2.ax1x.com/2019/09/01/nS0ytK.jpg" alt="nS0ytK.jpg">                                                                                                                      </p><p>BurpBounty介绍</p><p>Burp Bounty（BApp商店中的扫描检查生成器）是Burp Suite的扩展，它允许您以快速简单的方式通过非常直观的图形界面通过个性化规则改进主动和被动扫描仪。</p><h2 id="下载-安装"><a href="#下载-安装" class="headerlink" title="下载-安装"></a>下载-安装</h2><p>链接：<a href="https://github.com/wagiro/BurpBounty/releases" target="_blank" rel="noopener">https://github.com/wagiro/BurpBounty/releases</a></p><p>1.在burp extender模块加载插件 </p><p><img src="https://s2.ax1x.com/2019/05/14/EoB6TH.png" alt></p><p>2.显示界面</p><p><img src="https://s2.ax1x.com/2019/05/14/EoDr3q.png" alt></p><h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>1.选择 Profiles Directory</p><p><img src="https://s2.ax1x.com/2019/05/16/Eb4i80.png" alt></p><p>2.加载字典</p><p><img src="https://s2.ax1x.com/2019/05/16/Eb4qo9.png" alt></p><p><img src="https://s2.ax1x.com/2019/05/16/EbIu1x.png" alt></p><p>3.过滤设置为all,扫描的时候启动全部项目</p><p><img src="https://s2.ax1x.com/2019/05/16/EbIJNd.png" alt></p><p><img src="https://s2.ax1x.com/2019/05/16/EbIhuT.png" alt></p><p>4.实验环境-DVWA</p><p><img src="https://s2.ax1x.com/2019/05/16/EboF2t.png" alt></p><p>5.抓包拦截-执行主动扫描</p><p><a href="https://imgchr.com/i/EboZqS" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/05/16/EboZqS.md.png" alt="EboZqS.md.png"></a></p><p>6.扫描结果</p><p><a href="https://imgchr.com/i/EbocZD" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/05/16/EbocZD.md.png" alt="EbocZD.md.png"></a></p><h2 id="添加扫描项目"><a href="#添加扫描项目" class="headerlink" title="添加扫描项目"></a>添加扫描项目</h2><p>1.命名</p><p>2.作者</p><p>3.选择扫描方式：主动扫描</p><p>4.选择request方式加载payload</p><p>5.选择payload设置：替换、添加</p><p>6.当然也可以选择payload编码方式</p><p><img src="https://s2.ax1x.com/2019/05/14/Eo64eK.png" alt></p><p>7.选择response方式,设置payload返回包匹配规则</p><p><img src="https://s2.ax1x.com/2019/05/14/EocUte.png" alt></p><p>8.选择issue,设置漏洞等级，细节描述等</p><p><img src="https://s2.ax1x.com/2019/05/14/Eocfpj.png" alt></p><h4 id><a href="#" class="headerlink" title="#"></a>#</h4>]]></content>
     

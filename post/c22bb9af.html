@@ -1,59 +1,153 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang=zh>
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
-  
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>
-    浅谈DNS |
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="浅谈DNS0X00 什么是DNSDNS（Domain Name System，域名系统），万维网上作为域名和IP地址相互映射的一个分布式数据库，能够使用户更方便的访问互联网，而不用去记住能够被机器直接读取的IP数串。通过域名，最终得到该域名对应的IP地址的过程叫做域名解析（或主机名解析）。在整个互联网体系中，约定俗成的用于标识网络上设备的地址是IP，然而我们输入的是DNS，因为域名更方便人们记忆，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈DNS">
+<meta property="og:url" content="http://lilifengcode.github.io/post/c22bb9af.html">
+<meta property="og:site_name" content="裁决的博客">
+<meta property="og:description" content="浅谈DNS0X00 什么是DNSDNS（Domain Name System，域名系统），万维网上作为域名和IP地址相互映射的一个分布式数据库，能够使用户更方便的访问互联网，而不用去记住能够被机器直接读取的IP数串。通过域名，最终得到该域名对应的IP地址的过程叫做域名解析（或主机名解析）。在整个互联网体系中，约定俗成的用于标识网络上设备的地址是IP，然而我们输入的是DNS，因为域名更方便人们记忆，">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/15/AjJq6H.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/15/AjYGH1.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/15/AjYHU0.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/15/AjtSbR.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/15/AjNnlF.png">
+<meta property="og:updated_time" content="2019-06-28T08:25:01.160Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅谈DNS">
+<meta name="twitter:description" content="浅谈DNS0X00 什么是DNSDNS（Domain Name System，域名系统），万维网上作为域名和IP地址相互映射的一个分布式数据库，能够使用户更方便的访问互联网，而不用去记住能够被机器直接读取的IP数串。通过域名，最终得到该域名对应的IP地址的过程叫做域名解析（或主机名解析）。在整个互联网体系中，约定俗成的用于标识网络上设备的地址是IP，然而我们输入的是DNS，因为域名更方便人们记忆，">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/04/15/AjJq6H.png">
     
-    裁决的博客</title>
-  
-    <link rel="shortcut icon" href="/favicon.ico">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-  
-  <script src="/js/pace.min.js"></script>
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>浅谈DNS</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
 </head>
-</html>
-<body>
-<main class="content">
-  <section class="outer">
-  <article id="post-浅谈DNS" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
-  <div class="article-inner">
+<body class="max-width mx-auto px3 ltr">
     
-      <header class="article-header">
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/lilifengcode">项目</a></li>
         
-  
-    <h1 class="article-title" itemprop="name">
-      浅谈DNS
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/post/ee65faca.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/post/cd677755.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://lilifengcode.github.io/post/c22bb9af.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://lilifengcode.github.io/post/c22bb9af.html&text=浅谈DNS"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://lilifengcode.github.io/post/c22bb9af.html&title=浅谈DNS"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://lilifengcode.github.io/post/c22bb9af.html&is_video=false&description=浅谈DNS"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=浅谈DNS&body=Check out this article: http://lilifengcode.github.io/post/c22bb9af.html"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://lilifengcode.github.io/post/c22bb9af.html&title=浅谈DNS"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://lilifengcode.github.io/post/c22bb9af.html&title=浅谈DNS"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://lilifengcode.github.io/post/c22bb9af.html&title=浅谈DNS"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://lilifengcode.github.io/post/c22bb9af.html&title=浅谈DNS"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://lilifengcode.github.io/post/c22bb9af.html&name=浅谈DNS&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#浅谈DNS"><span class="toc-number">1.</span> <span class="toc-text">浅谈DNS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0X00-什么是DNS"><span class="toc-number">1.1.</span> <span class="toc-text">0X00 什么是DNS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0X01-DNS查询方式"><span class="toc-number">1.2.</span> <span class="toc-text">0X01 DNS查询方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0X02-DNS解析过程"><span class="toc-number">1.3.</span> <span class="toc-text">0X02 DNS解析过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0X03-DNS记录类型"><span class="toc-number">1.4.</span> <span class="toc-text">0X03 DNS记录类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0X04-DNS搜集信息工具"><span class="toc-number">1.5.</span> <span class="toc-text">0X04 DNS搜集信息工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dnsrecon"><span class="toc-number">1.5.1.</span> <span class="toc-text">dnsrecon</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dnswalk"><span class="toc-number">1.5.2.</span> <span class="toc-text">dnswalk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dnstracer"><span class="toc-number">1.5.3.</span> <span class="toc-text">dnstracer</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        浅谈DNS
     </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">裁决的博客</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-04-15T11:52:37.000Z" itemprop="datePublished">2019-04-15</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
   
 
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/post/c22bb9af.html" class="article-date">
-  <time datetime="2019-04-15T11:52:37.000Z" itemprop="datePublished">2019-04-15</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <h1 id="浅谈DNS"><a href="#浅谈DNS" class="headerlink" title="浅谈DNS"></a>浅谈DNS</h1><h2 id="0X00-什么是DNS"><a href="#0X00-什么是DNS" class="headerlink" title="0X00 什么是DNS"></a>0X00 什么是DNS</h2><p>DNS（Domain Name System，域名系统），万维网上作为域名和IP地址相互映射的一个分布式数据库，能够使用户更方便的访问互联网，而不用去记住能够被机器直接读取的IP数串。通过域名，最终得到该域名对应的IP地址的过程叫做域名解析（或主机名解析）。<br>在整个互联网体系中，约定俗成的用于标识网络上设备的地址是IP，然而我们输入的是DNS，因为域名更方便人们记忆，不然那么多网站，人怎么可能记住所有的IP地址</p>
+  <div class="content" itemprop="articleBody">
+    <h1 id="浅谈DNS"><a href="#浅谈DNS" class="headerlink" title="浅谈DNS"></a>浅谈DNS</h1><h2 id="0X00-什么是DNS"><a href="#0X00-什么是DNS" class="headerlink" title="0X00 什么是DNS"></a>0X00 什么是DNS</h2><p>DNS（Domain Name System，域名系统），万维网上作为域名和IP地址相互映射的一个分布式数据库，能够使用户更方便的访问互联网，而不用去记住能够被机器直接读取的IP数串。通过域名，最终得到该域名对应的IP地址的过程叫做域名解析（或主机名解析）。<br>在整个互联网体系中，约定俗成的用于标识网络上设备的地址是IP，然而我们输入的是DNS，因为域名更方便人们记忆，不然那么多网站，人怎么可能记住所有的IP地址</p>
 <p><strong>简单来说，如果没有DNS，你访问网站就需要，记住网站的IP地址    【123.XXX.XXX.XXX】，进而通过IP地址来访问网站,我就问你能记住多少！浪费脑细 胞！</strong></p>
 <p>DNS协议运行在<a href="https://baike.baidu.com/item/UDP" target="_blank" rel="noopener">UDP</a>协议之上，使用端口号53</p>
 <h2 id="0X01-DNS查询方式"><a href="#0X01-DNS查询方式" class="headerlink" title="0X01 DNS查询方式"></a>0X01 DNS查询方式</h2><ol>
@@ -96,142 +190,98 @@
 </li>
 </ol>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://lilifengcode.github.io/post/c22bb9af.html" data-id="ck00epk25000i3ot73e5mfamo"
-         class="article-share-link">分享</a>
-      
-    </footer>
-    </div>
-
-  
-    
-  <nav class="article-nav">
-    
-      <a href="/post/ee65faca.html" class="article-nav-link">
-        <strong class="article-nav-caption">前一篇</strong>
-        <div class="article-nav-title">
-          
-            Tomcat 渗透测试
-          
-        </div>
-      </a>
-    
-    
-      <a href="/post/cd677755.html" class="article-nav-link">
-        <strong class="article-nav-caption">后一篇</strong>
-        <div class="article-nav-title">Fuzz-漏洞挖掘利器</div>
-      </a>
-    
-  </nav>
-
-
-  
-
-  
-    
-  
-  
-
+  </div>
 </article>
 
 
 
-</section>
-  <footer class="footer">
-  
-  <div class="outer">
-    <div class="float-right">
-      <ul class="list-inline">
-  
-    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
-  
-</ul>
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/lilifengcode">项目</a></li>
+        
+      </ul>
     </div>
-    <ul class="list-inline">
-      <li>&copy; 2019 裁决的博客</li>
-      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
-      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
-    </ul>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#浅谈DNS"><span class="toc-number">1.</span> <span class="toc-text">浅谈DNS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0X00-什么是DNS"><span class="toc-number">1.1.</span> <span class="toc-text">0X00 什么是DNS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0X01-DNS查询方式"><span class="toc-number">1.2.</span> <span class="toc-text">0X01 DNS查询方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0X02-DNS解析过程"><span class="toc-number">1.3.</span> <span class="toc-text">0X02 DNS解析过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0X03-DNS记录类型"><span class="toc-number">1.4.</span> <span class="toc-text">0X03 DNS记录类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0X04-DNS搜集信息工具"><span class="toc-number">1.5.</span> <span class="toc-text">0X04 DNS搜集信息工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dnsrecon"><span class="toc-number">1.5.1.</span> <span class="toc-text">dnsrecon</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dnswalk"><span class="toc-number">1.5.2.</span> <span class="toc-text">dnswalk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dnstracer"><span class="toc-number">1.5.3.</span> <span class="toc-text">dnstracer</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://lilifengcode.github.io/post/c22bb9af.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://lilifengcode.github.io/post/c22bb9af.html&text=浅谈DNS"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://lilifengcode.github.io/post/c22bb9af.html&title=浅谈DNS"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://lilifengcode.github.io/post/c22bb9af.html&is_video=false&description=浅谈DNS"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=浅谈DNS&body=Check out this article: http://lilifengcode.github.io/post/c22bb9af.html"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://lilifengcode.github.io/post/c22bb9af.html&title=浅谈DNS"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://lilifengcode.github.io/post/c22bb9af.html&title=浅谈DNS"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://lilifengcode.github.io/post/c22bb9af.html&title=浅谈DNS"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://lilifengcode.github.io/post/c22bb9af.html&title=浅谈DNS"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://lilifengcode.github.io/post/c22bb9af.html&name=浅谈DNS&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 裁决
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/lilifengcode">项目</a></li>
+        
+      </ul>
+    </nav>
   </div>
 </footer>
 
-
-</main>
-<aside class="sidebar">
-  <button class="navbar-toggle"></button>
-
-<nav class="navbar">
-  
-    <div class="logo">
-      <a href="/"><img src="/images/hexo.svg" alt="裁决的博客"></a>
     </div>
-  
-  <ul class="nav nav-main">
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/">主页</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/archives">归档</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/gallery/caijuedebug.jpg">相册</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/about">关于</a>
-      </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link nav-item-search" title="搜索">
-        <i class="fe fe-search"></i>
-        搜索
-      </a>
-    </li>
-  </ul>
-</nav>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
 
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-      <li class="nav-item">
-          <div class="totop" id="totop">
-    <i class="fe fe-rocket"></i>
-</div>
-      </li>
-    <li class="nav-item">
-      
-        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-          <i class="fe fe-feed"></i>
-        </a>
-      
-    </li>
-  </ul>
-</nav>
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
 
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-</aside>
-<script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
+<!-- Google Analytics -->
 
+<!-- Baidu Analytics -->
 
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
+<!-- Disqus Comments -->
 
-
-
-  <script src="/js/search.js"></script>
-
-
-<script src="/js/ocean.js"></script>
 
 </body>
 </html>
