@@ -208,11 +208,11 @@
   </entry>
   
   <entry>
-    <title>mimadd</title>
-    <link href="http://lilifengcode.github.io/post/5a9d2d30.html"/>
-    <id>http://lilifengcode.github.io/post/5a9d2d30.html</id>
+    <title>非对称加密和对称加密</title>
+    <link href="http://lilifengcode.github.io/post/932a020d.html"/>
+    <id>http://lilifengcode.github.io/post/932a020d.html</id>
     <published>2019-04-17T15:50:36.000Z</published>
-    <updated>2019-10-31T14:12:33.056Z</updated>
+    <updated>2019-10-31T14:19:34.098Z</updated>
     
     <content type="html"><![CDATA[<h1 id="非对称加密和对称加密"><a href="#非对称加密和对称加密" class="headerlink" title="非对称加密和对称加密"></a>非对称加密和对称加密</h1><p><img src="https://s2.ax1x.com/2019/10/18/KZ3Rjx.png" alt></p><p>非对称加密和对称加密在加密和解密过程、加密解密速度、传输的安全性上都有所不同，具体介绍如下：</p><h2 id="1．加密和解密过程不同"><a href="#1．加密和解密过程不同" class="headerlink" title="1．加密和解密过程不同"></a>1．加密和解密过程不同</h2><p>对称加密过程和解密过程使用的同一个密钥，加密过程相当于用原文+密钥可以传输出密文，同时解密过程用密文-密钥可以推导出原文。但非对称加密采用了两个密钥，一般使用公钥进行加密，使用私钥进行解密。</p><p>非对称加密流程图：</p><p><a href="https://gss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/2f738bd4b31c870179fcaa8e297f9e2f0708ff14.jpg" target="_blank" rel="noopener"><img src="file:///C:%5CUsers%5Clilifeng%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image001.png" alt="https://gss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=fd5af9722634349b74536683f9da39f6/2f738bd4b31c870179fcaa8e297f9e2f0708ff14.jpg"></a></p><p>对称加密流程图：</p><p><a href="https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/e7cd7b899e510fb358a5c3f3d733c895d1430c11.jpg" target="_blank" rel="noopener"><img src="file:///C:%5CUsers%5Clilifeng%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image002.png" alt="https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=5d50e38dfcd3572c66b794daba234f1f/e7cd7b899e510fb358a5c3f3d733c895d1430c11.jpg"></a></p><h2 id="2．加密解密速度不同"><a href="#2．加密解密速度不同" class="headerlink" title="2．加密解密速度不同"></a>2．加密解密速度不同</h2><p>对称加密解密的速度比较快，适合数据比较长时的使用。非对称加密和解密花费的时间长、速度相对较慢，只适合对少量数据的使用。</p><h2 id="3．传输的安全性不同"><a href="#3．传输的安全性不同" class="headerlink" title="3．传输的安全性不同"></a>3．传输的安全性不同</h2><p>对称加密的过程中无法确保密钥被安全传递，密文在传输过程中是可能被第三方截获的，如果密码本也被第三方截获，则传输的密码信息将被第三方破获，安全性相对较低。</p><p>非对称加密算法中私钥是基于不同的算法生成不同的随机数，私钥通过一定的加密算法推导出公钥，但私钥到公钥的推导过程是单向的，也就是说公钥无法反推导出私钥。所以安全性较高。</p><h2 id="4-常见加密方式"><a href="#4-常见加密方式" class="headerlink" title="4.  常见加密方式"></a>4.  常见加密方式</h2><p>在非对称加密中使用的主要算法有：RSA、Elgamal、背包算法、Rabin、D-H、ECC（椭圆曲线加密算法）</p><p>在对称加密中使用的主要算法有：DES（Data Encryption Standard）、3DES（Triple DES）、AES（Advanced Encryption Standard）、Blowfish</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>百度</p>]]></content>
     
