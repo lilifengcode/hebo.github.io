@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="红队攻防之图片免杀执行远程命令 0x01 前言powershell与图片通过Invoke-PSImage合成执行远程命令 0x02 Invoke-PSImageInvoke-PSImage使用PowerShell脚本并将该脚本的字节编码为PNG图像的像素。它从Web的文件生成一个oneliner来执行。 它可以仅使用有效载荷数据来创建新图像，也可以将有效载荷嵌入现有图像的最低有效字节中，以便看起来">
 <meta property="og:type" content="article">
-<meta property="og:title" content="裁决的博客">
-<meta property="og:url" content="http://lilifengcode.github.io/post/0.html">
+<meta property="og:title" content="红队攻防之图片免杀执行远程命令">
+<meta property="og:url" content="http://lilifengcode.github.io/post/ac384f73.html">
 <meta property="og:site_name" content="裁决的博客">
 <meta property="og:description" content="红队攻防之图片免杀执行远程命令 0x01 前言powershell与图片通过Invoke-PSImage合成执行远程命令 0x02 Invoke-PSImageInvoke-PSImage使用PowerShell脚本并将该脚本的字节编码为PNG图像的像素。它从Web的文件生成一个oneliner来执行。 它可以仅使用有效载荷数据来创建新图像，也可以将有效载荷嵌入现有图像的最低有效字节中，以便看起来">
 <meta property="og:locale" content="zh-CN">
@@ -18,9 +18,9 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/09/28/u1IFIK.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/09/28/u1IOeI.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/09/29/u3jzwD.gif">
-<meta property="og:updated_time" content="2019-10-31T13:13:25.496Z">
+<meta property="og:updated_time" content="2019-10-31T13:42:07.299Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="裁决的博客">
+<meta name="twitter:title" content="红队攻防之图片免杀执行远程命令">
 <meta name="twitter:description" content="红队攻防之图片免杀执行远程命令 0x01 前言powershell与图片通过Invoke-PSImage合成执行远程命令 0x02 Invoke-PSImageInvoke-PSImage使用PowerShell脚本并将该脚本的字节编码为PNG图像的像素。它从Web的文件生成一个oneliner来执行。 它可以仅使用有效载荷数据来创建新图像，也可以将有效载荷嵌入现有图像的最低有效字节中，以便看起来">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/09/29/u8pRqP.jpg">
     
@@ -42,7 +42,7 @@
         
     
     <!-- title -->
-    <title>裁决的博客</title>
+    <title>红队攻防之图片免杀执行远程命令</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -78,10 +78,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/post/0.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/post/39cded73.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/post/2082541d.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/post/b6304875.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -94,16 +94,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://lilifengcode.github.io/post/0.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://lilifengcode.github.io/post/0.html&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://lilifengcode.github.io/post/0.html&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://lilifengcode.github.io/post/0.html&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://lilifengcode.github.io/post/0.html"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://lilifengcode.github.io/post/0.html&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://lilifengcode.github.io/post/0.html&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://lilifengcode.github.io/post/0.html&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://lilifengcode.github.io/post/0.html&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://lilifengcode.github.io/post/0.html&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://lilifengcode.github.io/post/ac384f73.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://lilifengcode.github.io/post/ac384f73.html&text=红队攻防之图片免杀执行远程命令"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://lilifengcode.github.io/post/ac384f73.html&title=红队攻防之图片免杀执行远程命令"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://lilifengcode.github.io/post/ac384f73.html&is_video=false&description=红队攻防之图片免杀执行远程命令"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=红队攻防之图片免杀执行远程命令&body=Check out this article: http://lilifengcode.github.io/post/ac384f73.html"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://lilifengcode.github.io/post/ac384f73.html&title=红队攻防之图片免杀执行远程命令"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://lilifengcode.github.io/post/ac384f73.html&title=红队攻防之图片免杀执行远程命令"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://lilifengcode.github.io/post/ac384f73.html&title=红队攻防之图片免杀执行远程命令"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://lilifengcode.github.io/post/ac384f73.html&title=红队攻防之图片免杀执行远程命令"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://lilifengcode.github.io/post/ac384f73.html&name=红队攻防之图片免杀执行远程命令&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -120,7 +120,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        
+        红队攻防之图片免杀执行远程命令
     </h1>
 
 
@@ -132,7 +132,7 @@
       
     <div class="postdate">
       
-        <time datetime="2019-09-29T03:16:36.087Z" itemprop="datePublished">2019-09-29</time>
+        <time datetime="2019-10-31T13:41:16.000Z" itemprop="datePublished">2019-10-31</time>
         
       
     </div>
@@ -211,16 +211,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://lilifengcode.github.io/post/0.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://lilifengcode.github.io/post/0.html&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://lilifengcode.github.io/post/0.html&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://lilifengcode.github.io/post/0.html&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://lilifengcode.github.io/post/0.html"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://lilifengcode.github.io/post/0.html&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://lilifengcode.github.io/post/0.html&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://lilifengcode.github.io/post/0.html&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://lilifengcode.github.io/post/0.html&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://lilifengcode.github.io/post/0.html&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://lilifengcode.github.io/post/ac384f73.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://lilifengcode.github.io/post/ac384f73.html&text=红队攻防之图片免杀执行远程命令"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://lilifengcode.github.io/post/ac384f73.html&title=红队攻防之图片免杀执行远程命令"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://lilifengcode.github.io/post/ac384f73.html&is_video=false&description=红队攻防之图片免杀执行远程命令"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=红队攻防之图片免杀执行远程命令&body=Check out this article: http://lilifengcode.github.io/post/ac384f73.html"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://lilifengcode.github.io/post/ac384f73.html&title=红队攻防之图片免杀执行远程命令"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://lilifengcode.github.io/post/ac384f73.html&title=红队攻防之图片免杀执行远程命令"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://lilifengcode.github.io/post/ac384f73.html&title=红队攻防之图片免杀执行远程命令"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://lilifengcode.github.io/post/ac384f73.html&title=红队攻防之图片免杀执行远程命令"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://lilifengcode.github.io/post/ac384f73.html&name=红队攻防之图片免杀执行远程命令&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
