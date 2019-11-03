@@ -271,6 +271,27 @@
   </entry>
   
   <entry>
+    <title>渗透测试之千奇百怪的弱密码</title>
+    <link href="http://lilifengcode.github.io/post/eb134f7f.html"/>
+    <id>http://lilifengcode.github.io/post/eb134f7f.html</id>
+    <published>2019-04-17T15:49:45.000Z</published>
+    <updated>2019-11-03T12:59:41.085Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="渗透测试之千奇百怪的弱密码"><a href="#渗透测试之千奇百怪的弱密码" class="headerlink" title="渗透测试之千奇百怪的弱密码"></a>渗透测试之千奇百怪的弱密码</h1><p><img src="https://s2.ax1x.com/2019/11/02/Kqm010.jpg" alt></p><h2 id="0x01-前言"><a href="#0x01-前言" class="headerlink" title="0x01 前言"></a>0x01 前言</h2><p>弱密码在我很久之前的印象里没什么；弱密码简单说，就是用户设置的密码有规律、常见、可被猜解，又不是程序代码问题，不是大洞，但它却是神洞；因为你会发现你能用它，进入各种后台之后进行get shell等各种骚操作</p><h2 id="0x02-什么是弱密码"><a href="#0x02-什么是弱密码" class="headerlink" title="0x02 什么是弱密码"></a>0x02 什么是弱密码</h2><p>弱密码（Weak passwords）即容易破译的密码，多为简单的数字组合、帐号相同的数字组合、键盘上的临近键或常见姓名，例如“123456”、“abc123”、“Michael”等。终端设备出厂配置的通用密码等都属于弱密码范畴</p><h2 id="0x03-弱密码分类"><a href="#0x03-弱密码分类" class="headerlink" title="0x03 弱密码分类"></a>0x03 弱密码分类</h2><ul><li>规律单一数字型</li></ul><p>123456、12345678、1234</p><ul><li>规律单一字母型</li></ul><p>password、admin、monkey</p><ul><li>规律数字+字母</li></ul><p>abc123、qwer12345、qwe12345</p><ul><li>键盘字符顺序</li></ul><p>qweasdzxc、!@#$%^&amp;*</p><ul><li>中国汉字、汉字谐音衍生</li></ul><p>我爱你一生一世：woaini1314</p><p>气死你气死你：741741</p><ul><li>已泄露旧密码</li></ul><p>个人认为如果你的账号曾经被盗、或者数据泄露过、旧密码顺序即使很复杂也算弱密码</p><ul><li>英文单词、英文语句</li></ul><p>iloveyou123、iloveyou</p><ul><li>各种设备、软件、网站初始化密码</li></ul><p>root、admin、huachen1258zz、1008</p><ul><li>区域性密码</li></ul><p>比如：美国和中国人的密码习惯也是不一样的</p><p>比如：ji32k7au4a83在台湾那面是“我的密码”的意思，就是弱密码</p><ul><li>万能密码</li></ul><p>or 1=1 、and 1=1</p><h2 id="0x04-2018弱密码top10"><a href="#0x04-2018弱密码top10" class="headerlink" title="0x04 2018弱密码top10"></a>0x04 2018弱密码top10</h2><p>123456<br>password<br>123456789<br>12345678<br>12345<br>111111<br>1234567<br>sunshine<br>qwerty<br> iloveyou</p><h2 id="0x05-我遇到的弱密码事件"><a href="#0x05-我遇到的弱密码事件" class="headerlink" title="0x05 我遇到的弱密码事件"></a>0x05 我遇到的弱密码事件</h2><p>1.常见密码top1000爆破</p><p>2.使用艺人拼音、缩写组合而成的密码</p><p>如：caixukun123、cxk123456</p><p>3.使用网站、或者设备的初始化密码</p><p>如：路由等设备使用初始密码这种情况，很常见</p><p>4.使用网站注册时，填写的密码框旁边的“示例密码”作为密码</p><p>这种遇到过两次，管理员admin密码就是示例密码</p><p>5.网站域名+数字</p><p>如：网站为“<a href="https://uytcht.com/&quot;" target="_blank" rel="noopener">https://uytcht.com/&quot;</a> 管理员密码就可能为uytcht.com、uytcht.com123之类</p><p>6.公司品牌密码特性</p><p>如：之前测水果公司密码都是：fruit8888、apple123456之类的</p><p>7.根据社工或者收集来的个人信息，制作字典进行测试</p><p>这种我做出的字典都没成功过，，，</p><h2 id="0x06-弱密码危害"><a href="#0x06-弱密码危害" class="headerlink" title="0x06 弱密码危害"></a>0x06 弱密码危害</h2><p>能查看各种用户信息，能get shell </p><p><img src="https://s2.ax1x.com/2019/11/01/KbQL2n.png" alt="KbQL2n.png"></p><h2 id="0x07-弱口令检测工具"><a href="#0x07-弱口令检测工具" class="headerlink" title="0x07 弱口令检测工具"></a>0x07 弱口令检测工具</h2><p>burpsuite —我测什么都用它</p><p>超级弱口令检查工具 —rdp、ssh、各种数据库的弱密码用它</p><p>htpwdScan—撞库，我没用过，我没库</p><p>john—有的时候我用它检查linux系统是否弱密码</p><p>hydra—我喜欢和nmap一起结合使用</p><p>python—自己写个脚本…</p><p>上面是我经常用的，github上还有很多大佬写的工具，，，</p><h2 id="0x08-弱口令修复方法"><a href="#0x08-弱口令修复方法" class="headerlink" title="0x08 弱口令修复方法"></a>0x08 弱口令修复方法</h2><p>1.用户首次登录时修改默认口令</p><p>2.密码策略为11位（包括）以上字符，包含数字、大小写字母、特殊字符中的至少3种</p><p>3.对管理后台进行访问控制，加强密码强度并定期修改</p><p>4.增加验证机制，防爆破机制【图片验证码，短信验证】，限制ip访问次数</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;渗透测试之千奇百怪的弱密码&quot;&gt;&lt;a href=&quot;#渗透测试之千奇百怪的弱密码&quot; class=&quot;headerlink&quot; title=&quot;渗透测试之千奇百怪的弱密码&quot;&gt;&lt;/a&gt;渗透测试之千奇百怪的弱密码&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;https://s2.ax1x.
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>W3af Scanner</title>
     <link href="http://lilifengcode.github.io/post/6daa940c.html"/>
     <id>http://lilifengcode.github.io/post/6daa940c.html</id>
@@ -416,27 +437,6 @@
       
       
         &lt;h1 id=&quot;浅谈DNS&quot;&gt;&lt;a href=&quot;#浅谈DNS&quot; class=&quot;headerlink&quot; title=&quot;浅谈DNS&quot;&gt;&lt;/a&gt;浅谈DNS&lt;/h1&gt;&lt;h2 id=&quot;0X00-什么是DNS&quot;&gt;&lt;a href=&quot;#0X00-什么是DNS&quot; class=&quot;headerlink
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Fuzz-漏洞挖掘利器</title>
-    <link href="http://lilifengcode.github.io/post/cd677755.html"/>
-    <id>http://lilifengcode.github.io/post/cd677755.html</id>
-    <published>2019-04-15T11:41:49.000Z</published>
-    <updated>2019-06-28T08:25:01.143Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Fuzz-漏洞挖掘利器"><a href="#Fuzz-漏洞挖掘利器" class="headerlink" title="Fuzz-漏洞挖掘利器"></a>Fuzz-漏洞挖掘利器</h1><h2 id="0x00-什么模糊测试"><a href="#0x00-什么模糊测试" class="headerlink" title="0x00 什么模糊测试"></a>0x00 什么模糊测试</h2><p>模糊测试（fuzz testing）是一种介于完全的手工渗透测试与完全的自动化测试之间的安全性测试类型。能够在一项产品投入市场使用之前对潜在的应当被堵塞的攻击渠道进行提示。</p><p>模糊测试（fuzz testing)和渗透测试（penetration test）都是属于安全测试的方法，它们有同也有异，渗透测试一般是模拟黑客恶意入侵的方式对产品进行测试，对测试者的执行力要求很高，成本高，难以被大规模应用。而模糊测试，它能够充分利用机器本身，随机生成和发送数据；与此同时，又能够引进业内安全专家在安全性方面的建议。模糊测试其数据具有不确定性，也没有明显的针对性，简单来说就是没有逻辑，没有常理。只要将准备好的那些杂乱的程序插入其中，然后等待bug的出现，而出现的漏洞是测试员们先前无法预知的。</p><h2 id="0x01-Web渗透中常规FUZZ相关的手段"><a href="#0x01-Web渗透中常规FUZZ相关的手段" class="headerlink" title="0x01 Web渗透中常规FUZZ相关的手段"></a>0x01 Web渗透中常规FUZZ相关的手段</h2><ul><li>目录扫描</li><li>口令枚举</li><li>爬虫</li><li>….</li></ul><h2 id="0x02-ByPass的原理"><a href="#0x02-ByPass的原理" class="headerlink" title="0x02 ByPass的原理"></a>0x02 ByPass的原理</h2><p>在这里我们构建一个概念模型：</p><p><img src="https://s2.ax1x.com/2019/04/15/AjwhvT.png" alt></p><p>Bypass就是寻找大于深绿区域的那块黑色内容</p><p><strong>没有绝对安全的系统，当然防护是一样</strong></p><p>通常情况下，我们的目的都是发送一些攻击且能够快速有效验证漏洞payload，但是这些常用的payload都被WAF加入了规则库中，如果遇到了规则库中存在的payload，WAF就要出来搞事情了，它会记录你的攻击数据，并且将到达Web服务器之前的数据给丢弃。如此一来，我们无法进行进一步的测试了   </p><h2 id="0x02-FuzzDB"><a href="#0x02-FuzzDB" class="headerlink" title="0x02 FuzzDB"></a>0x02 FuzzDB</h2><ul><li><strong>GIT:<a href="https://github.com/fuzzdb-project/fuzzdb" target="_blank" rel="noopener">https://github.com/fuzzdb-project/fuzzdb</a></strong></li><li><strong>playload下载：<a href="https://github.com/foospidy/payloads" target="_blank" rel="noopener">https://github.com/foospidy/payloads</a></strong></li></ul><p>FuzzDB是为了通过动态应用程序安全性测试来增加引起和识别安全感兴趣条件的可能性。</p><p>这是第一个也是最全面的故障注入模式的开放字典，可预测的资源位置，以及匹配服务器响应的正则表达式。</p><p>该数据库收集了大量已知的攻击模式，如XSS，Xpath注入，SQL注入，XML攻击，本地文件包含，路径遍历，远程文件包含，ldap攻击，格式化字符串，http协议攻击等</p><p><img src="https://s2.ax1x.com/2019/04/15/AjB1TH.png" alt></p><p><img src="https://s2.ax1x.com/2019/04/15/AjBl0e.png" alt></p><p><img src="https://s2.ax1x.com/2019/04/15/AjB1TH.png" alt></p><h2 id="0x03-FUZZDB项目"><a href="#0x03-FUZZDB项目" class="headerlink" title="0x03 FUZZDB项目"></a>0x03 FUZZDB项目</h2><ul><li>OWASP Zap Proxy fuzzdb plugin <a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project" target="_blank" rel="noopener">https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project</a></li><li>SecLists <a href="https://github.com/danielmiessler/SecLists" target="_blank" rel="noopener">https://github.com/danielmiessler/SecLists</a></li><li>TrustedSec Pentesters Framework <a href="https://github.com/trustedsec/ptf" target="_blank" rel="noopener">https://github.com/trustedsec/ptf</a></li><li>Rapid7 Metasploit <a href="https://github.com/rapid7/metasploit-framework" target="_blank" rel="noopener">https://github.com/rapid7/metasploit-framework</a></li><li>Portswigger Burp Suite <a href="http://portswigger.net" target="_blank" rel="noopener">http://portswigger.net</a></li><li>Protofuzz <a href="https://github.com/trailofbits/protofuzz" target="_blank" rel="noopener">https://github.com/trailofbits/protofuzz</a></li><li>BlackArch Linux <a href="https://www.blackarch.org/" target="_blank" rel="noopener">https://www.blackarch.org/</a></li><li>ArchStrike Linux <a href="https://archstrike.org/" target="_blank" rel="noopener">https://archstrike.org/</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Fuzz-漏洞挖掘利器&quot;&gt;&lt;a href=&quot;#Fuzz-漏洞挖掘利器&quot; class=&quot;headerlink&quot; title=&quot;Fuzz-漏洞挖掘利器&quot;&gt;&lt;/a&gt;Fuzz-漏洞挖掘利器&lt;/h1&gt;&lt;h2 id=&quot;0x00-什么模糊测试&quot;&gt;&lt;a href=&quot;#0x00-什
       
     
     </summary>
