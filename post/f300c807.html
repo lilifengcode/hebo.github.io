@@ -1,68 +1,153 @@
-
 <!DOCTYPE html>
-<html lang="zh-CN" class="loading">
+<html lang=zh>
 <head><meta name="generator" content="Hexo 3.9.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>web安全漏洞-任意文件下载漏洞 - 裁决的博客</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
-    <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="
-web安全漏洞-任意文件下载漏洞php代码
-12345678&amp;lt;?php    $filename = $_GET[&#39;filename&#39;];    echo &#39;&amp;lt;h1&amp;gt;开始下载文件,"> 
-    <meta name="author" content="裁决"> 
-    <link rel="alternative" href="atom.xml" title="裁决的博客" type="application/atom+xml"> 
-    <link rel="icon" href="/img/favicon.png"> 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-    <link rel="stylesheet" href="/css/diaspora.css">
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({
-              google_ad_client: "ca-pub-8691406134231910",
-              enable_page_level_ads: true
-         });
-    </script>
-    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
-    </script>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="web安全漏洞-任意文件下载漏洞php代码 12345678&amp;lt;?php    $filename = $_GET[&apos;filename&apos;];    echo &apos;&amp;lt;h1&amp;gt;开始下载文件！&amp;lt;/h1&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;&apos;; echo file_get_contents($filename); header(&apos;Content-Type: imgag">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web安全漏洞-任意文件下载漏洞">
+<meta property="og:url" content="http://lilifengcode.github.io/post/f300c807.html">
+<meta property="og:site_name" content="裁决的博客">
+<meta property="og:description" content="web安全漏洞-任意文件下载漏洞php代码 12345678&amp;lt;?php    $filename = $_GET[&apos;filename&apos;];    echo &apos;&amp;lt;h1&amp;gt;开始下载文件！&amp;lt;/h1&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;&apos;; echo file_get_contents($filename); header(&apos;Content-Type: imgag">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://imglf4.nosdn0.126.net/img/d0pJMFNGSnJ5LzdrekNMM0dHSW1KWWI1RE1FUEtqL29PQWlMOU5UNll5dVQzK2J2azRHR3NnPT0.jpg">
+<meta property="og:image" content="http://imglf6.nosdn.127.net/img/d0pJMFNGSnJ5LzROZDZxcHJvSytNZTEyUlAzSFRxUHppZEhaU2ZlNWE2RSs1QTkzdjFZTXdBPT0.png?imageView">
+<meta property="og:image" content="http://imglf3.nosdn.127.net/img/d0pJMFNGSnJ5LzRvN1BDb3pQQWptcmRrd0xIdUNUZmZKaW5zcXJmcG03V1kwaXZRclBkNUtBPT0.png?imageView">
+<meta property="og:image" content="http://imglf5.nosdn.127.net/img/d0pJMFNGSnJ5LzdoSXJzeHNCQTcxOEVvTUhGZWxNMTd3SjRkWjkrT25hcjJQUlZnaGRZWVd3PT0.png?imageView">
+<meta property="og:image" content="http://imglf3.nosdn.127.net/img/d0pJMFNGSnJ5LzZUVnZwRVRWbG1jK1NSdjY5VENKaG9LamdrcVR3TnYzZHRxemdlcUgzM0h3PT0.png?imageView">
+<meta property="og:updated_time" content="2019-06-28T08:25:01.160Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="web安全漏洞-任意文件下载漏洞">
+<meta name="twitter:description" content="web安全漏洞-任意文件下载漏洞php代码 12345678&amp;lt;?php    $filename = $_GET[&apos;filename&apos;];    echo &apos;&amp;lt;h1&amp;gt;开始下载文件！&amp;lt;/h1&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;&apos;; echo file_get_contents($filename); header(&apos;Content-Type: imgag">
+<meta name="twitter:image" content="http://imglf4.nosdn0.126.net/img/d0pJMFNGSnJ5LzdrekNMM0dHSW1KWWI1RE1FUEtqL29PQWlMOU5UNll5dVQzK2J2azRHR3NnPT0.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>web安全漏洞-任意文件下载漏洞</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
 </head>
-</html>
-<body class="loading">
-    <span id="config-title" style="display:none">裁决的博客</span>
-    <div id="loader"></div>
-    <div id="single">
-    <div id="top" style="display: block;">
-    <div class="bar" style="width: 0;"></div>
-    <a class="icon-home image-icon" href="javascript:;" data-url="http://lilifengcode.github.io"></a>
-    <div title="播放/暂停" class="icon-play"></div>
-    <h3 class="subtitle">web安全漏洞-任意文件下载漏洞</h3>
-    <div class="social">
-        <!--<div class="like-icon">-->
-            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
-        <!--</div>-->
-        <div>
-            <div class="share">
-                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
-            </div>
-            <div id="qr"></div>
-        </div>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/lilifengcode">项目</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/post/4a999914.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/post/8dab69ed.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://lilifengcode.github.io/post/f300c807.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://lilifengcode.github.io/post/f300c807.html&text=web安全漏洞-任意文件下载漏洞"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://lilifengcode.github.io/post/f300c807.html&title=web安全漏洞-任意文件下载漏洞"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://lilifengcode.github.io/post/f300c807.html&is_video=false&description=web安全漏洞-任意文件下载漏洞"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=web安全漏洞-任意文件下载漏洞&body=Check out this article: http://lilifengcode.github.io/post/f300c807.html"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://lilifengcode.github.io/post/f300c807.html&title=web安全漏洞-任意文件下载漏洞"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://lilifengcode.github.io/post/f300c807.html&title=web安全漏洞-任意文件下载漏洞"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://lilifengcode.github.io/post/f300c807.html&title=web安全漏洞-任意文件下载漏洞"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://lilifengcode.github.io/post/f300c807.html&title=web安全漏洞-任意文件下载漏洞"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://lilifengcode.github.io/post/f300c807.html&name=web安全漏洞-任意文件下载漏洞&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
     </div>
-    <div class="scrollbar"></div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#web安全漏洞-任意文件下载漏洞"><span class="toc-number">1.</span> <span class="toc-text">web安全漏洞-任意文件下载漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#window环境演示"><span class="toc-number">1.1.</span> <span class="toc-text">window环境演示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#linux环境演示"><span class="toc-number">1.2.</span> <span class="toc-text">linux环境演示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#漏洞检测"><span class="toc-number">1.3.</span> <span class="toc-text">漏洞检测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#漏洞修复"><span class="toc-number">1.4.</span> <span class="toc-text">漏洞修复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#漏洞探测-google语法"><span class="toc-number">1.5.</span> <span class="toc-text">漏洞探测-google语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可探测敏感信息"><span class="toc-number">1.6.</span> <span class="toc-text">可探测敏感信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码审计挖掘经验"><span class="toc-number">1.7.</span> <span class="toc-text">代码审计挖掘经验</span></a></li></ol></li></ol>
+    </div>
+  </span>
 </div>
 
-    <div class="section">
-        <div class="article">
-    <div class='main'>
-        <h1 class="title">web安全漏洞-任意文件下载漏洞</h1>
-        <div class="stuff">
-            <span>四月 17, 2019</span>
-            
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        web安全漏洞-任意文件下载漏洞
+    </h1>
 
-        </div>
-        <div class="content markdown">
-            <p><img src="http://imglf4.nosdn0.126.net/img/d0pJMFNGSnJ5LzdrekNMM0dHSW1KWWI1RE1FUEtqL29PQWlMOU5UNll5dVQzK2J2azRHR3NnPT0.jpg" alt></p>
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">裁决的博客</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-04-17T13:55:00.000Z" itemprop="datePublished">2019-04-17</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><img src="http://imglf4.nosdn0.126.net/img/d0pJMFNGSnJ5LzdrekNMM0dHSW1KWWI1RE1FUEtqL29PQWlMOU5UNll5dVQzK2J2azRHR3NnPT0.jpg" alt></p>
 <h1 id="web安全漏洞-任意文件下载漏洞"><a href="#web安全漏洞-任意文件下载漏洞" class="headerlink" title="web安全漏洞-任意文件下载漏洞"></a>web安全漏洞-任意文件下载漏洞</h1><p><strong>php代码</strong></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>    </span><br><span class="line">$filename = $_GET[<span class="string">'filename'</span>];    </span><br><span class="line"><span class="keyword">echo</span> <span class="string">'&lt;h1&gt;开始下载文件！&lt;/h1&gt;&lt;br /&gt;&lt;br /&gt;'</span>; </span><br><span class="line"><span class="keyword">echo</span> file_get_contents($filename); </span><br><span class="line">header(<span class="string">'Content-Type: imgage/jpeg'</span>);       </span><br><span class="line">header(<span class="string">'Content-Disposition: attachment; filename='</span>.$filename);    <span class="comment">//Content-Disposition 响应头，设置文件在浏览器打开还是下载</span></span><br><span class="line">header(<span class="string">'Content-Lengh: '</span>.filesize($filename));</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -148,98 +233,98 @@ web安全漏洞-任意文件下载漏洞php代码
 </ul>
 <p>  <strong><em>经典举例—-phpcms  v9 任意文件读取漏洞</em></strong></p>
 
-            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
-                <source type="audio/mpeg" src="">
-            </audio>
-            
-                <ul id="audio-list" style="display:none">
-                    
-                        <li title='0' data-url='http://link.hhtjim.com/163/5146554.mp3'></li>
-                    
-                        <li title='1' data-url='http://link.hhtjim.com/qq/001faIUs4M2zna.mp3'></li>
-                    
-                </ul>
-            
-        </div>
+  </div>
+</article>
+
+
+
         
-    <div id='gitalk-container' class="comment link"
-        data-ae='false'
-        data-ci=''
-        data-cs=''
-        data-r=''
-        data-o=''
-        data-a=''
-        data-d='false'
-    >查看评论</div>
+          <div id="footer-post-container">
+  <div id="footer-post">
 
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/lilifengcode">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#web安全漏洞-任意文件下载漏洞"><span class="toc-number">1.</span> <span class="toc-text">web安全漏洞-任意文件下载漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#window环境演示"><span class="toc-number">1.1.</span> <span class="toc-text">window环境演示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#linux环境演示"><span class="toc-number">1.2.</span> <span class="toc-text">linux环境演示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#漏洞检测"><span class="toc-number">1.3.</span> <span class="toc-text">漏洞检测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#漏洞修复"><span class="toc-number">1.4.</span> <span class="toc-text">漏洞修复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#漏洞探测-google语法"><span class="toc-number">1.5.</span> <span class="toc-text">漏洞探测-google语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可探测敏感信息"><span class="toc-number">1.6.</span> <span class="toc-text">可探测敏感信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码审计挖掘经验"><span class="toc-number">1.7.</span> <span class="toc-text">代码审计挖掘经验</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://lilifengcode.github.io/post/f300c807.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://lilifengcode.github.io/post/f300c807.html&text=web安全漏洞-任意文件下载漏洞"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://lilifengcode.github.io/post/f300c807.html&title=web安全漏洞-任意文件下载漏洞"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://lilifengcode.github.io/post/f300c807.html&is_video=false&description=web安全漏洞-任意文件下载漏洞"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=web安全漏洞-任意文件下载漏洞&body=Check out this article: http://lilifengcode.github.io/post/f300c807.html"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://lilifengcode.github.io/post/f300c807.html&title=web安全漏洞-任意文件下载漏洞"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://lilifengcode.github.io/post/f300c807.html&title=web安全漏洞-任意文件下载漏洞"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://lilifengcode.github.io/post/f300c807.html&title=web安全漏洞-任意文件下载漏洞"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://lilifengcode.github.io/post/f300c807.html&title=web安全漏洞-任意文件下载漏洞"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://lilifengcode.github.io/post/f300c807.html&name=web安全漏洞-任意文件下载漏洞&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
 
     </div>
-    
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
 </div>
 
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 裁决
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/lilifengcode">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
 
     </div>
-</div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
 </body>
-<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
-<script src="/js/plugin.js"></script>
-<script src="/js/diaspora.js"></script>
-<link rel="stylesheet" href="/photoswipe/photoswipe.css">
-<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
-<script src="/photoswipe/photoswipe.min.js"></script>
-<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-            <div class="pswp__top-bar">
-                <!--  Controls are self-explanatory. Order can be changed. -->
-                <div class="pswp__counter"></div>
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
 </html>
